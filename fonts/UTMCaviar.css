@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'UTMCaviar';
+    src: url('fonts/UTMCaviar.eot');
+    src: url('fonts/UTMCaviar.eot') format('embedded-opentype'),
+         url('fonts/UTMCaviar.woff2') format('woff2'),
+         url('fonts/UTMCaviar.woff') format('woff'),
+         url('fonts/UTMCaviar.ttf') format('truetype'),
+         url('fonts/UTMCaviar.svg#UTMCaviar') format('svg');
+}

@@ -1,0 +1,8 @@
+{
+    "require": {
+        "phan/phan": "*"
+    },
+    "require-dev": {
+        "phpcompatibility/php-compatibility": "^9.3"
+    }
+}

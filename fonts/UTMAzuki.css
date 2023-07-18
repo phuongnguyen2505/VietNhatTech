@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'UTMAzuki';
+    src: url('fonts/UTMAzuki.eot');
+    src: url('fonts/UTMAzuki.eot') format('embedded-opentype'),
+         url('fonts/UTMAzuki.woff2') format('woff2'),
+         url('fonts/UTMAzuki.woff') format('woff'),
+         url('fonts/UTMAzuki.ttf') format('truetype'),
+         url('fonts/UTMAzuki.svg#UTMAzuki') format('svg');
+}

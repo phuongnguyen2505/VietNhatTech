@@ -1,0 +1,79 @@
+RewriteEngine on
+Options -Indexes
+
+DirectoryIndex index.php
+RewriteRule ^admin/$ admin/index.php  [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9_-]+).html&p=([0-9]+)$ index.php?com=$1&p=$2  [L]
+RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?com=thong-tin&idc=$1  [L]
+RewriteRule ^&p=([0-9]+)$ index.php?com=trang-chu&p=$1  [L]
+RewriteRule ^([a-zA-Z0-9_-]+).html$ index.php?com=$1  [L]
+RewriteRule ^([a-zA-Z0-9_-]+).html/keyword=(.*)$ index.php?com=$1&keyword=$2  [L]
+RewriteRule ^([a-zA-Z0-9_-]+).html/keyword=(.*)&p=([0-9]+)$ index.php?com=$1&keyword=$2&p=$3  [L]
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)-([0-9]+).html$ index.php?com=$1&id=$3  [L]
+RewriteRule ^thumb/([0-9]+)x([0-9]+)/([0-9]+)/(.*)$ timthumb.php?w=$1&h=$2&zc=$3&q=90&src=http://%{HTTP_HOST}/$4  [L]
+
+
+RewriteRule ^tags/([a-zA-Z0-9_-]+)/$ index.php?com=tags&idc=$1
+
+RewriteRule ^tin-tuc/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=tin-tuc&idc=$1&p=$2 [L]
+RewriteRule ^tin-tuc/([a-zA-Z0-9_-]+)/$ index.php?com=tin-tuc&idc=$1 [L]
+
+RewriteRule ^dich-vu/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=dich-vu&idc=$1&p=$2 [L]
+RewriteRule ^dich-vu/([a-zA-Z0-9_-]+)/$ index.php?com=dich-vu&idc=$1 [L]
+
+RewriteRule ^ky-thuat/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=ky-thuat&idc=$1&p=$2 [L]
+RewriteRule ^ky-thuat/([a-zA-Z0-9_-]+)/$ index.php?com=ky-thuat&idc=$1 [L]
+
+RewriteRule ^thuc-an/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=thuc-an&idc=$1&p=$2 [L]
+RewriteRule ^thuc-an/([a-zA-Z0-9_-]+)/$ index.php?com=thuc-an&idc=$1 [L]
+
+RewriteRule ^thuc-an/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=thuc-an&idi=$2&p=$3 [L]
+RewriteRule ^thuc-an/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?com=thuc-an&idi=$2 [L]
+
+RewriteRule ^san-pham/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=cat1&idc=$1&p=$2&id=$1&type=san-pham [L]
+RewriteRule ^san-pham/([a-zA-Z0-9_-]+)/$ index.php?com=cat1&idc=$1&id=$1&type=san-pham [L]
+
+RewriteRule ^san-pham/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=cat2&idc=$2&p=$3&id=$1&type=san-pham [L]
+RewriteRule ^san-pham/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?com=cat2&idc=$2&id=$1&type=san-pham [L]
+
+
+RewriteRule ^san-pham/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=cat3&idc=$3&p=$4&id=$1&type=san-pham [L]
+RewriteRule ^san-pham/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?com=cat3&idc=$3&id=$1&type=san-pham [L]
+
+
+
+RewriteRule ^san-pham-kitz/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=cat1&idc=$1&p=$2&id=$1&type=san-pham-kitz [L]
+RewriteRule ^san-pham-kitz/([a-zA-Z0-9_-]+)/$ index.php?com=cat1&idc=$1&id=$1&type=san-pham-kitz [L]
+
+RewriteRule ^san-pham-kitz/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=cat2&idc=$2&p=$3&id=$1&type=san-pham-kitz [L]
+RewriteRule ^san-pham-kitz/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?com=cat2&idc=$2&id=$1&type=san-pham-kitz [L]
+
+
+RewriteRule ^san-pham-kitz/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=cat3&idc=$3&p=$4&id=$1&type=san-pham-kitz [L]
+RewriteRule ^san-pham-kitz/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?com=cat3&idc=$3&id=$1&type=san-pham-kitz [L]
+
+RewriteRule ^ingersoll-rand/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=cat1&idc=$1&p=$2&id=$1&type=ingersoll-rand [L]
+RewriteRule ^ingersoll-rand/([a-zA-Z0-9_-]+)/$ index.php?com=cat1&idc=$1&id=$1&type=ingersoll-rand [L]
+
+RewriteRule ^ingersoll-rand/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=cat2&idc=$2&p=$3&id=$1&type=ingersoll-rand [L]
+RewriteRule ^ingersoll-rand/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?com=cat2&idc=$2&id=$1&type=ingersoll-rand [L]
+
+
+RewriteRule ^ingersoll-rand/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=cat3&idc=$3&p=$4&id=$1&type=ingersoll-rand [L]
+RewriteRule ^ingersoll-rand/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?com=cat3&idc=$3&id=$1&type=ingersoll-rand [L]
+
+
+
+
+RewriteRule ^san-pham-khac/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=cat1&idc=$1&p=$2&id=$1&type=san-pham-khac [L]
+RewriteRule ^san-pham-khac/([a-zA-Z0-9_-]+)/$ index.php?com=cat1&idc=$1&id=$1&type=san-pham-khac [L]
+
+RewriteRule ^san-pham-khac/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=cat2&idc=$2&p=$3&id=$1&type=san-pham-khac [L]
+RewriteRule ^san-pham-khac/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?com=cat2&idc=$2&id=$1&type=san-pham-khac [L]
+
+
+RewriteRule ^san-pham-khac/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/&p=([0-9]+)$ index.php?com=cat3&idc=$3&p=$4&id=$1&type=san-pham-khac [L]
+RewriteRule ^san-pham-khac/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?com=cat3&idc=$3&id=$1&type=san-pham-khac [L]
+

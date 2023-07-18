@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'UTMNokia';
+    src: url('fonts/UTMNokia.eot');
+    src: url('fonts/UTMNokia.eot') format('embedded-opentype'),
+         url('fonts/UTMNokia.woff2') format('woff2'),
+         url('fonts/UTMNokia.woff') format('woff'),
+         url('fonts/UTMNokia.ttf') format('truetype'),
+         url('fonts/UTMNokia.svg#UTMNokia') format('svg');
+}

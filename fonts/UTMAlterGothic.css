@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'UTMAlterGothic';
+    src: url('fonts/UTMAlterGothic.eot');
+    src: url('fonts/UTMAlterGothic.eot') format('embedded-opentype'),
+         url('fonts/UTMAlterGothic.woff2') format('woff2'),
+         url('fonts/UTMAlterGothic.woff') format('woff'),
+         url('fonts/UTMAlterGothic.ttf') format('truetype'),
+         url('fonts/UTMAlterGothic.svg#UTMAlterGothic') format('svg');
+}

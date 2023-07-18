@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'UTMNeoSansIntelRegular';
+    src: url('utmneosansintel.eot');
+    src: url('utmneosansintel.eot') format('embedded-opentype'),
+         url('utmneosansintel.woff2') format('woff2'),
+         url('utmneosansintel.woff') format('woff'),
+         url('utmneosansintel.ttf') format('truetype'),
+         url('utmneosansintel.svg#UTMNeoSansIntelRegular') format('svg');
+}

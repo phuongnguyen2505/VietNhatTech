@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'swiss';
+    src: url('fonts/swiss.eot');
+    src: url('fonts/swiss.eot') format('embedded-opentype'),
+         url('fonts/swiss.woff2') format('woff2'),
+         url('fonts/swiss.woff') format('woff'),
+         url('fonts/swiss.ttf') format('truetype'),
+         url('fonts/swiss.svg#swiss') format('svg');
+}

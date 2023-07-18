@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'SFUEurostileCondensed';
+    src: url('fonts/SFUEurostileCondensed.eot');
+    src: url('fonts/SFUEurostileCondensed.eot') format('embedded-opentype'),
+         url('fonts/SFUEurostileCondensed.woff2') format('woff2'),
+         url('fonts/SFUEurostileCondensed.woff') format('woff'),
+         url('fonts/SFUEurostileCondensed.ttf') format('truetype'),
+         url('fonts/SFUEurostileCondensed.svg#SFUEurostileCondensed') format('svg');
+}

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'UVNThayGiaoNang_R';
+    src: url('fonts/UVNThayGiaoNang_R.eot');
+    src: url('fonts/UVNThayGiaoNang_R.eot') format('embedded-opentype'),
+         url('fonts/UVNThayGiaoNang_R.woff2') format('woff2'),
+         url('fonts/UVNThayGiaoNang_R.woff') format('woff'),
+         url('fonts/UVNThayGiaoNang_R.ttf') format('truetype'),
+         url('fonts/UVNThayGiaoNang_R.svg#UVNThayGiaoNang_R') format('svg');
+}

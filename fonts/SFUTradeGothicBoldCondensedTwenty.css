@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'SFUTradeGothicBoldCondensedTwenty';
+    src: url('fonts/SFUTradeGothicBoldCondensedTwenty.eot');
+    src: url('fonts/SFUTradeGothicBoldCondensedTwenty.eot') format('embedded-opentype'),
+         url('fonts/SFUTradeGothicBoldCondensedTwenty.woff2') format('woff2'),
+         url('fonts/SFUTradeGothicBoldCondensedTwenty.woff') format('woff'),
+         url('fonts/SFUTradeGothicBoldCondensedTwenty.ttf') format('truetype'),
+         url('fonts/SFUTradeGothicBoldCondensedTwenty.svg#SFUTradeGothicBoldCondensedTwenty') format('svg');
+}

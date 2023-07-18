@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'UTMYenTu';
+    src: url('fonts/UTMYenTu.eot');
+    src: url('fonts/UTMYenTu.eot') format('embedded-opentype'),
+         url('fonts/UTMYenTu.woff2') format('woff2'),
+         url('fonts/UTMYenTu.woff') format('woff'),
+         url('fonts/UTMYenTu.ttf') format('truetype'),
+         url('fonts/UTMYenTu.svg#UTMYenTu') format('svg');
+}

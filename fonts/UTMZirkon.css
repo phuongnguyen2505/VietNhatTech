@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'UTMZirkon';
+    src: url('fonts/UTMZirkon.eot');
+    src: url('fonts/UTMZirkon.eot') format('embedded-opentype'),
+         url('fonts/UTMZirkon.woff2') format('woff2'),
+         url('fonts/UTMZirkon.woff') format('woff'),
+         url('fonts/UTMZirkon.ttf') format('truetype'),
+         url('fonts/UTMZirkon.svg#UTMZirkon') format('svg');
+}

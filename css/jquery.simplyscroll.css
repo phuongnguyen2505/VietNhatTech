@@ -1,0 +1,348 @@
+/*
+ * simplyScroll 2 - a scroll-tastic jQuery plugin
+ *
+ * http://logicbox.net/jquery/simplyscroll
+ *
+ * Copyright (c) 2009-2012 Will Kelly - http://logicbox.net
+ *
+ * Dual licensed under the MIT and GPL licenses.
+ *
+ * Last revised: 31/01/2012
+ *
+ */
+
+/* Default/Master classes 
+
+Example markup format (for horizontal scroller)
+Note all DIVs are generated and should not be hard-coded
+
+<div class="your-custom-class simply-scroll-container">
+	<div class="simply-scroll-btn simply-scroll-btn-left"></div>
+	<div class="simply-scroll-btn simply-scroll-btn-right"></div>
+	<div class="simply-scroll-clip">
+		<ul class="simply-scroll-list">
+			<li>...</li>
+			...
+		</ul>
+	</div>
+</div>
+
+
+*/
+
+.simply-scroll-container { /* Container DIV - automatically generated */
+	position: relative;
+}
+
+	.simply-scroll-clip { /* Clip DIV - automatically generated */
+		position: relative;
+		overflow: hidden;
+	}
+
+	.simply-scroll-list { /* UL/OL/DIV - the element that simplyScroll is inited on */
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+		.simply-scroll-list li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+	
+		.simply-scroll-list li img {
+			border: none;
+			display: block;
+		}
+	
+	.simply-scroll-btn {
+		position: absolute;
+		background-image: url(../js/buttons.png);
+		width: 42px;
+		height: 44px;
+		z-index:3;
+		cursor: pointer;
+	}
+	
+	.simply-scroll-btn-left {
+		left: 6px;
+		bottom: 6px;
+		background-position: 0 -44px;
+	}
+	.simply-scroll-btn-left.disabled {
+		background-position: 0 0 !important;
+	}
+	.simply-scroll-btn-left:hover, .simply-scroll-btn-left:focus {
+		background-position: 0 -88px;
+	}
+	
+	.simply-scroll-btn-right {
+		right: 6px;
+		bottom: 6px;
+		background-position: -84px -44px;
+	}
+	.simply-scroll-btn-right.disabled {
+		background-position: -84px 0 !important;
+	}
+	.simply-scroll-btn-right:hover, .simply-scroll-btn-right:focus {
+		background-position: -84px -88px;
+	}
+	
+	.simply-scroll-btn-up {
+		right: 6px;
+		top: 6px;
+		background-position: -126px -44px;
+	}
+	.simply-scroll-btn-up.disabled {
+		background-position: -126px 0 !important;
+	}
+	.simply-scroll-btn-up:hover, .simply-scroll-btn-up:focus {
+		background-position: -126px -88px;
+	}
+	
+	.simply-scroll-btn-down {
+		right: 6px;
+		bottom: 6px;
+		background-position: -42px -44px;
+	}
+	.simply-scroll-btn-down.disabled {
+		background-position: -42px 0 !important;
+	}
+	.simply-scroll-btn-down:hover, .simply-scroll-btn-down:focus {
+		background-position: -42px -88px;
+	}
+	
+	.simply-scroll-btn-pause {
+		right: 6px;
+		bottom: 6px;
+		background-position: -168px -44px;
+	}
+	.simply-scroll-btn-pause:hover, .simply-scroll-btn-pause:focus {
+		background-position: -168px -88px;
+	}
+	
+	.simply-scroll-btn-pause.active {
+		background-position: -84px -44px;
+	}
+	.simply-scroll-btn-pause.active:hover, .simply-scroll-btn-pause.active:focus {
+		background-position: -84px -88px;
+	}
+
+/* Custom class modifications - override classees
+
+.simply-scroll is default
+
+*/
+
+.simply-scroll { /* Customisable base class for style override DIV */
+	width: 100%;
+	height: 110px;
+	
+	float:left;
+	
+}
+
+	.simply-scroll .simply-scroll-clip {
+		width: 980px;
+		height: 110px;
+		
+	}
+	
+		.simply-scroll .simply-scroll-list {height:120px;}
+		
+		.simply-scroll .simply-scroll-list li {
+			float: left;
+			  height: 100px;
+   				 width: 150px;
+				 margin-right:10px;
+				 margin-top:8px;
+				 margin-bottom:2px;
+		}
+		.simply-scroll .simply-scroll-list li img {
+			border-radius:3px;
+			  height: 90px;
+    			width: 150px;
+			border: 1px solid #C7BAA7;
+			}
+	
+	.simply-scroll .simply-scroll-btn {}
+	
+	.simply-scroll .simply-scroll-btn-left {}
+	.simply-scroll .simply-scroll-btn-left.disabled {}
+	.simply-scroll .simply-scroll-btn-left:hover {}
+	
+	.simply-scroll .simply-scroll-btn-right {}
+	.simply-scroll .simply-scroll-btn-right.disabled {}
+	.simply-scroll .simply-scroll-btn-right:hover {}
+	
+	.simply-scroll .simply-scroll-btn-up {}
+	.simply-scroll .simply-scroll-btn-up.disabled {}
+	.simply-scroll .simply-scroll-btn-up:hover {}
+	
+	.simply-scroll .simply-scroll-btn-down {}
+	.simply-scroll .simply-scroll-btn-down.disabled {}
+	.simply-scroll .simply-scroll-btn-down:hover {}
+	
+
+
+/* Vertical scroller example */
+
+.vert { /* wider than clip to position buttons to side */
+	width:220px;
+	height:690px;
+	margin: 0 auto;
+	margin-bottom: 15px;
+}
+
+	.vert .simply-scroll-clip {
+		width: 220px;
+		height: 690px;
+		margin-top: 15px;
+	}
+	
+		.vert .simply-scroll-list {}
+		
+		.vert .simply-scroll-list li {
+			width: 220px;
+			
+			padding: 20px 0px;
+			border-bottom:1px #cdcdcd dashed;
+		}
+		.vert .simply-scroll-list li img {
+			width:100%;
+			height: auto;
+		}
+	
+	.vert .simply-scroll-btn {}
+
+	.vert .simply-scroll-btn-up { /* modified btn pos */
+		right: 0;
+		top: 0;
+	}
+	.vert .simply-scroll-btn-up.disabled {}
+	.vert .simply-scroll-btn-up:hover {}
+	
+	.vert .simply-scroll-btn-down { /* modified btn pos */
+		right: 0;
+		top: 52px;
+	}
+	.vert .simply-scroll-btn-down.disabled {}
+	.vert .simply-scroll-btn-down:hover {}
+	
+	/* NOTE left-right classes wouldn't be needed on vertical scroller */
+.vert1 { /* wider than clip to position buttons to side */
+	width: 230px;
+	height: 690px;
+	margin: 0 auto;
+	margin-bottom: 15px;
+}
+
+	.vert1 .simply-scroll-clip {
+		width:230px;
+		height: 690px;
+		margin-top:15px;
+	}
+	
+		.vert1 .simply-scroll-list {}
+		
+		.vert1 .simply-scroll-list li {
+			width:230px;
+			height:auto;
+		}
+		.vert1 .simply-scroll-list li img {width:100%;}
+	
+	.vert1 .simply-scroll-btn {}
+
+	.vert1 .simply-scroll-btn-up { /* modified btn pos */
+		right: 0;
+		top: 0;
+	}
+	.vert1 .simply-scroll-btn-up.disabled {}
+	.vert1 .simply-scroll-btn-up:hover {}
+	
+	.vert1 .simply-scroll-btn-down { /* modified btn pos */
+		right: 0;
+		top: 52px;
+	}
+	.vert1 .simply-scroll-btn-down.disabled {}
+	.vert1 .simply-scroll-btn-down:hover {}
+	
+	/* NOTE left-right classes wouldn't be needed on vertical scroller */
+
+/*----------------san pham ban chay-------------*/
+.spbc  { /* wider than clip to position buttons to side */
+	width: 225px;
+	height: 350px;
+	margin-bottom: 1.5em;
+}
+
+	.spbc  .simply-scroll-clip {
+		width: 225px;
+		height: 350px;
+		margin-top: 10px;
+	}
+	
+		.spbc  .simply-scroll-list {}
+		
+		.spbc  .simply-scroll-list li {
+			width: 200px;
+			height:60px;
+		}
+		.spbc  .simply-scroll-list li img {}
+	
+	.spbc  .simply-scroll-btn {}
+
+	.spbc  .simply-scroll-btn-up { /* modified btn pos */
+		right: 0;
+		top: 0;
+	}
+	.spbc  .simply-scroll-btn-up.disabled {}
+	.spbc  .simply-scroll-btn-up:hover {}
+	
+	.spbc  .simply-scroll-btn-down { /* modified btn pos */
+		right: 0;
+		top: 52px;
+	}
+	.spbc  .simply-scroll-btn-down.disabled {}
+	.spbc  .simply-scroll-btn-down:hover {}
+	
+	/* NOTE left-right classes wouldn't be needed on vertical scroller */
+.spbc { /* wider than clip to position buttons to side */
+	width: 200px;
+	height: 350px;
+	margin-bottom: 1.5em;
+}
+
+	.spbc  .simply-scroll-clip {
+		width: 200px;
+		height: 350px;
+	}
+	
+		.spbc  .simply-scroll-list {}
+		
+		.spbc  .simply-scroll-list li {
+			width:200px;
+			height:80px;
+		}
+		.spbc  .simply-scroll-list li img {}
+	
+	.spbc  .simply-scroll-btn {}
+
+	.spbc  .simply-scroll-btn-up { /* modified btn pos */
+		right: 0;
+		top: 0;
+	}
+	.spbc  .simply-scroll-btn-up.disabled {}
+	.spbc  .simply-scroll-btn-up:hover {}
+	
+	.spbc  .simply-scroll-btn-down { /* modified btn pos */
+		right: 0;
+		top: 52px;
+	}
+	.spbc  .simply-scroll-btn-down.disabled {}
+	.spbc  .simply-scroll-btn-down:hover {}
+	
+	/* NOTE left-right classes wouldn't be needed on vertical scroller */
+
