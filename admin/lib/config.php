@@ -182,10 +182,10 @@ We will report with PC15......thank to read!
 }
 $config_url = $_SERVER['SERVER_NAME'] . '';
 
-$config['database']['servername'] = 'localhost';
-$config['database']['username'] = 'vietnhat-tech.com';
-$config['database']['password'] = '';
-$config['database']['database'] = 'vietnhat';
+$config['database']['servername'] = 'us-cdbr-east-06.cleardb.net';
+$config['database']['username'] = 'b3eda66e8e0858';
+$config['database']['password'] = '126dd996';
+$config['database']['database'] = 'heroku_907765897f77f61';
 $config['database']['refix'] = 'table_';
 
 ?>
