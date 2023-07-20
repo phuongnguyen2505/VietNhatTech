@@ -33,17 +33,17 @@ function save_lienhe()
     }
     
     // VN-------------------    
-    $data['title_vi'] = $_POST['title_vi'];
-    $data['keywords_vi'] = $_POST['keywords_vi'];
-    $data['description_vi'] = $_POST['description_vi'];
-    $data['noidung_vi'] = $_POST['noidung_vi'];
+    $data['title_vi'] = isset($_POST['title_vi']) ? $_POST['title_vi'] : '';
+    $data['keywords_vi'] = isset($_POST['keywords_vi']) ? $_POST['keywords_vi'] : '';
+    $data['description_vi'] = isset($_POST['description_vi']) ? $_POST['description_vi'] : '';
+    $data['noidung_vi'] = isset($_POST['noidung_vi']) ? $_POST['noidung_vi'] : '';
         
     // EN-------------------    
             
-    $data['title_en'] = $_POST['title_en'];
-    $data['keywords_en'] = $_POST['keywords_en'];
-    $data['description_en'] = $_POST['description_en'];
-    $data['noidung_en'] = $_POST['noidung_en'];
+    $data['title_en'] = isset($_POST['title_en']) ? $_POST['title_en'] : '';
+    $data['keywords_en'] = isset($_POST['keywords_en']) ? $_POST['keywords_en'] : '';
+    $data['description_en'] = isset($_POST['description_en']) ? $_POST['description_en'] : '';
+    $data['noidung_en'] = isset($_POST['noidung_en']) ? $_POST['noidung_en'] : '';
                 
     // TW-------------------    
     $data['title_ta'] = $_POST['title_ta'];

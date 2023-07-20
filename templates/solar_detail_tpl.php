@@ -1,5 +1,5 @@
-<div class="banner">
-    <div class="hero-banner">
+<!-- <div class="banner">
+    <div class="hero-banner solar">
         <div class="layer">
             <div class="right m-100">
                 <article>
@@ -12,6 +12,13 @@
             </div>
         </div>
         <div class="clr"></div>
+    </div>
+</div> -->
+<div class="news-banner solar">
+    <div class="layer-news">
+        <h1 class="hide-title">SOLAR</h1>
+        <h1 class="hero-title m-100"><?php echo $tintuc_detail[0]['ten']?></h1>
+        <!-- <p>CÔNG TY TNHH KỸ THUẬT QUỐC TẾ VIỆT NHẬT</p> -->
     </div>
 </div>
 <div class="row m-100 mt-100">
@@ -71,5 +78,36 @@
 <style>
 .esa-us .hide-title {
     font-size: 135px;
+}
+
+.news-banner.solar {
+    background: url("upload/hinhanh/solar5.jpg") no-repeat;
+    flex: 1;
+    aspect-ratio: 16/9;
+    background-size: 100% 100%;
+}
+
+.news-banner.solar .hide-title {
+    position: absolute;
+    top: 8%;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.2);
+    text-shadow: none;
+    line-height: 244px;
+    font-size: 180px;
+}
+
+.news-banner.solar .hero-title {
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #ff1818 0%, rgba(253, 55, 55, 0.1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    letter-spacing: 0.2em;
+    line-height: 183px;
+    font-size: 80px;
 }
 </style>

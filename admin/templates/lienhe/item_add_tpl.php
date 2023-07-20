@@ -173,12 +173,10 @@ tinyMCE.init({
 
 function select_onchange() {
     var a = document.getElementById("id_list");
-    window.location =
-        "index.php?com=product&act=<?php if($_REQUEST['act']=='edit') { echo 'edit'; 
-                                   } else { echo 'add';
-}?><?php if($_REQUEST['id']!='') { echo"&id=".$_REQUEST['id'];
-                                   } ?>&id_list=" +
-        a.value;
+    var act = <?php echo isset($_REQUEST['act']) ? json_encode($_REQUEST['act']) : "'add'"; ?>;
+    var id = <?php echo isset($_REQUEST['id']) ? json_encode($_REQUEST['id']) : "''"; ?>;
+    window.location = "index.php?com=product&act=" + (act === 'edit' ? 'edit' : 'add') + (id ? "&id=" + id : "") +
+        "&id_list=" + a.value;
     return true;
 }
 </script>

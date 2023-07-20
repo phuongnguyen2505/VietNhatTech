@@ -3,7 +3,10 @@
 function select_onchange() {
     var a = document.getElementById("id_list");
     window.location =
-        "index.php?com=product&act=<?php if($_REQUEST['act']=='edit') echo 'edit'; else echo 'add';?><?php if($_REQUEST['id']!='') echo"&id=".$_REQUEST['id']; ?>&id_list=" +
+        "index.php?com=product&act=<?php if($_REQUEST['act']=='edit') { echo 'edit'; 
+                                   } else { echo 'add';
+}?><?php if($_REQUEST['id']!='') { echo"&id=".$_REQUEST['id'];
+                                   } ?>&id_list=" +
         a.value;
     return true;
 }
@@ -12,88 +15,93 @@ function select_onchange1() {
     var a = document.getElementById("id_list");
     var b = document.getElementById("id_cat");
     window.location =
-        "index.php?com=product&act=<?php if($_REQUEST['act']=='edit') echo 'edit'; else echo 'add';?><?php if($_REQUEST['id']!='') echo"&id=".$_REQUEST['id']; ?>&id_list=" +
+        "index.php?com=product&act=<?php if($_REQUEST['act']=='edit') { echo 'edit'; 
+                                   } else { echo 'add';
+}?><?php if($_REQUEST['id']!='') { echo"&id=".$_REQUEST['id'];
+                                   } ?>&id_list=" +
         a.value + "&id_cat=" + b.value;
     return true;
 }
 </script>
 <?php
 function get_main_list()
-	{
-		$sql="select * from table_product_list order by stt";
-		$stmt=mysql_query($sql);
-		$str='
+{
+    $sql="select * from table_product_list order by stt";
+    $stmt=mysql_query($sql);
+    $str='
 			<select id="id_list" name="id_list" class="main_font" onchange="select_onchange()">
 			<option>Chọn danh mục</option>			
 			';
-		while ($row=@mysql_fetch_array($stmt)) 
-		{
-			if($row["id"]==(int)@$_REQUEST["id_list"])
-				$selected="selected";
-			else 
-				$selected="";
-			$str.='<option value='.$row["id"].' '.$selected.'>'.$row["ten_vi"].'</option>';			
-		}
-		$str.='</select>';
-		return $str;
-	}			
+    while ($row=@mysql_fetch_array($stmt)) 
+    {
+        if($row["id"]==(int)@$_REQUEST["id_list"]) {
+            $selected="selected";
+        } else { 
+            $selected="";
+        }
+        $str.='<option value='.$row["id"].' '.$selected.'>'.$row["ten_vi"].'</option>';            
+    }
+    $str.='</select>';
+    return $str;
+}            
 function get_main_cat()
-	{
-		$sql="select ten_vi,id from table_product_cat where hienthi=1 and id_list=".$_REQUEST['id_list']."  order by stt asc";
-		$stmt=mysql_query($sql);
-		$str='
+{
+    $sql="select ten_vi,id from table_product_cat where hienthi=1 and id_list=".$_REQUEST['id_list']."  order by stt asc";
+    $stmt=mysql_query($sql);
+    $str='
 			<select id="id_cat" name="id_cat" onchange="select_onchange1()" class="main_font">
 			<option value="">Danh mục cấp 2</option>			
 			';
-		while ($row=@mysql_fetch_array($stmt)) 
-		{
-			if($row["id"]==$_REQUEST['id_cat'])
-				$selected="selected";
-			else 
-				$selected="";
-			$str.='<option value='.$row["id"].' '.$selected.'>'.$row["ten_vi"].'</option>';			
-		}
-		$str.='</select>';
-		return $str;
-	}
-	function get_main_item()
-	{
-		$sql="select ten_vi,id from table_product_item where hienthi=1 and id_list=".$_REQUEST['id_list']." and id_cat=".$_REQUEST['id_cat']." order by stt asc";
-		$stmt=mysql_query($sql);
-		$str='
+    while ($row=@mysql_fetch_array($stmt)) 
+    {
+        if($row["id"]==$_REQUEST['id_cat']) {
+            $selected="selected";
+        } else { 
+            $selected="";
+        }
+        $str.='<option value='.$row["id"].' '.$selected.'>'.$row["ten_vi"].'</option>';            
+    }
+    $str.='</select>';
+    return $str;
+}
+function get_main_item()
+{
+    $sql="select ten_vi,id from table_product_item where hienthi=1 and id_list=".$_REQUEST['id_list']." and id_cat=".$_REQUEST['id_cat']." order by stt asc";
+    $stmt=mysql_query($sql);
+    $str='
 			<select id="id_item" name="id_item"  class="main_font">
 			<option value="">Danh mục cấp 3</option>			
 			';
-		while ($row=@mysql_fetch_array($stmt)) 
-		{
-			if($row["id"]==$_REQUEST['id_item'])
-				$selected="selected";
-			else 
-				$selected="";
-			$str.='<option value='.$row["id"].' '.$selected.'>'.$row["ten_vi"].'</option>';			
-		}
-		$str.='</select>';
-		return $str;
-	}
+    while ($row=@mysql_fetch_array($stmt)) 
+    {
+        if($row["id"]==$_REQUEST['id_item']) {
+            $selected="selected";
+        } else { 
+            $selected="";
+        }
+        $str.='<option value='.$row["id"].' '.$selected.'>'.$row["ten_vi"].'</option>';            
+    }
+    $str.='</select>';
+    return $str;
+}
 ?>
-<form name="frm" method="post" action="index.php?com=product&act=save&curPage=<?=isset($_REQUEST['curPage'])?>"
+<form name="frm" method="post" action="index.php?com=product&act=save&curPage=<?php echo isset($_REQUEST['curPage'])?>"
     enctype="multipart/form-data" class="nhaplieu">
-    <b>Danh mục 1:</b><?=get_main_list();?><br /><br />
-    <!-- <b>Danh mục 2:</b><?=get_main_cat();?><br /><br /> -->
-    <!-- <b>Danh mục 3:</b><?=get_main_item();?><br /><br /> -->
-    <?php if ($_REQUEST['act']==edit)
-	{?>
-    <b>Hình hiện tại:</b><img src="<?=_upload_product.$item['thumb']?>" width="200" alt="NO PHOTO" /><br />
+    <b>Danh mục 1:</b><?php echo get_main_list();?><br /><br />
+    <!-- <b>Danh mục 2:</b><?php echo get_main_cat();?><br /><br /> -->
+    <!-- <b>Danh mục 3:</b><?php echo get_main_item();?><br /><br /> -->
+    <?php if ($_REQUEST['act'] == 'edit') {?>
+    <b>Hình hiện tại:</b><img src="<?php echo _upload_product.$item['thumb']?>" width="200" alt="NO PHOTO" /><br />
     <?php }?>
-    <b>Hình ảnh:</b> <input type="file" name="file" /> <?=_product_type?> - <strong>Tỉ lệ chuẩn: width 630px - height
+    <b>Hình ảnh:</b> <input type="file" name="file" /> <?php echo _product_type?> - <strong>Tỉ lệ chuẩn: width 630px -
+        height
         690px</strong><br />
     <br />
-    <!-- <b>Mã sản phẩm</b> <input type="text" name="masp" value="<?=$item['masp']?>" class="input" /><br /> -->
-    <!-- <b>Màu sắc</b> <input type="text" name="tinhtrang" value="<?=$item['tinhtrang']?>" class="input" /><br /> -->
-    <!-- <b>Giá</b> <input type="text" name="gia" value="<?=$item['gia']?>" class="input" /><br /> -->
-    <?php if ($_REQUEST['act']==edit)
-	{?>
-    <b>Tệp hiện tại:</b> <?=@$item['file']?> <br />
+    <!-- <b>Mã sản phẩm</b> <input type="text" name="masp" value="<?php echo $item['masp']?>" class="input" /><br /> -->
+    <!-- <b>Màu sắc</b> <input type="text" name="tinhtrang" value="<?php echo $item['tinhtrang']?>" class="input" /><br /> -->
+    <!-- <b>Giá</b> <input type="text" name="gia" value="<?php echo $item['gia']?>" class="input" /><br /> -->
+    <?php if ($_REQUEST['act']== 'edit') {?>
+    <b>Tệp hiện tại:</b> <?php echo @$item['file']?> <br />
     <?php }?>
     <b>Tệp đính kèm:</b> <input type="file" name="file1" /> doc|xls|pdf <br />
     <div id="info_deals" class="usual">
@@ -105,87 +113,91 @@ function get_main_cat()
         </ul>
 
         <div id="tab1" class="content_tab">
-            <b>Tên(VN):</b> <input type="text" name="ten_vi" value="<?=@$item['ten_vi']?>" class="input" /><br /><br>
+            <b>Tên(VN):</b> <input type="text" name="ten_vi" value="<?php echo @$item['ten_vi']?>"
+                class="input" /><br /><br>
 
-            <!-- <b>Tags(VN)</b > <input type="text" name="tags_vi" value="<?=@$item['tags_vi']?>" class="input" /> &nbsp;&nbsp; Mỗi tag cách nhau bằng dấu phẩy<br /><br> -->
-            <b>Title(VN)</b> <input type="text" name="title_vi" value="<?=@$item['title_vi']?>"
+            <!-- <b>Tags(VN)</b > <input type="text" name="tags_vi" value="<?php echo @$item['tags_vi']?>" class="input" /> &nbsp;&nbsp; Mỗi tag cách nhau bằng dấu phẩy<br /><br> -->
+            <b>Title(VN)</b> <input type="text" name="title_vi" value="<?php echo @$item['title_vi']?>"
                 class="input" /><br /><br>
             <b>Keywords(VN)</b>
-            <textarea name="keywords_vi" id="keywords_vi" cols="45" rows="5"><?=@$item['keywords_vi']?></textarea>
+            <textarea name="keywords_vi" id="keywords_vi" cols="45"
+                rows="5"><?php echo @$item['keywords_vi']?></textarea>
             <br><br />
 
             <b>Description(VN)</b>
             <textarea name="description_vi" id="description_vi" cols="45"
-                rows="5"><?=@$item['description_vi']?></textarea>
+                rows="5"><?php echo @$item['description_vi']?></textarea>
             <br><br />
             <b>Mô tả(VN):</b> <textarea name="mota_vi" id="mota_vi" cols="45"
-                rows="5"><?=@$item['mota_vi']?></textarea><br /><br>
+                rows="5"><?php echo @$item['mota_vi']?></textarea><br /><br>
             <b>Nội dung(VI)</b><br />
             <div>
                 <textarea name="noidung_vi"
-                    id="noidung_vi"><?=str_replace('yoshitake.net.vn', 'vietnhatvalves.com',stripcslashes($item['noidung_vi']))?></textarea>
+                    id="noidung_vi"><?php echo str_replace('yoshitake.net.vn', 'vietnhatvalves.com', stripcslashes($item['noidung_vi']))?></textarea>
             </div>
             <br />
 
         </div>
 
         <div id="tab2" class="content_tab">
-            <b>Tên(EN):</b> <input type="text" name="ten_en" value="<?=@$item['ten_en']?>" class="input" /><br /><br>
+            <b>Tên(EN):</b> <input type="text" name="ten_en" value="<?php echo @$item['ten_en']?>"
+                class="input" /><br /><br>
 
-            <!-- <b>Tags(EN)</b> <input type="text" name="tags_en" value="<?=@$item['tags_en']?>" class="input" /> &nbsp;&nbsp; Mỗi tag cách nhau bằng dấu phẩy<br /><br> -->
-            <b>Title(EN)</b> <input type="text" name="title_en" value="<?=@$item['title_en']?>"
+            <!-- <b>Tags(EN)</b> <input type="text" name="tags_en" value="<?php echo @$item['tags_en']?>" class="input" /> &nbsp;&nbsp; Mỗi tag cách nhau bằng dấu phẩy<br /><br> -->
+            <b>Title(EN)</b> <input type="text" name="title_en" value="<?php echo @$item['title_en']?>"
                 class="input" /><br /><br>
             <b>Keywords(EN)</b>
-            <textarea name="keywords_en" id="keywords_en" cols="45" rows="5"><?=@$item['keywords_en']?></textarea>
+            <textarea name="keywords_en" id="keywords_en" cols="45"
+                rows="5"><?php echo @$item['keywords_en']?></textarea>
             <br><br />
 
             <b>Description(EN)</b>
             <textarea name="description_en" id="description_en" cols="45"
-                rows="5"><?=@$item['description_en']?></textarea>
+                rows="5"><?php echo @$item['description_en']?></textarea>
             <br><br />
             <b>Mô tả(EN):</b> <textarea name="mota_en" id="mota_en" cols="45"
-                rows="5"><?=@$item['mota_en']?></textarea><br /><br>
+                rows="5"><?php echo @$item['mota_en']?></textarea><br /><br>
             <b>Nội dung(EN)</b><br />
             <div>
-                <textarea name="noidung_en" id="noidung_en"><?=stripcslashes($item['noidung_en'])?></textarea>
+                <textarea name="noidung_en" id="noidung_en"><?php echo stripcslashes($item['noidung_en'])?></textarea>
             </div>
             <br />
 
         </div>
 
         <!--  <div id="tab3" class="content_tab">
-      <b>Tên(Hàn):</b> <input type="text" name="ten_ta" value="<?=@$item['ten_ta']?>" class="input" /><br /><br>
-      <b>Nhãn hiệu(CN):</b> <input type="text" name="mota_ta" value="<?=@$item['mota_ta']?>" class="input" /><br /><br>
-      <b>Tags(CN)</b> <input type="text" name="tags_ta" value="<?=@$item['tags_ta']?>" class="input" /> &nbsp;&nbsp; Mỗi tag cách nhau bằng dấu phẩy<br /><br>
-    <b>Title(Hàn)</b> <input type="text" name="title_ta" value="<?=@$item['title_ta']?>" class="input" /><br /><br>
-	<b>Keywords(Hàn)</b> 
-	<textarea name="keywords_ta" id="keywords_ta" cols="45" rows="5"><?=@$item['keywords_ta']?></textarea>
+      <b>Tên(Hàn):</b> <input type="text" name="ten_ta" value="<?php echo @$item['ten_ta']?>" class="input" /><br /><br>
+      <b>Nhãn hiệu(CN):</b> <input type="text" name="mota_ta" value="<?php echo @$item['mota_ta']?>" class="input" /><br /><br>
+      <b>Tags(CN)</b> <input type="text" name="tags_ta" value="<?php echo @$item['tags_ta']?>" class="input" /> &nbsp;&nbsp; Mỗi tag cách nhau bằng dấu phẩy<br /><br>
+    <b>Title(Hàn)</b> <input type="text" name="title_ta" value="<?php echo @$item['title_ta']?>" class="input" /><br /><br>
+    <b>Keywords(Hàn)</b> 
+    <textarea name="keywords_ta" id="keywords_ta" cols="45" rows="5"><?php echo @$item['keywords_ta']?></textarea>
   <br><br />
 
-	<b>Description(Hàn)</b> 
-	<textarea name="description_ta" id="description_ta" cols="45" rows="5"><?=@$item['description_ta']?></textarea>
+    <b>Description(Hàn)</b> 
+    <textarea name="description_ta" id="description_ta" cols="45" rows="5"><?php echo @$item['description_ta']?></textarea>
   <br><br />
   <b>Nội dung(Hàn)</b><br/>
-	<div>
-	 <textarea name="noidung_ta" id="noidung_ta"><?=stripcslashes($item['noidung_ta'])?></textarea></div>
-    <br/> 	
+    <div>
+     <textarea name="noidung_ta" id="noidung_ta"><?php echo stripcslashes($item['noidung_ta'])?></textarea></div>
+    <br/>     
   
     </div> -->
 
         <!-- <div id="tab4" class="content_tab">
-      <b>Tên(JP):</b> <input type="text" name="ten_ja" value="<?=@$item['ten_ja']?>" class="input" /><br /><br>
-    <b>Title(JP)</b> <input type="text" name="title_ja" value="<?=@$item['title_ja']?>" class="input" /><br /><br>
-	<b>Keywords(JP)</b> 
-	<textarea name="keywords_ja" id="keywords_ja" cols="45" rows="5"><?=@$item['keywords_ja']?></textarea>
+      <b>Tên(JP):</b> <input type="text" name="ten_ja" value="<?php echo @$item['ten_ja']?>" class="input" /><br /><br>
+    <b>Title(JP)</b> <input type="text" name="title_ja" value="<?php echo @$item['title_ja']?>" class="input" /><br /><br>
+    <b>Keywords(JP)</b> 
+    <textarea name="keywords_ja" id="keywords_ja" cols="45" rows="5"><?php echo @$item['keywords_ja']?></textarea>
   <br><br />
 
-	<b>Description(JP)</b> 
-	<textarea name="description_ja" id="description_ja" cols="45" rows="5"><?=@$item['description_ja']?></textarea>
+    <b>Description(JP)</b> 
+    <textarea name="description_ja" id="description_ja" cols="45" rows="5"><?php echo @$item['description_ja']?></textarea>
   <br><br />
    <b>Nội dung(JP)</b><br/>
-	<div>
-	 <textarea name="noidung_ja" id="noidung_ja"><?=stripcslashes($item['noidung_ja'])?></textarea></div>
-    <br/>  	
+    <div>
+     <textarea name="noidung_ja" id="noidung_ja"><?php echo stripcslashes($item['noidung_ja'])?></textarea></div>
+    <br/>      
   
     </div>-->
 
@@ -193,11 +205,11 @@ function get_main_cat()
 
 
 
-    <b>Số thứ tự</b> <input type="text" name="stt" value="<?=isset($item['stt'])?$item['stt']:1?>"
+    <b>Số thứ tự</b> <input type="text" name="stt" value="<?php echo isset($item['stt'])?$item['stt']:1?>"
         style="width:30px"><br>
     <b>Hiển thị tin</b> <input type="checkbox" name="hienthi"
-        <?=(!isset($item['hienthi']) || $item['hienthi']==1)?'checked="checked"':''?>><br /><br />
-    <input type="hidden" name="id" id="id" value="<?=@$item['id']?>" />
+        <?php echo (!isset($item['hienthi']) || $item['hienthi']==1)?'checked="checked"':''?>><br /><br />
+    <input type="hidden" name="id" id="id" value="<?php echo @$item['id']?>" />
     <input type="submit" value="Lưu" class="btn" />
     <input type="button" value="Thoát" onclick="javascript:window.location='index.php?com=product&act=man'"
         class="btn" />
@@ -283,7 +295,10 @@ tinyMCE.init({
 function select_onchange() {
     var a = document.getElementById("id_list");
     window.location =
-        "index.php?com=product&act=<?php if($_REQUEST['act']=='edit') echo 'edit'; else echo 'add';?><?php if($_REQUEST['id']!='') echo"&id=".$_REQUEST['id']; ?>&id_list=" +
+        "index.php?com=product&act=<?php if($_REQUEST['act']=='edit') { echo 'edit'; 
+                                   } else { echo 'add';
+}?><?php if($_REQUEST['id']!='') { echo"&id=".$_REQUEST['id'];
+                                   } ?>&id_list=" +
         a.value;
     return true;
 }

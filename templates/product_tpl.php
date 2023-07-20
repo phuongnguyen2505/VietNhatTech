@@ -208,7 +208,7 @@ function doEnter(evt) {
                         </div>
                     </div>
                 </div>
-                        <?php
+                <?php
                     }
                 }
                 ?>
@@ -300,7 +300,7 @@ function doEnter(evt) {
     letter-spacing: 0.3em !important;
 }
 
-.Yoshitake {
+.gr-banner .Yoshitake {
     background: linear-gradient(180deg, #2982e6 0%, rgba(41, 130, 230, 0.1) 100%) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
@@ -308,7 +308,7 @@ function doEnter(evt) {
     text-fill-color: transparent !important;
 }
 
-.EBRO-GERMANY {
+.gr-banner .EBRO-GERMANY {
     font-size: 100px !important;
     background: linear-gradient(180deg, #fe5800 0%, rgba(254, 88, 0, 0.1) 100%) !important;
     -webkit-background-clip: text !important;
@@ -317,11 +317,11 @@ function doEnter(evt) {
     text-fill-color: transparent !important;
 }
 
-.Ingersoll {
+.gr-banner .Ingersoll {
     font-size: 90px !important;
 }
 
-.PISCO-JAPAN {
+.gr-banner .PISCO-JAPAN {
     font-size: 125px !important;
     background: linear-gradient(180deg, #0057a8 0%, rgba(0, 87, 168, 0.1) 100%) !important;
     -webkit-background-clip: text !important;

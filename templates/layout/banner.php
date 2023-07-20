@@ -41,17 +41,17 @@ $mxh = $d->result_array();
                 <section>
                     <div class="welcome">Welcome to Viet Nhat</div>
                     <div class="title-banner w700">
-                        <h1 class="first-title">The title will</h1>
-                        <h1 class="second-title">Be here</h1>
+                        <h1 class="first-title">Better Savings</h1>
+                        <h1 class="second-title">For Better Future</h1>
                     </div>
                     <section>
                         <div class="des">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has
-                                been
-                                the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                galley
-                                of type and scrambled it to make a type specimen book.</p>
+                            <p>CÔNG TY TNHH KỸ THUẬT QUỐC TẾ VIỆT NHẬT được biết đến là đơn vị chuyên nghiệp trong tư
+                                vấn, thi công, lắp đặt các hệ thống đường ống hơi nóng, khí nén, hệ thống máy nén khí,
+                                máy sấy khí, hệ thống lạnh,… Chế tạo, sửa chữa, bảo trì hệ thống hơi và lò hơi. Với đội
+                                ngũ giàu kinh nghiệm, chuyên môn và tâm huyết trong ngành, chúng tôi cam kết mang lại
+                                cho Quý khách hàng các giải pháp tốt nhất về việc sử dụng năng lượng hiệu quả và tiết
+                                kiệm.</p>
                         </div>
                         <div class="btn-more">
                             <a href="gioi-thieu/gioi-thieu-2.html">

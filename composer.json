@@ -1,8 +1,9 @@
 {
-    "require": {
-        "phan/phan": "*"
-    },
-    "require-dev": {
-        "phpcompatibility/php-compatibility": "^9.3"
-    }
+  "require": {
+    "phan/phan": "*",
+    "php": "5.6.40"
+  },
+  "require-dev": {
+    "phpcompatibility/php-compatibility": "^9.3"
+  }
 }

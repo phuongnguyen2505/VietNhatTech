@@ -27,20 +27,13 @@
                     $str = '';
                 }
                 ?>
-        <div class="box_news <?php if($i == 0) {echo "first-items";
-                             }
-                             elseif($i == 1) {echo "second-items";
-                             }
-                             elseif($i == 2) {echo "third-items";
-                             }
-                             elseif($i == 3) {echo "fourth-items";
-                             }
-                             elseif($i == 4) {echo "fifth-items";
-                             }
-                             elseif($i == 5) {echo "sixth-items";
-                             }  
-                                ?>
-        " <?php echo $str ?>>
+        <div class="box_news 
+                <?php
+                $class_names = array("first-items", "second-items", "third-items", "fourth-items", "fifth-items", "sixth-items");
+                $item_class = isset($class_names[$i]) ? $class_names[$i] : '';
+
+                echo $item_class;
+                ?>" <?php echo $str ?>>
             <div class="image_boder">
                 <a href="tin-tuc/<?php echo $tintuc[$i]["tenkhongdau"] ?>-<?php echo $tintuc[$i]["id"] ?>.html">
                     <img src="<?php echo _upload_tintuc_l .$tintuc[$i]["photo"] ?>"

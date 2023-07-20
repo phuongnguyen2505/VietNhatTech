@@ -45,49 +45,71 @@ $row_banner_giua = $d->fetch_array();
             </li>
             <li class="vach_menu">
                 <a style="cursor: default" class="
-                        <?php if ($com == ("san-pham")) {echo "menu_active";
-                        } 
-                        elseif ($com == ("ingersoll-rand")) {echo "menu_active";
+                <?php
+                if (isset($title_tcat)) {
+                    $menu_active = false;
+                
+                    foreach ($dmsp_other as $item) {
+                        if ($title_tcat == $item['ten']) {
+                            $menu_active = true;
+                            break;
+                        } else {
                         }
-                        elseif ($com == '/san-pham-khac') {echo "menu_active"; 
-                        }else{echo "";
-                        }?>"><?php echo _sanpham ?></a>
+                    }
+                
+                    if ($menu_active) {
+                        echo "menu_active";
+                    } else {
+                    }
+                }
+                ?>
+                <?php 
+                if ($com == "san-pham" || $com == "ingersoll-rand" ) {
+                    echo " menu_active";
+                } ?>"><?php echo _sanpham ?></a>
                 <ul id="inner-menu">
                     <li>
-                        <a href="san-pham.html">
+                        <a href="san-pham.html" class="<?php 
+                        if($com == ("san-pham")) {echo ""; 
+                        } ?>">
                             <?php echo _product ?>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo changeTitle(_product1) ?>.html"><?php echo _product1 ?>
+                        <a href="<?php echo changeTitle(_product1) ?>.html" class="<?php 
+                        if($com == ("ingersoll-rand")) {echo ""; 
+                        } ?>"><?php echo _product1 ?>
                         </a>
                     </li>
-                    <?php if (!empty($dmsp_other)) {
-                          echo "";
-                        foreach ($dmsp_other as $dmsp_item) { ?>
+                    <?php 
+                    if (!empty($dmsp_other)) {
+                        echo "";
+                        foreach ($dmsp_other as $dmsp_item) {;?>
                     <li>
                         <a href="san-pham-khac/<?php echo $dmsp_item["tenkhongdau"] ?>/"
-                            title="<?php echo $dmsp_item["ten"] ?>" class="
-                            <?php 
-                            if($com == ("Product")) {echo "menu-inner-active"; 
-                            } ?>"><?php echo $dmsp_item["ten"] ?>
+                            title="<?php echo $dmsp_item["ten"] ?>" class="<?php
+                            if($com == $dmsp_item["tenkhongdau"]) {
+                                echo "";
+                            }
+                            ?>
+                            "><?php echo $dmsp_item["ten"] ?>
                         </a>
                     </li>
                             <?php if (!empty($dmsp1)) {
-                                    echo "<ul>";
+                                        echo "<ul>";
                                 foreach ($dmsp1 as $dmsp1_item) { ?>
                     <li>
                         <a href="san-pham-khac/<?php echo $dmsp_item["tenkhongdau"] ?>/<?php echo $dmsp1_item["tenkhongdau"] ?>/"
                             title="<?php echo $dmsp1_item["ten"] ?>" class="
-                                    <?php if ($com == changeTitle(_tenkhongdau)) {echo "";
-                                    } ?>">
+                                            <?php if ($com == changeTitle(_tenkhongdau)) {echo "menu-inner-active";
+                                            } ?>">
                                     <?php echo $dmsp1_item["ten"] ?>
                         </a>
                     </li>
                                     <?php if (!empty($dmsp2)) {echo "<ul>";foreach ($dmsp2 as $dmsp2_item) { ?>
                     <li>
                         <a href="san-pham-khac/<?php echo $dmsp_item["tenkhongdau"] ?>/<?php echo $dmsp1_item["tenkhongdau"] ?>/
-                                            <?php echo $dmsp2_item["tenkhongdau"] ?>/"
+                                                    <?php echo $dmsp2_item["tenkhongdau"] ?>/"
                             title="<?php echo $dmsp2_item["ten"] ?>"><?php echo $dmsp2_item["ten"] ?>
                         </a>
                     </li>
@@ -96,7 +118,7 @@ $row_banner_giua = $d->fetch_array();
                 </ul>
             </li>
                                 <?php }
-                                echo "";
+                                        echo "";
                             } 
                             ?>
                             <?php 

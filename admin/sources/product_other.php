@@ -7,7 +7,7 @@ $urldanhmuc.= (isset($_REQUEST['id_list'])) ? "&id_list=".addslashes($_REQUEST['
 $urldanhmuc.= (isset($_REQUEST['id_cat'])) ? "&id_cat=".addslashes($_REQUEST['id_cat']) : "";
 $urldanhmuc.= (isset($_REQUEST['id_item'])) ? "&id_item=".addslashes($_REQUEST['id_item']) : "";
 
-$id=isset($_REQUEST['id']);
+$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 switch($act){
 
 case "man":
@@ -182,7 +182,7 @@ function get_items()
         }    
     }
     // ----------------------------------------------------------------------------------------
-    if(isset($_REQUEST['noibat'])!='') {
+    if (isset($_REQUEST['noibat']) && $_REQUEST['noibat'] != '') {
         $id_up = $_REQUEST['noibat'];
         $sql_sp = "SELECT id,noibat FROM table_product_other where id='".$id_up."' ";
         $d->query($sql_sp);
@@ -202,7 +202,7 @@ function get_items()
     // -------------------------------------------------------------------------------
     
     // ----------------------------------------------------------------------------------------
-    if(isset($_REQUEST['hienthi'])!='') {
+    if (isset($_REQUEST['hienthi']) && $_REQUEST['hienthi'] != '') {
         $id_up = $_REQUEST['hienthi'];
         $sql_sp = "SELECT id,hienthi FROM table_product_other where id='".$id_up."' ";
         $d->query($sql_sp);
@@ -220,19 +220,21 @@ function get_items()
     }
     // -------------------------------------------------------------------------------
     $sql = "select * from #_product_other";    
-    if((int)isset($_REQUEST['id_list'])!='') {
-        $sql.=" where  	id_list=".$_REQUEST['id_list']."";
-    }
-    if((int)isset($_REQUEST['id_cat'])!='') {
-        $sql.=" where id_cat=".$_REQUEST['id_cat']."";
-    }
-    if((int)isset($_REQUEST['id_item'])!='') {
-        $sql.=" where id_item=".$_REQUEST['id_item']."";
+    if (isset($_REQUEST['id_list']) && (int)$_REQUEST['id_list'] != 0) {
+        $sql .= " WHERE id_list=" . (int)$_REQUEST['id_list'];
     }
     
-    if(isset($_REQUEST['keyword'])!='') {
-        $keyword=addslashes($_REQUEST['keyword']);
-        $sql.=" where ten_vi LIKE '%$keyword%'";
+    if (isset($_REQUEST['id_cat']) && (int)$_REQUEST['id_cat'] != 0) {
+        $sql .= " WHERE id_cat=" . (int)$_REQUEST['id_cat'];
+    }
+    
+    if (isset($_REQUEST['id_item']) && (int)$_REQUEST['id_item'] != 0) {
+        $sql .= " WHERE id_item=" . (int)$_REQUEST['id_item'];
+    }
+    
+    if (isset($_REQUEST['keyword']) && $_REQUEST['keyword'] != '') {
+        $keyword = addslashes($_REQUEST['keyword']);
+        $sql .= " WHERE ten_vi LIKE '%$keyword%'";
     }
     $sql.=" order by stt,id desc";
     
@@ -297,52 +299,52 @@ function save_item()
                 delete_file(_upload_product.$row['file']);
             }
         }
-        // VN-------------------    
-        $data['title_vi'] = $_POST['title_vi'];
-        $data['keywords_vi'] = $_POST['keywords_vi'];
-        $data['description_vi'] = $_POST['description_vi'];
-        $data['ten_vi'] = $_POST['ten_vi'];
-        $data['noidung_vi'] = addslashes($_POST['noidung_vi']);
-        $data['tags_vi'] = $_POST['tags_vi'];
-        $data['mota_vi'] = $_POST['mota_vi'];
-        
-        // EN-------------------    
-            
-        $data['title_en'] = $_POST['title_en'];
-        $data['keywords_en'] = $_POST['keywords_en'];
-        $data['description_en'] = $_POST['description_en'];
-        $data['ten_en'] = $_POST['ten_en'];
-        $data['noidung_en'] = addslashes($_POST['noidung_en']);
-        $data['tags_en'] = $_POST['tags_en'];
-        $data['mota_en'] = $_POST['mota_en'];
-                
-        // TW-------------------    
-        $data['title_ta'] = $_POST['title_ta'];
-        $data['keywords_ta'] = $_POST['keywords_ta'];
-        $data['description_ta'] = $_POST['description_ta'];
-        $data['ten_ta'] = $_POST['ten_ta'];
-        $data['noidung_ta'] = addslashes($_POST['noidung_ta']);
-        $data['tags_ta'] = $_POST['tags_ta'];
-        $data['mota_ta'] = $_POST['mota_ta'];
-                
-        // JP-------------------    
-        $data['title_ja'] = $_POST['title_ja'];
-        $data['keywords_ja'] = $_POST['keywords_ja'];
-        $data['description_ja'] = $_POST['description_ja'];
-        $data['ten_ja'] = $_POST['ten_ja'];
-        $data['noidung_ja'] = addslashes($_POST['noidung_ja']);
-        
+        // VN-------------------
+        $data['title_vi'] = isset($_POST['title_vi']) ? $_POST['title_vi'] : '';
+        $data['keywords_vi'] = isset($_POST['keywords_vi']) ? $_POST['keywords_vi'] : '';
+        $data['description_vi'] = isset($_POST['description_vi']) ? $_POST['description_vi'] : '';
+        $data['ten_vi'] = isset($_POST['ten_vi']) ? $_POST['ten_vi'] : '';
+        $data['noidung_vi'] = isset($_POST['noidung_vi']) ? addslashes($_POST['noidung_vi']) : '';
+        $data['tags_vi'] = isset($_POST['tags_vi']) ? $_POST['tags_vi'] : '';
+        $data['mota_vi'] = isset($_POST['mota_vi']) ? $_POST['mota_vi'] : '';
+
+        // EN-------------------
+        $data['title_en'] = isset($_POST['title_en']) ? $_POST['title_en'] : '';
+        $data['keywords_en'] = isset($_POST['keywords_en']) ? $_POST['keywords_en'] : '';
+        $data['description_en'] = isset($_POST['description_en']) ? $_POST['description_en'] : '';
+        $data['ten_en'] = isset($_POST['ten_en']) ? $_POST['ten_en'] : '';
+        $data['noidung_en'] = isset($_POST['noidung_en']) ? addslashes($_POST['noidung_en']) : '';
+        $data['tags_en'] = isset($_POST['tags_en']) ? $_POST['tags_en'] : '';
+        $data['mota_en'] = isset($_POST['mota_en']) ? $_POST['mota_en'] : '';
+
+        // TW-------------------
+        $data['title_ta'] = isset($_POST['title_ta']) ? $_POST['title_ta'] : '';
+        $data['keywords_ta'] = isset($_POST['keywords_ta']) ? $_POST['keywords_ta'] : '';
+        $data['description_ta'] = isset($_POST['description_ta']) ? $_POST['description_ta'] : '';
+        $data['ten_ta'] = isset($_POST['ten_ta']) ? $_POST['ten_ta'] : '';
+        $data['noidung_ta'] = isset($_POST['noidung_ta']) ? addslashes($_POST['noidung_ta']) : '';
+        $data['tags_ta'] = isset($_POST['tags_ta']) ? $_POST['tags_ta'] : '';
+        $data['mota_ta'] = isset($_POST['mota_ta']) ? $_POST['mota_ta'] : '';
+
+        // JP-------------------
+        $data['title_ja'] = isset($_POST['title_ja']) ? $_POST['title_ja'] : '';
+        $data['keywords_ja'] = isset($_POST['keywords_ja']) ? $_POST['keywords_ja'] : '';
+        $data['description_ja'] = isset($_POST['description_ja']) ? $_POST['description_ja'] : '';
+        $data['ten_ja'] = isset($_POST['ten_ja']) ? $_POST['ten_ja'] : '';
+        $data['noidung_ja'] = isset($_POST['noidung_ja']) ? addslashes($_POST['noidung_ja']) : '';
+        $data['tags_ja'] = isset($_POST['tags_ja']) ? $_POST['tags_ja'] : '';
+        $data['mota_ja'] = isset($_POST['mota_ja']) ? $_POST['mota_ja'] : '';
+
         // Chung--------------------------
-                             
-        $data['id_list'] = (int)$_POST['id_list'];            
-        $data['id_cat'] = (int)$_POST['id_cat'];
-        $data['id_item'] = (int)$_POST['id_item'];
-        $data['gia'] = (int)$_POST['gia'];    
-        $data['masp'] = $_POST['masp'];    
-        $data['tinhtrang'] = $_POST['tinhtrang'];    
-        $data['tenkhongdau'] = changeTitle($_POST['ten_vi']);    
-        
-        $data['stt'] = $_POST['stt'];
+        $data['id_list'] = isset($_POST['id_list']) ? (int)$_POST['id_list'] : 0;
+        $data['id_cat'] = isset($_POST['id_cat']) ? (int)$_POST['id_cat'] : 0;
+        $data['id_item'] = isset($_POST['id_item']) ? (int)$_POST['id_item'] : 0;
+        $data['gia'] = isset($_POST['gia']) ? (int)$_POST['gia'] : 0;
+        $data['masp'] = isset($_POST['masp']) ? $_POST['masp'] : '';
+        $data['tinhtrang'] = isset($_POST['tinhtrang']) ? $_POST['tinhtrang'] : '';
+        $data['tenkhongdau'] = isset($_POST['ten_vi']) ? changeTitle($_POST['ten_vi']) : '';
+
+        $data['stt'] = isset($_POST['stt']) ? $_POST['stt'] : 0;
         $data['hienthi'] = isset($_POST['hienthi']) ? 1 : 0;
         $data['ngaysua'] = time();
         $d->setTable('product_other');
@@ -351,7 +353,7 @@ function save_item()
             ///////////////update tag/////////////////
             mysql_query("DELETE FROM table_protag where id_pro = '$id'");
             // VI
-            if(trim($_POST['tags_vi'])!='') {
+            if (isset($_POST['tags_vi']) && trim($_POST['tags_vi']) != '') {
                 $arrTags = explode(",", $_POST['tags_vi']);
                 foreach ($arrTags as $tag)
                 {
@@ -380,7 +382,7 @@ function save_item()
               
             // EN
             // VI
-            if(trim($_POST['tags_en'])!='') {
+            if (isset($_POST['tags_en']) && trim($_POST['tags_en']) != '') {
                 $arrTags = explode(",", $_POST['tags_en']);
                 foreach ($arrTags as $tag)
                 {
@@ -409,7 +411,7 @@ function save_item()
               
             // CN
             // VI
-            if(trim($_POST['tags_ta'])!='') {
+            if (isset($_POST['tags_ta']) && trim($_POST['tags_ta']) != '') {
                 $arrTags = explode(",", $_POST['tags_ta']);
                 foreach ($arrTags as $tag)
                 {
@@ -914,7 +916,7 @@ function get_lists()
 {
     global $d, $items, $paging;
     // ----------------------------------------------------------------------------------------
-    if($_REQUEST['noibat']!='') {
+    if (isset($_REQUEST['noibat']) && $_REQUEST['noibat'] != '') {
         $id_up = $_REQUEST['noibat'];
         $sql_sp = "select noibat from table_product_other_list where id='".$id_up."'";
         $d->query($sql_sp);
@@ -933,7 +935,7 @@ function get_lists()
     }
     
     // ----------------------------------------------------------------------------------------
-    if($_REQUEST['hienthi']!='') {
+    if (isset($_REQUEST['hienthi']) && $_REQUEST['hienthi'] != '') {      
         $id_up = $_REQUEST['hienthi'];
         $sql_sp = "SELECT id,hienthi FROM table_product_other_list where id='".$id_up."' ";
         $d->query($sql_sp);
@@ -1001,44 +1003,48 @@ function save_list()
         }        
     
         // VN-------------------    
-        $data['title_vi'] = $_POST['title_vi'];
-        $data['keywords_vi'] = $_POST['keywords_vi'];
-        $data['description_vi'] = $_POST['description_vi'];
-        $data['ten_vi'] = $_POST['ten_vi'];
-        $data['mota_vi'] = $_POST['mota_vi'];
+        $data['title_vi'] = isset($_POST['title_vi']) ? $_POST['title_vi'] : '';
+        $data['keywords_vi'] = isset($_POST['keywords_vi']) ? $_POST['keywords_vi'] : '';
+        $data['description_vi'] = isset($_POST['description_vi']) ? $_POST['description_vi'] : '';
+        $data['ten_vi'] = isset($_POST['ten_vi']) ? $_POST['ten_vi'] : '';
+        $data['mota_vi'] = isset($_POST['mota_vi']) ? $_POST['mota_vi'] : '';
         
         // EN-------------------    
             
-        $data['title_en'] = $_POST['title_en'];
-        $data['keywords_en'] = $_POST['keywords_en'];
-        $data['description_en'] = $_POST['description_en'];
-        $data['ten_en'] = $_POST['ten_en'];
-        $data['mota_en'] = $_POST['mota_en'];
+        $data['title_en'] = isset($_POST['title_en']) ? $_POST['title_en'] : '';
+        $data['keywords_en'] = isset($_POST['keywords_en']) ? $_POST['keywords_en'] : '';
+        $data['description_en'] = isset($_POST['description_en']) ? $_POST['description_en'] : '';
+        $data['ten_en'] = isset($_POST['ten_en']) ? $_POST['ten_en'] : '';
+        $data['mota_en'] = isset($_POST['mota_en']) ? $_POST['mota_en'] : '';
                 
         // TW-------------------    
-        $data['title_ta'] = $_POST['title_ta'];
-        $data['keywords_ta'] = $_POST['keywords_ta'];
-        $data['description_ta'] = $_POST['description_ta'];
-        $data['ten_ta'] = $_POST['ten_ta'];
-        $data['mota_ta'] = $_POST['mota_ta'];
+        $data['title_ta'] = isset($_POST['title_ta']) ? $_POST['title_ta'] : '';
+        $data['keywords_ta'] = isset($_POST['keywords_ta']) ? $_POST['keywords_ta'] : '';
+        $data['description_ta'] = isset($_POST['description_ta']) ? $_POST['description_ta'] : '';
+        $data['ten_ta'] = isset($_POST['ten_ta']) ? $_POST['ten_ta'] : '';
+        $data['mota_ta'] = isset($_POST['mota_ta']) ? $_POST['mota_ta'] : '';
                 
         // JP-------------------    
-        $data['title_ja'] = $_POST['title_ja'];
-        $data['keywords_ja'] = $_POST['keywords_ja'];
-        $data['description_ja'] = $_POST['description_ja'];
-        $data['ten_ja'] = $_POST['ten_ja'];
-        $data['mota_ja'] = $_POST['mota_ja'];
-        
+        $data['title_ja'] = isset($_POST['title_ja']) ? $_POST['title_ja'] : '';
+        $data['keywords_ja'] = isset($_POST['keywords_ja']) ? $_POST['keywords_ja'] : '';
+        $data['description_ja'] = isset($_POST['description_ja']) ? $_POST['description_ja'] : '';
+        $data['ten_ja'] = isset($_POST['ten_ja']) ? $_POST['ten_ja'] : '';
+        $data['mota_ja'] = isset($_POST['mota_ja']) ? $_POST['mota_ja'] : '';        
         // Chung------------------------                        
-        $data['tenkhongdau'] = changeTitle($_POST['ten_vi']);
-        $data['stt'] = $_POST['stt'];
+        $data['tenkhongdau'] = isset($_POST['ten_vi']) ? changeTitle($_POST['ten_vi']) : '';
+        $data['stt'] = isset($_POST['stt']) ? $_POST['stt'] : '';
         $data['hienthi'] = isset($_POST['hienthi']) ? 1 : 0;
         $data['ngaysua'] = time();
         
         $d->setTable('product_other_list');
         $d->setWhere('id', $id);
+        if (isset($_REQUEST['curPage'])) {
+            $curPage = $_REQUEST['curPage'];
+        } else {
+            $curPage = 1;
+        }
         if($d->update($data)) {
-            redirect("index.php?com=product_other&act=man_list&curPage=".$_REQUEST['curPage']."");
+            redirect("index.php?com=product_other&act=man_list&curPage=".$curPage);
         } else {
             transfer("Cập nhật dữ liệu bị lỗi", "index.php?com=product_other&act=man_list");
         }
