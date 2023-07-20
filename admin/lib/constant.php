@@ -1,9 +1,6 @@
 <?php if(!@defined('_lib')) { die("Error");
 }
-    
-    
-    
-    @define(_updating, "Đang cập nhật thông tin");
+    // @define(_updating, "Đang cập nhật thông tin");
     define('_updating', true);
     @define(_upload_dichvu, '../upload/dichvu/');
     @define(_upload_dichvu_l, 'upload/dichvu/');
