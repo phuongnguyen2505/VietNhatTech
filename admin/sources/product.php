@@ -471,51 +471,51 @@ function save_item()
             $data['file'] = $file;
             
         }
-        // VN-------------------    
-        $data['title_vi'] = $_POST['title_vi'];
-        $data['keywords_vi'] = $_POST['keywords_vi'];
-        $data['description_vi'] = $_POST['description_vi'];
-        $data['ten_vi'] = $_POST['ten_vi'];
-        $data['noidung_vi'] = addslashes($_POST['noidung_vi']);
-        $data['mota_vi'] = $_POST['mota_vi'];
-        
-        // EN-------------------    
-            
-        $data['title_en'] = $_POST['title_en'];
-        $data['keywords_en'] = $_POST['keywords_en'];
-        $data['description_en'] = $_POST['description_en'];
-        $data['ten_en'] = $_POST['ten_en'];
-        $data['noidung_en'] = addslashes($_POST['noidung_en']);
-        $data['mota_en'] = $_POST['mota_en'];
-                
-        // TW-------------------    
-        $data['title_ta'] = $_POST['title_ta'];
-        $data['keywords_ta'] = $_POST['keywords_ta'];
-        $data['description_ta'] = $_POST['description_ta'];
-        $data['ten_ta'] = $_POST['ten_ta'];
-        $data['noidung_ta'] = addslashes($_POST['noidung_ta']);
-        $data['mota_ta'] = $_POST['mota_ta'];
-                
-        // JP-------------------    
-        $data['title_ja'] = $_POST['title_ja'];
-        $data['keywords_ja'] = $_POST['keywords_ja'];
-        $data['description_ja'] = $_POST['description_ja'];
-        $data['ten_ja'] = $_POST['ten_ja'];
-        $data['noidung_ja'] = addslashes($_POST['noidung_ja']);
-        $data['mota_ja'] = $_POST['mota_ja'];
-        
-        // Chung----------------------
-        
-        $data['id_list'] = (int)$_POST['id_list'];            
-        $data['id_cat'] = (int)$_POST['id_cat'];
-        $data['id_item'] = (int)$_POST['id_item'];
-        $data['gia'] = (int)$_POST['gia'];        
-        $data['masp'] = $_POST['masp'];    
-        $data['tenkhongdau'] = changeTitle($_POST['ten_vi']);    
-        
-        $data['stt'] = $_POST['stt'];
+
+        // VN-------------------
+        $data['title_vi'] = isset($_POST['title_vi']) ? $_POST['title_vi'] : '';
+        $data['keywords_vi'] = isset($_POST['keywords_vi']) ? $_POST['keywords_vi'] : '';
+        $data['description_vi'] = isset($_POST['description_vi']) ? $_POST['description_vi'] : '';
+        $data['ten_vi'] = isset($_POST['ten_vi']) ? $_POST['ten_vi'] : '';
+        $data['noidung_vi'] = isset($_POST['noidung_vi']) ? addslashes($_POST['noidung_vi']) : '';
+        $data['mota_vi'] = isset($_POST['mota_vi']) ? $_POST['mota_vi'] : '';
+
+        // EN-------------------
+        $data['title_en'] = isset($_POST['title_en']) ? $_POST['title_en'] : '';
+        $data['keywords_en'] = isset($_POST['keywords_en']) ? $_POST['keywords_en'] : '';
+        $data['description_en'] = isset($_POST['description_en']) ? $_POST['description_en'] : '';
+        $data['ten_en'] = isset($_POST['ten_en']) ? $_POST['ten_en'] : '';
+        $data['noidung_en'] = isset($_POST['noidung_en']) ? addslashes($_POST['noidung_en']) : '';
+        $data['mota_en'] = isset($_POST['mota_en']) ? $_POST['mota_en'] : '';
+
+        // TW-------------------
+        $data['title_ta'] = isset($_POST['title_ta']) ? $_POST['title_ta'] : '';
+        $data['keywords_ta'] = isset($_POST['keywords_ta']) ? $_POST['keywords_ta'] : '';
+        $data['description_ta'] = isset($_POST['description_ta']) ? $_POST['description_ta'] : '';
+        $data['ten_ta'] = isset($_POST['ten_ta']) ? $_POST['ten_ta'] : '';
+        $data['noidung_ta'] = isset($_POST['noidung_ta']) ? addslashes($_POST['noidung_ta']) : '';
+        $data['mota_ta'] = isset($_POST['mota_ta']) ? $_POST['mota_ta'] : '';
+
+        // JP-------------------
+        $data['title_ja'] = isset($_POST['title_ja']) ? $_POST['title_ja'] : '';
+        $data['keywords_ja'] = isset($_POST['keywords_ja']) ? $_POST['keywords_ja'] : '';
+        $data['description_ja'] = isset($_POST['description_ja']) ? $_POST['description_ja'] : '';
+        $data['ten_ja'] = isset($_POST['ten_ja']) ? $_POST['ten_ja'] : '';
+        $data['noidung_ja'] = isset($_POST['noidung_ja']) ? addslashes($_POST['noidung_ja']) : '';
+        $data['mota_ja'] = isset($_POST['mota_ja']) ? $_POST['mota_ja'] : '';
+
+        // Chung--------------------------
+        $data['id_list'] = isset($_POST['id_list']) ? (int)$_POST['id_list'] : 0;
+        $data['id_cat'] = isset($_POST['id_cat']) ? (int)$_POST['id_cat'] : 0;
+        $data['id_item'] = isset($_POST['id_item']) ? (int)$_POST['id_item'] : 0;
+        $data['gia'] = isset($_POST['gia']) ? (int)$_POST['gia'] : 0;
+        $data['masp'] = isset($_POST['masp']) ? $_POST['masp'] : '';
+        $data['tenkhongdau'] = isset($_POST['ten_vi']) ? changeTitle($_POST['ten_vi']) : '';
+
+        $data['stt'] = isset($_POST['stt']) ? $_POST['stt'] : 0;
         $data['hienthi'] = isset($_POST['hienthi']) ? 1 : 0;
         $data['ngaytao'] = time();
+
         $d->setTable('product');
         if($d->insert($data)) {            
             redirect("index.php?com=product&act=man");

@@ -172,24 +172,18 @@ Tìm kiếm: <input name="keyword" id="keyword" type="text" /> <input type="butt
                 style="text-decoration:none;"><?=$items[$i]['ten_vi']?></a></td>
         <!-- <td style="width:10%;"><a href="index.php?com=hasp&type1=hasp&act=man_photo&idc=<?=$items[$i]['id']?>" style="text-decoration:underline;">Thêm ảnh</a></td>  -->
         <td align="center" style="width:5%;">
-            <?php 
-		if(@$items[$i]['noibat']>0)
-		{
-		?>
+            <?php if (@$items[$i]['noibat'] > 0) { ?>
+            <a
+                href="index.php?com=product&act=man&noibat=<?= $items[$i]['id'] ?><?php if (isset($_REQUEST['curPage'])) echo '&curPage=' . $_REQUEST['curPage']; ?>">
+                <img src="media/images/yes-km.gif" border="0" />
+            </a>
+            <?php } else { ?>
+            <a
+                href="index.php?com=product&act=man&noibat=<?= $items[$i]['id'] ?><?php if (isset($_REQUEST['curPage'])) echo '&curPage=' . $_REQUEST['curPage']; ?>">
+                <img src="media/images/no-km.gif" border="0" />
+            </a>
+            <?php } ?>
 
-            <a
-                href="index.php?com=product&act=man&noibat=<?=$items[$i]['id']?><?php if($_REQUEST['curPage']!='') echo'&curPage='. $_REQUEST['curPage'];?>"><img
-                    src="media/images/yes-km.gif" border="0" /></a>
-            <? 
-		}
-		else
-		{
-		?>
-            <a
-                href="index.php?com=product&act=man&noibat=<?=$items[$i]['id']?><?php if($_REQUEST['curPage']!='') echo'&curPage='. $_REQUEST['curPage'];?>"><img
-                    src="media/images/no-km.gif" border="0" /></a>
-            <?php
-		 }?>
         </td>
         <!-- <td align="center" style="width:5%;">
          <?php 

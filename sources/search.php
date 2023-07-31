@@ -3,7 +3,13 @@
             
 if(isset($_GET['keyword'])) {
     $tukhoa =  $_GET['keyword'];
-    $type_search =  $_GET['type_search'];
+    if (isset($_GET['type_search'])) {
+        $type_search = $_GET['type_search'];
+        // Rest of your code using $type_search
+    } else {
+        // Handle the case when 'type_search' is not present in the URL parameters
+        // For example, you could set a default value or display an error message.
+    }
     $tukhoa = trim(strip_tags($tukhoa));        
     if (get_magic_quotes_gpc()==false) {
         $tukhoa = mysql_real_escape_string($tukhoa);                

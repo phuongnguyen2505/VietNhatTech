@@ -26,22 +26,20 @@
             </div>
         </div>
         <div class="row">
-            <div class="brand-item">
-                <a href="./san-pham-khac/ebrogermany/" class="hover-img">
+            <!-- <div class="brand-item">
+                <a href="./san-pham-khac/piscojapan/" class="hover-img">
                     <figure>
                         <img src="./upload/hinhanh/pisco.png" alt="">
                     </figure>
                 </a>
-            </div>
+            </div> -->
             <div class="brand-item">
-                <a href="./san-pham-khac/omron/" class="hover-img">
+                <a href="./san-pham-khac/omronjapan/" class="hover-img">
                     <figure>
                         <img src="./upload/hinhanh/omron.png" alt="">
                     </figure>
                 </a>
             </div>
-        </div>
-        <div class="row">
             <div class="brand-item">
                 <a href="./san-pham-khac/kawakijapan/" class="hover-img">
                     <figure>
@@ -49,8 +47,11 @@
                     </figure>
                 </a>
             </div>
+        </div>
+        <div class="row">
             <div class="brand-item">
-                <a href="./download.html" class="hover-img">
+                <a href="download/<?php echo $tintucE[0]['tenkhongdau']?>-<?php echo $tintucE[0]['id']?>.html" class="<?php if ($com == "download") { echo "menu_active";
+} ?> hover-img">
                     <figure>
                         <img src="./upload/hinhanh/esa.png" alt="">
                     </figure>
@@ -86,7 +87,7 @@
                 <h3 class="news-title">
                     <?php echo ($tintuc[1]['ten'])?>
                 </h3>
-                <a href="tin-tuc/<?php echo isset($tintuc[1]['tenkhongdau'])?>-<?php echo isset($tintuc[1]['id'])?>.html"
+                <a href="tin-tuc/<?php echo $tintuc[1]['tenkhongdau']?>-<?php echo $tintuc[1]['id']?>.html"
                     type="button" class="btn-news">
                     Xem thêm
                     <i><img src="./images/arrow-right.svg" alt=""></i>
@@ -99,7 +100,7 @@
                 <h3 class="news-title">
                     <?php echo ($tintuc[2]['ten'])?>
                 </h3>
-                <a href="tin-tuc/<?php echo isset($tintuc[2]['tenkhongdau'])?>-<?php echo isset($tintuc[2]['id'])?>.html"
+                <a href="tin-tuc/<?php echo $tintuc[2]['tenkhongdau']?>-<?php echo $tintuc[2]['id']?>.html"
                     type="button" class="btn-news">
                     Xem thêm
                     <i><img src="./images/arrow-right.svg" alt=""></i>

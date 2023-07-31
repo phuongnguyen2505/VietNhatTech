@@ -65,7 +65,8 @@ function get_main_cat()
             <br><br />
             <b>Nội dung(VI)</b><br />
             <div>
-                <textarea name="noidung_vi" id="noidung_vi"><?php echo stripcslashes($item['noidung_vi'])?></textarea>
+                <textarea name="noidung_vi"
+                    id="noidung_vi"><?php echo isset($item['noidung_vi']) ? str_replace(stripcslashes($item['noidung_vi'])) : ''; ?></textarea>
             </div>
             <br />
 
@@ -90,7 +91,8 @@ function get_main_cat()
             <br><br />
             <b>Nội dung(EN)</b><br />
             <div>
-                <textarea name="noidung_en" id="noidung_en"><?php echo stripcslashes($item['noidung_en'])?></textarea>
+                <textarea name="noidung_en"
+                    id="noidung_en"><?php echo isset($item['noidung_en']) ? str_replace(stripcslashes($item['noidung_en'])) : ''; ?></textarea>
             </div>
             <br />
 

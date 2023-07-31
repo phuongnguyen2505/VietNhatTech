@@ -23,7 +23,10 @@ function get_main_cat()
     
     
 ?>
-<form name="frm" method="post" action="index.php?com=news&act=save&curPage=<?php echo isset($_REQUEST['curPage'])?>"
+<?php
+$curPage = (isset($_REQUEST['curPage'])) ? $_REQUEST['curPage'] : "default_value_here";
+?>
+<form name="frm" method="post" action="index.php?com=news&act=save&curPage=<?php echo $curPage ?>"
     enctype="multipart/form-data" class="nhaplieu">
     <!-- <b>Danh mục 1:</b><?php echo get_main_cat();?><br /><br /> -->
     <?php if ($_REQUEST['act']=='edit') {?>
@@ -63,7 +66,7 @@ function get_main_cat()
             <b>Nội dung(VI)</b><br />
             <div>
                 <textarea name="noidung_vi"
-                    id="noidung_vi"><?php echo stripcslashes(isset($item['noidung_vi']))?></textarea>
+                    id="noidung_vi"><?php echo isset($item['noidung_vi']) ? str_replace(stripcslashes($item['noidung_vi'])) : ''; ?></textarea>
             </div>
             <br />
 
@@ -88,7 +91,8 @@ function get_main_cat()
             <br><br />
             <b>Nội dung(EN)</b><br />
             <div>
-                <textarea name="noidung_en" id="noidung_en"><?php echo stripcslashes($item['noidung_en'])?></textarea>
+                <textarea name="noidung_en"
+                    id="noidung_en"><?php echo isset($item['noidung_en']) ? str_replace(stripcslashes($item['noidung_en'])) : ''; ?></textarea>
             </div>
             <br />
 
@@ -226,12 +230,7 @@ tinyMCE.init({
 
 function select_onchange() {
     var a = document.getElementById("id_list");
-    window.location =
-        "index.php?com=news&act=<?php if($_REQUEST['act']=='edit') { echo 'edit'; 
-                                } else { echo 'add';
-}?><?php if($_REQUEST['id']!='') { echo"&id=".$_REQUEST['id'];
-                                } ?>&id_list=" +
-        a.value;
+    window.location = "index.php?com=product_other&act=add&id_list=" + a.value;
     return true;
 }
 </script>

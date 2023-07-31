@@ -6,6 +6,8 @@
 <h6 style="height:0px;line-height:0px; visibility:hidden;margin:0px !important;"><?php echo $row_detail[0]['ten']?></h6>
 <script type="text/javascript" src="js/yetii.js"></script>
 <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v17.0"
+    nonce="43bNe4vx"></script>
 <script type="text/javascript">
 (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -39,33 +41,27 @@ $(document).ready(function() {
                 <img src="images/arrow-bc.svg" alt="">
             </li>
             <li>
-                <a href="
-                <?php if ($com == "san-pham") {echo "san-pham.html";
+                <?php 
+                if ($com == "san-pham") {
+                    echo '<a href="san-pham.html">' . _product . '</a>';
+                } elseif ($com == "ingersoll-rand") {
+                    echo '<a href="ingersoll-rand.html">' . _product1 . '</a>';
+                } else {
+                    $sql_danhmuc = "select ten_$lang as ten from table_" . $table_select . "_list where id='" . $row_detail[0]['id_list'] . "'";
+                    $result = mysql_query($sql_danhmuc);
+                    $item_danhmuc = mysql_fetch_array($result);
+                    $url = isset($item_danhmuc['ten']) ? $item_danhmuc['ten'] : './';
+                    $url = str_replace('-', '', $url);
+                    echo '<a href="san-pham-khac/' . $url . '/">' . @$item_danhmuc['ten'] . '</a>';
                 }
-                elseif ($com == "ingersoll-rand") {echo "ingersoll-rand.html";
-                }
-                else{
-                    echo "javascript:history.go(-1)";
-                } ?>
-                    ">
-                    <?php if ($com == "san-pham") {echo _product;
-                    } 
-                    elseif ($com == ("ingersoll-rand")) {echo _product1;
-                    }
-                    else {
-                        $sql_danhmuc = "select ten_$lang as ten from table_" . $table_select . "_list where id='" . $row_detail[0]['id_list'] . "'";
-                        $result = mysql_query($sql_danhmuc);
-                        $item_danhmuc = mysql_fetch_array($result);
-                        echo @$item_danhmuc['ten'];
-                    }
-                    ?>
-                </a>
+                ?>
                 <img src="images/arrow-bc.svg" alt="">
             </li>
             <li>
-                <?php echo $row_detail[0]['ten']?>
+                <?php echo $row_detail[0]['ten'] ?>
             </li>
         </ul>
+
         <div class="content">
             <article style="display: flex; align-items:center">
                 <div class="imgSP">
@@ -113,7 +109,7 @@ $(document).ready(function() {
                                         </div>
                                     </div>
                                 </li>
-                                    <?php
+                                <?php
                                 }
                         
                                 ?>
@@ -147,7 +143,18 @@ $(document).ready(function() {
                     <!-- <li><b>Màu sắc:</b> <?php echo $row_detail[0]['tinhtrang']?></li>           -->
                     <li>
                         <span class="des-product">
-                            <?php echo $row_detail[0]['mota']?>
+                            <?php
+                            $content = $row_detail[0]['mota'];
+                            $words = explode(' ', $content);
+
+                            if (count($words) > 50) {
+                                $limitedContent = implode(' ', array_slice($words, 0, 25)) . '...';
+                                echo "<p>{$limitedContent}</p>";
+                                echo '<button class="read-more-btn effect effect-1">Xem Thêm</button>';
+                            } else {
+                                echo "<p>{$content}</p>";
+                            }
+                            ?>
                         </span>
                     </li>
                     <li>
@@ -174,8 +181,8 @@ $(document).ready(function() {
                     });
                     </script>
                 </li> -->
-                    <?php if($row_detail[0]['file']!='') {?>
                     <li>
+                        <?php if($row_detail[0]['file']!='') {?>
                         <span class="pdf-dl">
                             <a target="_blank" href="<?php echo _upload_product_l.$row_detail[0]['file']?>">
                                 <img src="images/pdf-download.svg" alt="<?php echo $row_detail[0]['ten']?>">
@@ -185,18 +192,31 @@ $(document).ready(function() {
                                 Document
                             </a>
                         </span>
-                        <span class="check-dl">
+                        <?php }?>
+                        <!-- <span class="check-dl">
                             <img src="images/check.svg" alt="Kiểm tra định kỳ">
                             Kiểm tra định kỳ 3 tháng/lần
-                        </span>
+                        </span> -->
                     </li>
                     <li>
-                        <a href="https://724.vn/san-pham/<?php echo $row_detail[0]['tenkhongdau'] ?>" target=”_blank”
-                            class="btn-buynow" type=button>
+                        <?php 
+                        $sql_danhmuc = "select ten_$lang as ten from table_" . $table_select . "_list where id='" . $row_detail[0]['id_list'] . "'";
+                        $result = mysql_query($sql_danhmuc);
+                        $item_danhmuc = mysql_fetch_array($result);
+                        $url = isset($item_danhmuc['ten']) ? $item_danhmuc['ten'] : './';
+                        if($com == "san-pham" || $com == 'ingersoll-rand') {echo '<a href="https://724.vn/?s=' . $url . '&post_type=product" target=”_blank” class="btn-buynow" type=button>' . '                            <span class="text">Mua ngay tại 724.vn</span><span>Đi đến 724.vn</span>
+                            </a>';
+                        }
+                        else{
+                            echo '<a href="https://724.vn/thuong-hieu/' . $url . '/" target=”_blank” class="btn-buynow" type=button>' . '                            <span class="text">Mua ngay tại 724.vn</span><span>Đi đến 724.vn</span>
+                            </a>';
+                        }
+                        
+                        ?>
+                        <!-- <a href="https://724.vn/thuong-hieu/" target=”_blank” class="btn-buynow" type=button>
                             <span class="text">Mua ngay tại 724.vn</span><span>Đi đến 724.vn</span>
-                        </a>
+                        </a> -->
                     </li>
-                    <?php }?>
                     <!-- <li><p class="dhang" onclick="addtocart(<?php echo $row_detail[0]['id'];?>)"><a href="lien-he.html">ĐẶT MUA HÀNG</a></p></li> -->
                 </ul>
 
@@ -320,7 +340,7 @@ $(document).ready(function() {
 <div class="wrapper-faq m-100">
     <div class="title-faq">Thắc mắc thường gặp</div>
     <div class="item-wrapper">
-        <div class="item-title" data-index="0">What is XYZ Tech News Company?</div>
+        <div class="item-title" data-index="0">Chính sách bảo hành</div>
         <div class="content-outer">
             <div class="content-faq">XYZ Tech News Company is an online platform dedicated to delivering the latest and
                 most
@@ -330,7 +350,7 @@ $(document).ready(function() {
         </div>
     </div>
     <div class="item-wrapper">
-        <div class="item-title" data-index="1">How often is the content updated on XYZ Tech News Company?</div>
+        <div class="item-title" data-index="1">dịch vụ kiểm tra khảo sát năng lượng nhà máy định kỳ</div>
         <div class="content-outer">
             <div class="content-faq">At XYZ Tech News Company, we understand the importance of staying up-to-date with
                 the
@@ -339,7 +359,7 @@ $(document).ready(function() {
         </div>
     </div>
     <div class="item-wrapper">
-        <div class="item-title" data-index="2">Can I submit news tips or press releases to XYZ Tech News Company?</div>
+        <div class="item-title" data-index="2">chính sách thanh toán</div>
         <div class="content-outer">
             <div class="content-faq">Absolutely! We encourage our readers and industry professionals to submit news
                 tips,
@@ -349,8 +369,7 @@ $(document).ready(function() {
         </div>
     </div>
     <div class="item-wrapper">
-        <div class="item-title" data-index="3">Can I share articles from XYZ Tech News Company on social media or other
-            platforms?</div>
+        <div class="item-title" data-index="3">dịch vụ hậu mãi</div>
         <div class="content-outer">
             <div class="content-faq">Yes, you can! We appreciate and encourage our readers to share our articles across
                 various platforms, including social media channels, blogs, and forums. We provide social media sharing
@@ -370,6 +389,19 @@ $(document).ready(function() {
         </div>
     </div>
 </div>
+<div class="modal" id="content-modal">
+    <div class="modal-content">
+        <div class="row-modal">
+            <div class="title-modal">
+                <p>Mô tả</p>
+                <span class="close-modal-ico">&#x2716;</span>
+            </div>
+            <div class="des-modal"><?php echo $row_detail[0]['mota']; ?></div>
+            <span class="close-modal-btn">Đóng</span>
+        </div>
+    </div>
+</div>
+
 
 <style>
 .box_main.news-details {
@@ -423,4 +455,33 @@ wrapper.addEventListener('click', (e) => {
     updateContentHeight(contentWrapper, isOpen)
     updateActiveIndex(isOpen ? targetIndex : null)
 })
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const readMoreBtn = document.querySelector('.read-more-btn');
+    const modal = document.getElementById('content-modal');
+
+    readMoreBtn.addEventListener('click', function() {
+        modal.style.display = 'block';
+    });
+
+    function closeModal() {
+        modal.style.display = 'none';
+        setTimeout(function() {
+            modal.style.display = 'none';
+            modal.classList.remove('hide');
+        }, 300);
+    }
+
+    const closeModalBtn = modal.querySelector('.close-modal-btn');
+    const closeModalIco = modal.querySelector('.close-modal-ico');
+    closeModalBtn.addEventListener('click', closeModal);
+    closeModalIco.addEventListener('click', closeModal);
+
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+});
 </script>

@@ -1,5 +1,6 @@
-<?php if (!defined('_lib'))
+<?php if (!defined('_lib')) {
     die("Error");
+}
 $cautruyvan = strtolower($_SERVER['QUERY_STRING']);
 $tukhoa = array(
     'union',
@@ -175,17 +176,19 @@ $tukhoa = array(
 );
 $kiemtra = str_replace($tukhoa, '*', $cautruyvan);
 if ($cautruyvan != $kiemtra) {
-die("You are hacker?<br />
+    die(
+        "You are hacker?<br />
 Why you hack our Websites???<br />
 We will report with PC15......thank to read!
-</b><br />" . $_SERVER['REMOTE_ADDR'] . " <br> -- Admin --");
+</b><br />" . $_SERVER['REMOTE_ADDR'] . " <br> -- Admin --"
+    );
 }
 $config_url = $_SERVER['SERVER_NAME'] . '';
 
-$config['database']['servername'] = 'us-cdbr-east-06.cleardb.net';
-$config['database']['username'] = 'b3eda66e8e0858';
-$config['database']['password'] = '126dd996';
-$config['database']['database'] = 'heroku_907765897f77f61';
+$config['database']['servername'] = 'localhost';
+$config['database']['username'] = 'vietnhat-tech.com';
+$config['database']['password'] = '';
+$config['database']['database'] = 'vietnhat';
 $config['database']['refix'] = 'table_';
 
 ?>

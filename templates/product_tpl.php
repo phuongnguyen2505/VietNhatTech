@@ -56,15 +56,16 @@ $(function() {
 function onSearch1(evt) {
     var keyword1 = document.search.keyword1;
     var type_search = document.search.type_search.value;
-    if (keyword1.value == '' || keyword1.value === '<?php echo _nhaptukhoa ?>') {
-        alert('<?php echo _chuanhaptk ?>');
+    if (keyword1.value == '' || keyword1.value === '<?php echo _nhaptukhoa?>') {
+        displayCustomAlert('<?php echo _chuanhaptk?>', 30000);
         keyword1.focus();
         return false;
     }
-    location.href = 'http://<?php echo $config_url ?>/tim-kiem.html/keyword=' + keyword1.value + "&type=" + type_search;
+    location.href = 'http://<?php echo $config_url?>/vietnhat-tech.com/tim-kiem.html/keyword=' + keyword1.value +
+        "&type=" + type_search;
 }
 
-function doEnter(evt) {
+function doEnter1(evt) {
     // IE         // Netscape/Firefox/Opera
     var key;
     if (evt.keyCode == 13 || evt.which == 13) {
@@ -72,6 +73,25 @@ function doEnter(evt) {
     } else {
         return false;
     }
+}
+
+function displayCustomAlert(message, duration) {
+    const customAlert = document.getElementById('customAlert');
+    const customAlertMessage = document.getElementById('customAlertMessage');
+
+    customAlertMessage.textContent = message;
+
+    customAlert.style.display = 'block';
+
+    setTimeout(function() {
+        hideCustomAlert();
+        btnSearch.style.display = 'block';
+    }, duration);
+}
+
+function hideCustomAlert() {
+    const customAlert = document.getElementById('customAlert');
+    customAlert.style.display = 'none';
 }
 </script>
 <div class="banner">
@@ -81,7 +101,13 @@ function doEnter(evt) {
                 <article>
                     <section class="welcome">Welcome to Viet Nhat</section>
                     <section class="gr-banner w700">
-                        <h1 class="hide-title">product</h1>
+                        <h1 class="hide-title">
+                            <?php if($title_tcat == "Kết quả tìm kiếm") {echo "search";
+                            }
+                            else{
+                                echo "product";
+                            }
+                            ?></h1>
                         <h1 class="hero-title <?php echo $title_tcat ?>">
                             <?php echo $title_tcat ?>
                         </h1>
@@ -102,6 +128,9 @@ function doEnter(evt) {
             </div><br /> -->
             <div class="row">
                 <div class="tk_sp">
+                    <div id="customAlert" class="custom-alert">
+                        <p id="customAlertMessage"></p>
+                    </div>
                     <form name="search" action="tim-kiem.html" method="get" onsubmit="return false;">
                         <input type="text" class="search-product" name="keyword1" style="padding:2px 15px;"
                             placeholder="Nhập từ khóa">
@@ -187,7 +216,19 @@ function doEnter(evt) {
                             </p>
                             <div class="reverse">
                                 <div class="des-product">
-                                    <?php echo $product_item['mota'] ?>
+                                    <?php
+                                    $content = strip_tags($product_item['mota']); 
+                                    $words = explode(' ', $content); 
+
+                                    if (count($words) > 20) {
+                                        $limitedContent = implode(' ', array_slice($words, 0, 20)) . '...';
+                                    } else {
+                                        $limitedContent = implode(' ', $words);
+                                    }
+
+                                    echo $limitedContent;
+                                    ?>
+
                                 </div>
                                 <div class="gr-cate-download">
                                     <?php if ($product_item['file'] != '') { ?>
@@ -208,7 +249,7 @@ function doEnter(evt) {
                         </div>
                     </div>
                 </div>
-                <?php
+                        <?php
                     }
                 }
                 ?>
@@ -290,7 +331,11 @@ function doEnter(evt) {
 
         <div class="clr"></div>
         <div class="phantrang">
-            <?php echo $paging['paging'] ?>
+            <?php if (isset($paging['paging'])) {
+                echo $paging['paging'];
+            } else {
+                echo 'Không có dữ liệu.';
+            } ?>
         </div>
     </div>
 </div>
@@ -308,8 +353,16 @@ function doEnter(evt) {
     text-fill-color: transparent !important;
 }
 
+.gr-banner .OMRON-JAPAN {
+    background: linear-gradient(180deg, #166fc0 0%, rgba(41, 130, 230, 0.1) 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-fill-color: transparent !important;
+}
+
 .gr-banner .EBRO-GERMANY {
-    font-size: 100px !important;
+    font-size: 105px !important;
     background: linear-gradient(180deg, #fe5800 0%, rgba(254, 88, 0, 0.1) 100%) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
@@ -318,7 +371,7 @@ function doEnter(evt) {
 }
 
 .gr-banner .Ingersoll {
-    font-size: 90px !important;
+    font-size: 105px !important;
 }
 
 .gr-banner .PISCO-JAPAN {

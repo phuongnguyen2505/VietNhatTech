@@ -85,7 +85,8 @@ function get_main_item()
     return $str;
 }
 ?>
-<form name="frm" method="post" action="index.php?com=product_other&act=save&curPage=<?php echo isset($_REQUEST['curPage'])?>"
+<form name="frm" method="post"
+    action="index.php?com=product_other&act=save&curPage=<?php echo isset($_REQUEST['curPage'])?>"
     enctype="multipart/form-data" class="nhaplieu">
     <b>Danh mục 1:</b><?php echo get_main_list();?><br /><br />
     <!-- <b>Danh mục 2:</b><?php echo get_main_cat();?><br /><br /> -->
@@ -93,7 +94,8 @@ function get_main_item()
     <?php if ($_REQUEST['act']=='edit') {?>
     <b>Hình hiện tại:</b><img src="<?php echo _upload_product.$item['thumb']?>" width="200" alt="NO PHOTO" /><br />
     <?php }?>
-    <b>Hình ảnh:</b> <input type="file" name="file" /> <?php echo _product_type?> - <strong>Tỉ lệ chuẩn: width 630px - height
+    <b>Hình ảnh:</b> <input type="file" name="file" /> <?php echo _product_type?> - <strong>Tỉ lệ chuẩn: width 630px -
+        height
         690px</strong><br />
     <br />
     <!-- <b>Mã sản phẩm</b> <input type="text" name="masp" value="<?php echo $item['masp']?>" class="input" /><br /> -->
@@ -112,13 +114,15 @@ function get_main_item()
         </ul>
 
         <div id="tab1" class="content_tab">
-            <b>Tên(VN):</b> <input type="text" name="ten_vi" value="<?php echo @$item['ten_vi']?>" class="input" /><br /><br>
+            <b>Tên(VN):</b> <input type="text" name="ten_vi" value="<?php echo @$item['ten_vi']?>"
+                class="input" /><br /><br>
 
             <!-- <b>Tags(VN)</b > <input type="text" name="tags_vi" value="<?php echo @$item['tags_vi']?>" class="input" /> &nbsp;&nbsp; Mỗi tag cách nhau bằng dấu phẩy<br /><br> -->
             <b>Title(VN)</b> <input type="text" name="title_vi" value="<?php echo @$item['title_vi']?>"
                 class="input" /><br /><br>
             <b>Keywords(VN)</b>
-            <textarea name="keywords_vi" id="keywords_vi" cols="45" rows="5"><?php echo @$item['keywords_vi']?></textarea>
+            <textarea name="keywords_vi" id="keywords_vi" cols="45"
+                rows="5"><?php echo @$item['keywords_vi']?></textarea>
             <br><br />
 
             <b>Description(VN)</b>
@@ -130,20 +134,22 @@ function get_main_item()
             <b>Nội dung(VI)</b><br />
             <div>
                 <textarea name="noidung_vi"
-                    id="noidung_vi"><?php echo str_replace('yoshitake.net.vn', 'vietnhatvalves.com', stripcslashes($item['noidung_vi']))?></textarea>
+                    id="noidung_vi"><?php echo isset($item['noidung_vi']) ? str_replace(stripcslashes($item['noidung_vi'])) : ''; ?></textarea>
             </div>
             <br />
 
         </div>
 
         <div id="tab2" class="content_tab">
-            <b>Tên(EN):</b> <input type="text" name="ten_en" value="<?php echo @$item['ten_en']?>" class="input" /><br /><br>
+            <b>Tên(EN):</b> <input type="text" name="ten_en" value="<?php echo @$item['ten_en']?>"
+                class="input" /><br /><br>
 
             <!-- <b>Tags(EN)</b> <input type="text" name="tags_en" value="<?php echo @$item['tags_en']?>" class="input" /> &nbsp;&nbsp; Mỗi tag cách nhau bằng dấu phẩy<br /><br> -->
             <b>Title(EN)</b> <input type="text" name="title_en" value="<?php echo @$item['title_en']?>"
                 class="input" /><br /><br>
             <b>Keywords(EN)</b>
-            <textarea name="keywords_en" id="keywords_en" cols="45" rows="5"><?php echo @$item['keywords_en']?></textarea>
+            <textarea name="keywords_en" id="keywords_en" cols="45"
+                rows="5"><?php echo @$item['keywords_en']?></textarea>
             <br><br />
 
             <b>Description(EN)</b>
@@ -154,7 +160,8 @@ function get_main_item()
                 rows="5"><?php echo @$item['mota_en']?></textarea><br /><br>
             <b>Nội dung(EN)</b><br />
             <div>
-                <textarea name="noidung_en" id="noidung_en"><?php echo stripcslashes($item['noidung_en'])?></textarea>
+                <textarea name="noidung_en"
+                    id="noidung_en"><?php echo isset($item['noidung_en']) ? str_replace(stripcslashes($item['noidung_en'])) : ''; ?></textarea>
             </div>
             <br />
 
@@ -289,12 +296,7 @@ tinyMCE.init({
 
 function select_onchange() {
     var a = document.getElementById("id_list");
-    window.location =
-        "index.php?com=product_other&act=<?php if($_REQUEST['act']=='edit') { echo 'edit'; 
-                                         } else { echo 'add';
-}?><?php if($_REQUEST['id']!='') { echo"&id=".$_REQUEST['id'];
-                                         } ?>&id_list=" +
-        a.value;
+    window.location = "index.php?com=product_other&act=add&id_list=" + a.value;
     return true;
 }
 </script>

@@ -10,7 +10,7 @@ $sql = "select ten,id,url,image from #_mxh where hienthi=1 order by id asc";
 $d->query($sql);
 $mxh1 = $d->result_array();
 ?>
-
+<link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/unicons.css">
 <div id="footer_info">
     <div id="footer_content" class="m-100">
         <div class="footer_block1">
@@ -27,7 +27,7 @@ $mxh1 = $d->result_array();
                    "url"
                  ] ?>" target="_blank"><img class="transi_1s" src="<?php echo _upload_hinhanh_l .
   $value["image"] ?>" alt="<?php echo $value["ten"] ?>" title="<?php echo $value["ten"] ?>" /></a>
-                <?php }
+                    <?php }
                 } ?>
                 <div class="clr"></div>
             </div>

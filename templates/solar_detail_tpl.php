@@ -89,6 +89,7 @@
 
 .news-banner.solar .hide-title {
     position: absolute;
+    letter-spacing: 50px;
     top: 8%;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 0.2);

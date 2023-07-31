@@ -143,8 +143,8 @@ Tìm kiếm: <input name="keyword" id="keyword" type="text" /> <input type="butt
     </tr>
     <?php for($i=0, $count=count($items); $i<$count; $i++){?>
     <tr>
-        <td style="width:5%;" align="center"><input type="checkbox" name="chon" id="chon" value="<?php echo $items[$i]['id']?>"
-                class="chon" /></td>
+        <td style="width:5%;" align="center"><input type="checkbox" name="chon" id="chon"
+                value="<?php echo $items[$i]['id']?>" class="chon" /></td>
         <td style="width:5%;"><?php echo $items[$i]['stt']?></td>
         <td style="width:10%;">
             <?php
@@ -175,27 +175,19 @@ Tìm kiếm: <input name="keyword" id="keyword" type="text" /> <input type="butt
                 style="text-decoration:none;"><?php echo $items[$i]['ten_vi']?></a></td>
         <!-- <td style="width:10%;"><a href="index.php?com=hasp&type1=hasp&act=man_photo&idc=<?php echo $items[$i]['id']?>" style="text-decoration:underline;">Thêm ảnh</a></td>  -->
         <td align="center" style="width:5%;">
-            <?php 
-            if(@$items[$i]['noibat']>0) {
-                ?>
+            <?php if (@$items[$i]['noibat'] > 0) { ?>
+            <a
+                href="index.php?com=product_kitz&act=man&noibat=<?= $items[$i]['id'] ?><?php if (isset($_REQUEST['curPage'])) echo '&curPage=' . $_REQUEST['curPage']; ?>">
+                <img src="media/images/yes-km.gif" border="0" />
+            </a>
+            <?php } else { ?>
+            <a
+                href="index.php?com=product_kitz&act=man&noibat=<?= $items[$i]['id'] ?><?php if (isset($_REQUEST['curPage'])) echo '&curPage=' . $_REQUEST['curPage']; ?>">
+                <img src="media/images/no-km.gif" border="0" />
+            </a>
+            <?php } ?>
 
-            <a
-                href="index.php?com=product_kitz&act=man&noibat=<?php echo $items[$i]['id']?><?php if($_REQUEST['curPage']!='') { echo'&curPage='. $_REQUEST['curPage'];
-                                                                }?>"><img
-                    src="media/images/yes-km.gif" border="0" /></a>
-            <? 
-        }
-        else
-        {
-        ?>
-            <a
-                href="index.php?com=product_kitz&act=man&noibat=<?php echo $items[$i]['id']?><?php if($_REQUEST['curPage']!='') { echo'&curPage='. $_REQUEST['curPage'];
-                                                                }?>"><img
-                    src="media/images/no-km.gif" border="0" /></a>
-                <?php
-            }?>
-        </td>
-        <!-- <td align="center" style="width:5%;">
+            <!-- <td align="center" style="width:5%;">
          <?php 
             if(@$items[$i]['spbc']>0) {
                 ?>
@@ -212,7 +204,7 @@ Tìm kiếm: <input name="keyword" id="keyword" type="text" /> <input type="butt
                 <?php
             }?>      
          </td>  -->
-        <!-- <td align="center" style="width:5%;">
+            <!-- <td align="center" style="width:5%;">
          <?php 
             if(@$items[$i]['sptb']>0) {
                 ?>
@@ -234,20 +226,18 @@ Tìm kiếm: <input name="keyword" id="keyword" type="text" /> <input type="butt
             if(@$items[$i]['hienthi']==1) {
                 ?>
 
-            <a
-                href="index.php?com=product_kitz&act=man&hienthi=<?php echo $items[$i]['id']?><?php if($_REQUEST['curPage']!='') { echo'&curPage='. $_REQUEST['curPage'];
-                                                                 }?>"><img
-                    src="media/images/active_1.png" border="0" /></a>
+            <a href="index.php?com=product_kitz&act=man&hienthi=<?php echo $items[$i]['id']?><?php if($_REQUEST['curPage']!='') { echo'&curPage='. $_REQUEST['curPage'];
+                                                                 }?>"><img src="media/images/active_1.png"
+                    border="0" /></a>
             <? 
         }
         else
         {
         ?>
-            <a
-                href="index.php?com=product_kitz&act=man&hienthi=<?php echo $items[$i]['id']?><?php if($_REQUEST['curPage']!='') { echo'&curPage='. $_REQUEST['curPage'];
-                                                                 }?>"><img
-                    src="media/images/active_0.png" border="0" /></a>
-                <?php
+            <a href="index.php?com=product_kitz&act=man&hienthi=<?php echo $items[$i]['id']?><?php if($_REQUEST['curPage']!='') { echo'&curPage='. $_REQUEST['curPage'];
+                                                                 }?>"><img src="media/images/active_0.png"
+                    border="0" /></a>
+            <?php
             }?>
         </td>
         <td style="width:5%;"><a
