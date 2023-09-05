@@ -1,45 +1,4 @@
 <script type="text/javascript" src="admin/media/scripts/my_script.js"></script>
-<script type="text/javascript">
-function js_submit() {
-    if (isEmpty(document.getElementById('ten'), "<?php echo _xinnhaphoten?>")) {
-        document.getElementById('ten').focus();
-        return false;
-    }
-
-    if (isEmpty(document.getElementById('diachi'), "<?php echo _xinnhapdiachi?>")) {
-        document.getElementById('diachi').focus();
-        return false;
-    }
-
-    if (isEmpty(document.getElementById('dienthoai'), "<?php echo _xinnhapdt?>")) {
-        document.getElementById('dienthoai').focus();
-        return false;
-    }
-
-    if (!isNumber(document.getElementById('dienthoai'), "<?php echo _dtkhonghople?>")) {
-        document.getElementById('dienthoai').focus();
-        return false;
-    }
-
-    if (!check_email(document.frm.email.value)) {
-        alert("<?php echo _emailkhonghople?>");
-        document.frm.email.focus();
-        return false;
-    }
-
-    if (isEmpty(document.getElementById('tieude1'), "<?php echo _xinnhaptieude?>")) {
-        document.getElementById('tieude1').focus();
-        return false;
-    }
-
-    if (isEmpty(document.getElementById('noidung'), "<?php echo _xinnhapnoidung?>")) {
-        document.getElementById('noidung').focus();
-        return false;
-    }
-
-    document.frm.submit();
-}
-</script>
 <div class="banner">
     <div class="hero-banner">
         <div class="layer">

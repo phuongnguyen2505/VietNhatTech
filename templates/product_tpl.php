@@ -57,7 +57,7 @@ function onSearch1(evt) {
     var keyword1 = document.search.keyword1;
     var type_search = document.search.type_search.value;
     if (keyword1.value == '' || keyword1.value === '<?php echo _nhaptukhoa?>') {
-        displayCustomAlert('<?php echo _chuanhaptk?>', 30000);
+        displayCustomAlert('<?php echo _chuanhaptk?>', 5000);
         keyword1.focus();
         return false;
     }
@@ -85,7 +85,6 @@ function displayCustomAlert(message, duration) {
 
     setTimeout(function() {
         hideCustomAlert();
-        btnSearch.style.display = 'block';
     }, duration);
 }
 
@@ -98,7 +97,7 @@ function hideCustomAlert() {
     <div class="hero-banner">
         <div class="layer">
             <div class="right m-100">
-                <article>
+                <article style="width: 100%">
                     <section class="welcome">Welcome to Viet Nhat</section>
                     <section class="gr-banner w700">
                         <h1 class="hide-title">
@@ -120,12 +119,8 @@ function hideCustomAlert() {
 </div>
 <div class="row gr-product m-100">
     <div id="left"><?php require "layout/left.php";?></div><!-- end #left -->
-    <div id="right1">
+    <div id="right1" style="overflow:hidden">
         <div class="box_main">
-            <!-- <div>
-                <?php echo _loaisp ?>:
-                <?php echo get_main_list() ?>
-            </div><br /> -->
             <div class="row">
                 <div class="tk_sp">
                     <div id="customAlert" class="custom-alert">
@@ -133,7 +128,7 @@ function hideCustomAlert() {
                     </div>
                     <form name="search" action="tim-kiem.html" method="get" onsubmit="return false;">
                         <input type="text" class="search-product" name="keyword1" style="padding:2px 15px;"
-                            placeholder="Nhập từ khóa">
+                            placeholder="<?php echo _nhaptukhoa?>">
                         <input type="hidden" name="type_search" value="<?php echo $type ?>">
                         <input type="submit" name="saerch" id="saerch" value="Search" style="padding:2px 5px;">
                     </form>
@@ -166,20 +161,6 @@ function hideCustomAlert() {
             </div>
 
             <br />
-            <!-- <div class="wrapper" id="wrapper">
-                <div class="col">
-                    Column #1
-                </div>
-                <div class="col">
-                    Column #2
-                </div>
-                <div class="col">
-                    Column #3
-                </div>
-                <div class="col">
-                    Column #4
-                </div>
-            </div> -->
             <section class="product-list wrapper" id="wrapper">
                 <?php
                 if (!empty($product)) {
@@ -189,11 +170,13 @@ function hideCustomAlert() {
                         ?>
                 <div class="product-item grid-view-s col">
                     <div class="card">
-                        <a class="product-img"
-                            href="<?php echo $com_select ?>/<?php echo $product_item['tenkhongdau'] ?>-<?php echo $product_item['id'] ?>.html">
-                            <img src="<?php echo _upload_product_l . $product_item['thumb'] ?>"
-                                alt="<?php echo $product_item['ten'] ?>" />
-                        </a>
+                        <div class="img-cont">
+                            <a class="product-img"
+                                href="<?php echo $com_select ?>/<?php echo $product_item['tenkhongdau'] ?>-<?php echo $product_item['id'] ?>.html">
+                                <img src="<?php echo _upload_product_l . $product_item['thumb'] ?>"
+                                    alt="<?php echo $product_item['ten'] ?>" />
+                            </a>
+                        </div>
                         <div class="product-r-item">
                             <a class="title-product"
                                 href="<?php echo $com_select ?>/<?php echo $product_item['tenkhongdau'] ?>-<?php echo $product_item['id'] ?>.html">
@@ -240,93 +223,20 @@ function hideCustomAlert() {
                                     <div class="more-product">
                                         <a
                                             href="<?php echo $com_select ?>/<?php echo $product_item['tenkhongdau'] ?>-<?php echo $product_item['id'] ?>.html">
-                                            Xem thêm
+                                            <?php echo _readmore?>
                                         </a>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                        <?php
+                <?php
                     }
                 }
                 ?>
             </section>
-            <!-- <center>
-                <table id="product-list" cellpadding="0" cellspacing="0" class="CSSTableGenerator" align="center"
-                    width="95%">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <?php echo _hinhanh ?>
-                            </td>
-                            <td>
-                                <?php echo _loaisp ?>
-                            </td>
-                            <td>
-                                <?php echo _tensp ?>
-                            </td>
-                            <td>
-                                <?php echo _mota ?>
-                            </td>
-                            <td>Download</td>
-                        </tr>
-                        <?php
-                        if (!empty($product)) {
-
-                            foreach ($product as $k => $product_item) {
-
-                                ?>
-
-                        <tr>
-                            <td align="center">
-                                <a
-                                    href="<?php echo $com_select ?>/<?php echo $product_item['tenkhongdau'] ?>-<?php echo $product_item['id'] ?>.html">
-                                    <img src="<?php echo _upload_product_l . $product_item['thumb'] ?>"
-                                        alt="<?php echo $product_item['ten'] ?>" />
-                                </a>
-                            </td>
-                            <td align="center">
-                                <?php
-                                $sql_danhmuc = "select ten_$lang as ten from table_" . $table_select . "_list where id='" . $product_item['id_list'] . "'";
-                                $result = mysql_query($sql_danhmuc);
-                                $item_danhmuc = mysql_fetch_array($result);
-                                echo @$item_danhmuc['ten']
-                                ?>
-                            </td>
-                            <td align="center">
-                                <a
-                                    href="<?php echo $com_select ?>/<?php echo $product_item['tenkhongdau'] ?>-<?php echo $product_item['id'] ?>.html"><?php echo $product_item['ten'] ?></a>
-                            </td>
-                            <td>
-                                <?php echo $product_item['mota'] ?>
-                            </td>
-                            <td align="center">
-                                <?php if ($product_item['file'] != '') { ?>
-                                <a target="_blank"
-                                    href="<?php echo _upload_product_l . $product_item['file'] ?>">Download</a>
-                                <?php } else { ?>
-                                ----
-                                <?php } ?>
-                            </td>
-                        </tr>
-
-
-                                <?php
-
-                            }
-
-                        }
-                        ?>
-
-                    </tbody>
-                </table>
-            </center> -->
-
             <div class="clr"></div>
-
         </div>
 
         <div class="clr"></div>
@@ -362,7 +272,6 @@ function hideCustomAlert() {
 }
 
 .gr-banner .EBRO-GERMANY {
-    font-size: 105px !important;
     background: linear-gradient(180deg, #fe5800 0%, rgba(254, 88, 0, 0.1) 100%) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
@@ -370,12 +279,7 @@ function hideCustomAlert() {
     text-fill-color: transparent !important;
 }
 
-.gr-banner .Ingersoll {
-    font-size: 105px !important;
-}
-
 .gr-banner .PISCO-JAPAN {
-    font-size: 125px !important;
     background: linear-gradient(180deg, #0057a8 0%, rgba(0, 87, 168, 0.1) 100%) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
@@ -410,4 +314,32 @@ document.addEventListener("click", function(event) {
     event.preventDefault();
     wrapper.classList.remove("list");
 });
+
+function adjustFontSize() {
+    const title = document.querySelector('.hero-title');
+    const container = document.querySelector('.gr-banner');
+
+    const titleWidth = title.offsetWidth;
+    const containerWidth = container.offsetWidth;
+
+    const titleHeight = title.offsetHeight;
+    const maxHeight = 340;
+    const widthScaleFactor = containerWidth / titleWidth;
+    const heightScaleFactor = maxHeight / titleHeight;
+
+    const scaleFactors = [widthScaleFactor, heightScaleFactor];
+    const scaleFactor = Math.min(...scaleFactors);
+
+    const maxFontSize = 130;
+    const minFontSize = 50;
+
+    let fontSize = Math.min(maxFontSize, scaleFactor * 100);
+    fontSize = Math.max(minFontSize, fontSize);
+
+    title.style.fontSize = fontSize + 'px';
+}
+
+// Call the function when the page loads and on window resize
+window.addEventListener('load', adjustFontSize);
+window.addEventListener('resize', adjustFontSize);
 </script>

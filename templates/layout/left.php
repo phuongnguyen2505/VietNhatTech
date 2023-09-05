@@ -31,14 +31,14 @@ $video = $d->result_array();
 
 
             <li>
-                    <?php
+                <?php
                     if (isset($_GET['idc']) && $_GET['idc'] == $dmsp_item['tenkhongdau']) {
                         echo '<a class="active1" href="' . $com_select . '/' . $dmsp_item['tenkhongdau'] . '/" title="' . $dmsp_item['ten'] . '">' . $dmsp_item['ten'] . '</a>';
                     } else {
                         echo '<a href="' . $com_select . '/' . $dmsp_item['tenkhongdau'] . '/" title="' . $dmsp_item['ten'] . '">' . $dmsp_item['ten'] . '</a>';
                     }
                     ?>
-                    <?php
+                <?php
                         // $d->reset();
                         // $sql_dmsp="select ten_$lang as ten,tenkhongdau,id from #_".$table_select."_cat where hienthi=1 and id_list=$dmsp_item[id] order by stt asc,id desc";
                         // $d->query($sql_dmsp);
@@ -49,7 +49,7 @@ $video = $d->result_array();
                             ?>
             <li><a href="<?php echo $com_select ?>/<?php echo $dmsp_item['tenkhongdau'] ?>/<?php echo $dmsp1_item['tenkhongdau'] ?>/"
                     title="<?php echo $dmsp1_item['ten'] ?>"><?php echo $dmsp1_item['ten'] ?></a>
-                            <?php
+                <?php
                             // $d->reset();
                             // $sql_dmsp="select ten_$lang as ten,tenkhongdau,id from #_".$table_select."_item where hienthi=1 and id_cat=$dmsp1_item[id] order by stt asc,id desc";
                             // $d->query($sql_dmsp);
@@ -61,21 +61,21 @@ $video = $d->result_array();
             <li><a href="<?php echo $com_select ?>/<?php echo $dmsp_item['tenkhongdau'] ?>/<?php echo $dmsp1_item['tenkhongdau'] ?>/<?php echo $dmsp2_item['tenkhongdau'] ?>/"
                     title="<?php echo $dmsp2_item['ten'] ?>"><?php echo $dmsp2_item['ten'] ?></a></li>
 
-                                    <?php
+            <?php
                                 }
                                 echo '</ul>';
                             }
                             ?>
             </li>
 
-                            <?php
+            <?php
                         }
                         echo '</ul>';
                     }
                     ?>
             </li>
 
-                    <?php
+            <?php
 
                 }
             }

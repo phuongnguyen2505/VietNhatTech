@@ -134,7 +134,7 @@ function get_main_item()
             <b>Nội dung(VI)</b><br />
             <div>
                 <textarea name="noidung_vi"
-                    id="noidung_vi"><?php echo isset($item['noidung_vi']) ? str_replace('yoshitake.net.vn', 'vietnhatvalves.com', stripcslashes($item['noidung_vi'])) : ''; ?></textarea>
+                    id="noidung_vi"><?php echo isset($item['noidung_vi']) ? str_replace('\\', '', stripcslashes($item['noidung_vi'])) : ''; ?></textarea>
             </div>
             <br />
 
@@ -160,7 +160,8 @@ function get_main_item()
                 rows="5"><?php echo @$item['mota_en']?></textarea><br /><br>
             <b>Nội dung(EN)</b><br />
             <div>
-                <textarea name="noidung_en" id="noidung_en"><?php echo stripcslashes($item['noidung_en'])?></textarea>
+                <textarea name="noidung_en"
+                    id="noidung_en"><?php echo isset($item['noidung_en']) ? str_replace('\\', '', stripcslashes($item['noidung_en'])) : ''; ?></textarea>
             </div>
             <br />
 

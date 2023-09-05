@@ -14,12 +14,12 @@ $deviceType = $detect->isMobile()
     : "phone")
   : "computer";
 if ($deviceType != "computer") {
-    @define("_template", "./templates/");
+  @define("_template", "./templates/");
 } else {
-    @define("_template", "./templates/");
+  @define("_template", "./templates/");
 }
 if (!isset($_SESSION["lang"])) {
-    $_SESSION["lang"] = "vi";
+  $_SESSION["lang"] = "vi";
 }
 
 $lang = $_SESSION["lang"];
@@ -36,10 +36,10 @@ require_once _lib . "file_requick.php";
 require_once _source . "counter.php";
 require_once _source . "useronline.php";
 if (isset($_REQUEST["command"]) == "add" && $_REQUEST["productid"] > 0) {
-    $pid = $_REQUEST["productid"];
-    $q = isset($_GET["quality"]) ? (int) $_GET["quality"] : "1";
-    addtocart($pid, $q);
-    redirect("http://$config_url/gio-hang.html");
+  $pid = $_REQUEST["productid"];
+  $q = isset($_GET["quality"]) ? (int) $_GET["quality"] : "1";
+  addtocart($pid, $q);
+  redirect("http://$config_url/gio-hang.html");
 }
 $d->reset();
 $sql_background = "select * from #_background limit 0,1";
@@ -74,35 +74,35 @@ $logo = $d->fetch_array();
     })(window, document, 'script', 'dataLayer', 'GTM-55P5WHZ');
     </script>
     <!-- End Google Tag Manager -->
-    <base href="http://<?php echo $config_url ?>/vietnhat-tech.com/" />
+    <base href="http://<?php echo $config_url; ?>/vietnhat-tech.com/" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo _upload_hinhanh_l .
-    $logo["photo"] ?>" />
+      $logo["photo"]; ?>" />
     <title>
-        <?php echo isset($title_custom) != ""
-        ? $title_custom
-        : isset($title_bar) . $row_setting["title_" . $lang] ?>
+        <?php echo isset($title_custom) && $title_custom !== ""
+          ? $title_custom
+          : (isset($title_bar) ? $title_bar : "") . $row_setting["title_" . $lang]; ?>
     </title>
     <meta name="keywords" content="<?php echo $keywords_custom != ""
-    ? $keywords_custom
-    : $row_setting["keywords_" . $lang] ?>" />
+      ? $keywords_custom
+      : $row_setting["keywords_" . $lang]; ?>" />
     <meta name="description" content="<?php echo $description_custom != ""
-    ? $description_custom
-    : $row_setting["description_" . $lang] ?>" />
-    <meta name="author" content="<?php echo $row_setting["ten_" . $lang] ?>" />
-    <meta name="copyright" content="<?php echo $row_setting["ten_" . $lang] ?>" />
+      ? $description_custom
+      : $row_setting["description_" . $lang]; ?>" />
+    <meta name="author" content="<?php echo $row_setting["ten_" . $lang]; ?>" />
+    <meta name="copyright" content="<?php echo $row_setting["ten_" . $lang]; ?>" />
     <meta name="revisit-after" content="1 days" />
     <meta name="robots" content="index,follow,odp" />
     <?php if ($deviceType == "aa") { ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1" />
     <?php } ?>
-    <meta property="og:site_name" content="<?php echo $row_setting["ten_" . $lang] ?>" />
-    <meta property="og:url" content="<?php echo getCurrentPageUrl() ?>" />
+    <meta property="og:site_name" content="<?php echo $row_setting["ten_" . $lang]; ?>" />
+    <meta property="og:url" content="<?php echo getCurrentPageUrl(); ?>" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="<?php echo $title_custom != ""
-    ? $title_custom
-    : $title_bar . $row_setting["title_" . $lang] ?>" />
-    <meta property="og:image" content="<?php echo $hinhsharefb ?>" />
+      ? $title_custom
+      : $title_bar . $row_setting["title_" . $lang]; ?>" />
+    <meta property="og:image" content="<?php echo $hinhsharefb; ?>" />
     <meta property="og:locale" content="vi_VN" />
 
 
@@ -152,7 +152,7 @@ $logo = $d->fetch_array();
     });
     </script>
     <?php } else { ?>
-    <script type="text/javascript" src="http://<?php echo $config_url ?>/vietnhat-tech.com/js/jquery-1.11.0.js">
+    <script type="text/javascript" src="http://<?php echo $config_url; ?>/vietnhat-tech.com/js/jquery-1.11.0.js">
     </script>
     <script type="text/javascript">
     $(document).on("mobileinit", function() {
@@ -162,29 +162,31 @@ $logo = $d->fetch_array();
     });
     </script>
 
-    <script type="text/javascript" src="http://<?php echo $config_url ?>/vietnhat-tech.com/js/jquery.touchSwipe.min.js">
+    <script type="text/javascript"
+        src="http://<?php echo $config_url; ?>/vietnhat-tech.com/js/jquery.touchSwipe.min.js">
     </script>
-    <script type="text/javascript" src="http://<?php echo $config_url ?>/vietnhat-tech.com/js/jquery.ui.touch-punch.js">
+    <script type="text/javascript"
+        src="http://<?php echo $config_url; ?>/vietnhat-tech.com/js/jquery.ui.touch-punch.js">
     </script>
 
-    <link rel="stylesheet" href="http://<?php echo $config_url ?>/vietnhat-tech.com/css/jquery.mobile-1.4.5.css">
+    <link rel="stylesheet" href="http://<?php echo $config_url; ?>/vietnhat-tech.com/css/jquery.mobile-1.4.5.css">
     <link
         href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,greek-ext,cyrillic-ext,vietnamese,greek'
         rel='stylesheet' type='text/css'>
-    <script src="http://<?php echo $config_url ?>/vietnhat-tech.com/js/jquery.mobile-1.4.5.js"></script>
-    <link href="http://<?php echo $config_url ?>/vietnhat-tech.com/css/mobile.css" type="text/css" rel="stylesheet">
+    <script src="http://<?php echo $config_url; ?>/vietnhat-tech.com/js/jquery.mobile-1.4.5.js"></script>
+    <link href="http://<?php echo $config_url; ?>/vietnhat-tech.com/css/mobile.css" type="text/css" rel="stylesheet">
 
 
     <link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
     <script type="text/javascript" src="js/jquery.mmenu.min.all.js"></script>
 
     <link type="text/css" rel="stylesheet"
-        href="http://<?php echo $config_url ?>/vietnhat-tech.com/css/jquery.mbxslider.css">
-    <script type="text/javascript" src="http://<?php echo $config_url ?>/vietnhat-tech.com/js/jquery.bxslider.js">
+        href="http://<?php echo $config_url; ?>/vietnhat-tech.com/css/jquery.mbxslider.css">
+    <script type="text/javascript" src="http://<?php echo $config_url; ?>/vietnhat-tech.com/js/jquery.bxslider.js">
     </script>
 
-    <script src="http://<?php echo $config_url ?>/vietnhat-tech.com/js/jquery.swipebox.js"></script>
-    <link type="text/css" rel="stylesheet" href="http://<?php echo $config_url ?>/vietnhat-tech.com/css/swipebox.css">
+    <script src="http://<?php echo $config_url; ?>/vietnhat-tech.com/js/jquery.swipebox.js"></script>
+    <link type="text/css" rel="stylesheet" href="http://<?php echo $config_url; ?>/vietnhat-tech.com/css/swipebox.css">
 
     <script type="text/javascript">
     $(document).ready(function() {
@@ -211,20 +213,21 @@ $logo = $d->fetch_array();
         });
     });
     </script>
-    <?php echo $row_setting["analytics"] ?>
+    <?php echo $row_setting["analytics"]; ?>
 
 
 </head>
 
 <body <?php if (@$_GET["com"] == "lien-he") {
-    echo 'onLoad="initialize();"';
+  echo 'onLoad="initialize();"';
 } ?>>
     <?php if (1) { ?>
+    <?php include _template . "layout/header.php"; ?>
     <div id="container-page">
+        <?php include _template . "layout/menu_top.php"; ?>
         <div id="container">
             <div id="header">
             </div><!-- header-->
-            <?php include _template . "layout/menu_top.php"; ?>
             <div class="clr"></div>
             <div class="clr"></div>
             <div id="content" class="maxwidth">
@@ -239,14 +242,14 @@ $logo = $d->fetch_array();
             </div><!-- content -->
         </div>
         <!--container-->
-
+        
         <div id="footer">
             <?php include _template . "layout/footer.php"; ?>
         </div>
         <!--footer-->
 
         <div class="clr"></div>
-        <?php echo $row_setting["chat"] ?>
+        <?php echo $row_setting["chat"]; ?>
     </div>
     <!--container-page-->
     <?php } else { ?>
@@ -256,7 +259,7 @@ $logo = $d->fetch_array();
         include _template . "layout/search.php";
         include_once _template . "layout/menu_top.php";
         if ($source == "index") {
-            include_once _template . "layout/slideranh.php";
+          include_once _template . "layout/slideranh.php";
         }
         ?>
         <div id="container">
@@ -265,7 +268,7 @@ $logo = $d->fetch_array();
         </div>
         <?php include_once _template . "layout/footer.php"; ?>
     </div>
-        <?php echo $row_setting["chat"] ?>
+    <?php echo $row_setting["chat"]; ?>
     <?php } ?>
 
     <!-- Google Tag Manager (noscript) -->

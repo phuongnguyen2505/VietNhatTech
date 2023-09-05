@@ -37,7 +37,7 @@ $(document).ready(function() {
     <div class="box_main">
         <ul class="breadcrumb">
             <li>
-                <a href="./">Trang chủ</a>
+                <a href="./"><?php echo _home?></a>
                 <img src="images/arrow-bc.svg" alt="">
             </li>
             <li>
@@ -67,8 +67,8 @@ $(document).ready(function() {
                 <div class="imgSP">
                     <div class="ProductThumb">
                         <div class="product_detail_pic">
-                            <img src="timthumb.php?src=<?php echo _upload_product_l,$row_detail[0]["photo"]?>&h=0&w=280&zc=2&q=100"
-                                title="<?php echo $row_detail[0]['ten']?>" border="0" />
+                            <img src="<?php echo _upload_product_l,$row_detail[0]["photo"]?>"
+                                title="<?php echo $row_detail[0]['ten']?>" alt="<?php echo $row_detail[0]['ten']?>" />
                         </div>
                     </div>
                     <!--ProductThumb-->
@@ -136,11 +136,6 @@ $(document).ready(function() {
                     <li>
                         <p class="name_product" style="text-transform:uppercase"><?php echo $row_detail[0]['ten']?></p>
                     </li>
-                    <!-- <li><b><?php echo _gia?>:</b> <span style="font-weight:bold; color:#F00;font-size: 17px;"><?php if($row_detail[0]['gia']==0) { echo _contact; 
-                                } else { echo number_format($row_detail[0]['gia'], 0, ",", ".")." đ";
-}?></span></li> -->
-                    <!-- <li><b><?php echo _masp?>:</b> <?php echo $row_detail[0]['masp']?></li>           -->
-                    <!-- <li><b>Màu sắc:</b> <?php echo $row_detail[0]['tinhtrang']?></li>           -->
                     <li>
                         <span class="des-product">
                             <?php
@@ -150,7 +145,7 @@ $(document).ready(function() {
                             if (count($words) > 50) {
                                 $limitedContent = implode(' ', array_slice($words, 0, 25)) . '...';
                                 echo "<p>{$limitedContent}</p>";
-                                echo '<button class="read-more-btn effect effect-1">Xem Thêm</button>';
+                                echo '<button class="read-more-btn effect effect-1">'._readmore.'</button>';
                             } else {
                                 echo "<p>{$content}</p>";
                             }
@@ -161,26 +156,12 @@ $(document).ready(function() {
                         <span class="view-contact">
                             <p><?php echo _luotxem?>: <?php echo $row_detail[0]['luotxem']?>
                             </p>
-                            <p>Liên hệ:<span
+                            <p><?php echo _contact?>:<span
                                     style="color:#f00;font-size:20px;">&nbsp<?php echo $row_setting['hotline']?></span>
                             </p>
                             <p><?php echo $row_setting['email']?></p>
                         </span>
                     </li>
-                    <!-- <li>
-                    <span class='st_facebook_hcount' displayText='Facebook'></span>
-                    <span class='st_twitter_hcount' displayText='Tweet'></span>
-                    <span class='st_googleplus_hcount' displayText='Google +'></span>
-                    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-                    <script type="text/javascript">
-                    stLight.options({
-                        publisher: "5b2a972a-c743-4b89-8b81-78a6dba1ee67",
-                        doNotHash: false,
-                        doNotCopy: false,
-                        hashAddressBar: false
-                    });
-                    </script>
-                </li> -->
                     <li>
                         <?php if($row_detail[0]['file']!='') {?>
                         <span class="pdf-dl">
@@ -200,18 +181,19 @@ $(document).ready(function() {
                     </li>
                     <li>
                         <?php 
-                        $sql_danhmuc = "select ten_$lang as ten from table_" . $table_select . "_list where id='" . $row_detail[0]['id_list'] . "'";
-                        $result = mysql_query($sql_danhmuc);
-                        $item_danhmuc = mysql_fetch_array($result);
-                        $url = isset($item_danhmuc['ten']) ? $item_danhmuc['ten'] : './';
-                        if($com == "san-pham" || $com == 'ingersoll-rand') {echo '<a href="https://724.vn/?s=' . $url . '&post_type=product" target=”_blank” class="btn-buynow" type=button>' . '                            <span class="text">Mua ngay tại 724.vn</span><span>Đi đến 724.vn</span>
-                            </a>';
-                        }
-                        else{
-                            echo '<a href="https://724.vn/thuong-hieu/' . $url . '/" target=”_blank” class="btn-buynow" type=button>' . '                            <span class="text">Mua ngay tại 724.vn</span><span>Đi đến 724.vn</span>
-                            </a>';
-                        }
-                        
+                            $sql_danhmuc = "select ten_$lang as ten from table_" . $table_select . "_list where id='" . $row_detail[0]['id_list'] . "'";
+                            $result = mysql_query($sql_danhmuc);
+                            $item_danhmuc = mysql_fetch_array($result);
+                            $url = isset($item_danhmuc['ten']) ? $item_danhmuc['ten'] : './';
+
+                            if ($com == "san-pham" || $com == 'ingersoll-rand') {
+                                echo '<a href="https://724.vn/?s=' . $url . '&post_type=product" target="_blank" class="btn-buynow" type="button">';
+                            } else {
+                                echo '<a href="https://724.vn/thuong-hieu/' . $url . '/" target="_blank" class="btn-buynow" type="button">';
+                            }
+
+                            echo '<span class="text">' . _buynowat . ' 724.vn</span><span>'._goto.' 724.vn</span>';
+                            echo '</a>';
                         ?>
                         <!-- <a href="https://724.vn/thuong-hieu/" target=”_blank” class="btn-buynow" type=button>
                             <span class="text">Mua ngay tại 724.vn</span><span>Đi đến 724.vn</span>
@@ -256,10 +238,10 @@ $(document).ready(function() {
                             <div class="clr"
                                 style="height:0px; border-bottom:1px solid #cdcdcd; margin-top:20px; margin-bottom:5px;">
                             </div>
-
                             <div class="fb-comments"
-                                data-href="http://<?php echo $config_url?>/san-pham/<?php echo $row_detail[0]['tenkhongdau']?>-<?php echo $row_detail[0]['id']?>.html"
-                                data-width="100%" data-num-posts="10"></div>
+                                data-href="http://<?php echo $config_url ?>/san-pham/<?php echo $row_detail[0]['tenkhongdau'] ?>-<?php echo $row_detail[0]['id'] ?>.html"
+                                data-width="100%" data-num-posts="10">
+                            </div>
                             <div class="clear"></div>
                         </div>
                         <!--End Tab2-->
@@ -286,122 +268,102 @@ $(document).ready(function() {
 
         <div class="clr"></div>
     </div>
-
-
-    <!-- <div class="box_main">
-        <div class="title_p">
-            <h3 class="title"><?php echo _sanphamcungloai?></h3>
-        </div>
-
-        <?php
-        if(!empty($sanpham_khac)) {
-                
-            foreach($sanpham_khac as $k=>$product_item){
-                    $str='';
-                if(($k+1)%2==0) { $str='style="margin-right:0px !important;"';
-                } else { $str='style="margin-right:48px !important;"';
-                }
-                ?>
-        <div class="right_item" <?php echo $str?>>
-
-            <div class="img">
-                <div class="img_wrap">
-                    <a
-                        href="<?php echo $com_select?>/<?php echo $product_item['tenkhongdau']?>-<?php echo $product_item['id']?>.html">
-                        <img src="<?php echo _upload_product_l.$product_item['thumb']?>"
-                            alt="<?php echo $product_item['ten']?>" />
-                    </a>
-                </div>
-            </div>
-            <h3><a
-                    href="<?php echo $com_select?>/<?php echo $product_item['tenkhongdau']?>-<?php echo $product_item['id']?>.html"><?php echo $product_item['ten']?></a>
-            </h3>
-            <div class="desc"><?php echo $product_item['mota']?></div>
-                <?php if($product_item['file']!='') {?>
-            <a class="download" target="_blank" href="<?php echo _upload_product_l.$product_item['file']?>"><img
-                    src="images/pdf.png" alt="<?php echo $product_item['ten']?>"></a>
-                <?php }?>
-            <div class="clr"></div>
-        </div>
-                <?php 
-                if(($k+1)%2==0) { echo '<div class="clr"></div>';
-                }
-            }
-                  
-        }
-        ?>
-
-        <div class="clr"></div>
-
-    </div> -->
-    <!--end box_main-->
 </div>
 
 <div class="wrapper-faq m-100">
-    <div class="title-faq">Thắc mắc thường gặp</div>
+    <div class="title-faq"><?php echo _faq?></div>
     <div class="item-wrapper">
-        <div class="item-title" data-index="0">Chính sách bảo hành</div>
+        <div class="item-title" data-index="0"><?php echo _policy?></div>
         <div class="content-outer">
-            <div class="content-faq">XYZ Tech News Company is an online platform dedicated to delivering the latest and
-                most
-                relevant news in the world of technology. We cover a wide range of topics, including but not limited to
-                gadgets, software, cybersecurity, artificial intelligence, and emerging technologies. Our mission is to
-                keep our readers informed and engaged with the rapidly evolving tech landscape.</div>
+            <div class="content-faq"><?php echo _policydes?></div>
         </div>
     </div>
     <div class="item-wrapper">
-        <div class="item-title" data-index="1">dịch vụ kiểm tra khảo sát năng lượng nhà máy định kỳ</div>
+        <div class="item-title" data-index="1"><?php echo _deli?></div>
         <div class="content-outer">
-            <div class="content-faq">At XYZ Tech News Company, we understand the importance of staying up-to-date with
-                the
-                latest tech news. Therefore, we update our content on a daily basis. Our team of experienced writers and
-                editors work diligently to bring you timely and accurate news articles, reviews, and analysis.</div>
+            <div class="content-faq"><?php echo _delides?></div>
         </div>
     </div>
     <div class="item-wrapper">
-        <div class="item-title" data-index="2">chính sách thanh toán</div>
+        <div class="item-title" data-index="2"><?php echo _aftersale?></div>
         <div class="content-outer">
-            <div class="content-faq">Absolutely! We encourage our readers and industry professionals to submit news
-                tips,
-                press releases, and any relevant information that may be of interest to our audience. You can reach out
-                to us through our contact page or email us directly. We review all submissions and strive to cover
-                stories that align with our editorial guidelines and audience interests.</div>
+            <div class="content-faq">
+                <?php echo _aftersaledes1?><br><?php echo _aftersaledes2?><br><?php echo _aftersaledes3?>
+            </div>
         </div>
     </div>
-    <div class="item-wrapper">
-        <div class="item-title" data-index="3">dịch vụ hậu mãi</div>
-        <div class="content-outer">
-            <div class="content-faq">Yes, you can! We appreciate and encourage our readers to share our articles across
-                various platforms, including social media channels, blogs, and forums. We provide social media sharing
-                buttons on each article, making it easy for you to spread the word about the latest tech news and
-                insights.</div>
-        </div>
-    </div>
-    <div class="item-wrapper">
-        <div class="item-title" data-index="4">How can I stay updated with the latest news from XYZ Tech News Company?
-        </div>
-        <div class="content-outer">
-            <div class="content-faq">To stay updated with the latest news from XYZ Tech News Company, there are several
-                options available. Firstly, you can subscribe to our newsletter, where we send regular updates featuring
-                our top stories and exclusive content. Additionally, you can follow us on social media platforms such as
-                Twitter, Facebook, and LinkedIn, where we share our articles and engage with our audience. Finally, you
-                can visit our website regularly or bookmark it for easy access to our latest articles.</div>
-        </div>
-    </div>
+    <div class="clr" style="height:0px; border-bottom:1px solid #dfdfdf; margin-top:20px;"></div>
 </div>
 <div class="modal" id="content-modal">
     <div class="modal-content">
         <div class="row-modal">
             <div class="title-modal">
-                <p>Mô tả</p>
+                <p><?php echo _mota?></p>
                 <span class="close-modal-ico">&#x2716;</span>
             </div>
             <div class="des-modal"><?php echo $row_detail[0]['mota']; ?></div>
-            <span class="close-modal-btn">Đóng</span>
+            <span class="close-modal-btn"><?php echo _close?></span>
         </div>
     </div>
 </div>
-
+<div class="row m-100">
+    <div class="box_main same-product">
+        <h2>
+            <span class="v-line"></span>
+            <?php echo _sanphamcungloai?>
+        </h2>
+        <div class="same-item">
+            <?php
+        if(!empty($sanpham_khac)) {
+                
+            foreach($sanpham_khac as $k=>$product_item){
+                ?>
+            <div class="right_item">
+                <div class="img">
+                    <div class="img_wrap">
+                        <a
+                            href="<?php echo $com_select?>/<?php echo $product_item['tenkhongdau']?>-<?php echo $product_item['id']?>.html">
+                            <img src="<?php echo _upload_product_l.$product_item['thumb']?>"
+                                alt="<?php echo $product_item['ten']?>" />
+                        </a>
+                    </div>
+                </div>
+                <div class="r-item-samep">
+                    <h3>
+                        <a
+                            href="<?php echo $com_select?>/<?php echo $product_item['tenkhongdau']?>-<?php echo $product_item['id']?>.html"><?php echo $product_item['ten']?>
+                        </a>
+                    </h3>
+                    <div class="desc">
+                        <?php
+                            $content = strip_tags($product_item['mota']); 
+                            $words = explode(' ', $content); 
+                            if (count($words) > 20) {
+                                $limitedContent = implode(' ', array_slice($words, 0, 20)) . '...';
+                            } else {
+                                $limitedContent = implode(' ', $words);
+                            }
+                            echo $limitedContent;
+                        ?>
+                    </div>
+                    <div class="same-download">
+                        <?php if($product_item['file']!='') {?>
+                        <a href="<?php echo _upload_product_l.$product_item['file']?>">Download
+                        </a>
+                        <?php }?>
+                        <a href="<?php echo $com_select?>/<?php echo $product_item['tenkhongdau']?>-<?php echo $product_item['id']?>.html"
+                            -<?php echo $product_item['ten']?>"><?php echo _readmore?>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <?php 
+            }     
+        }
+        ?>
+        </div>
+    </div>
+</div>
 
 <style>
 .box_main.news-details {

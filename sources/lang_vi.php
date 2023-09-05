@@ -78,6 +78,7 @@
 @define('_khuyenmai', 'Khuyến mãi');
 @define('_about', 'Giới thiệu');
 @define('_product', 'Yoshitake');
+@define('_productt', 'Sản Phẩm');
 @define('_product1', 'Ingersoll Rand');
 @define('_news', 'Tin tức');
 @define('_tuyendung', 'Tuyển dụng');
@@ -109,6 +110,7 @@
 @define('_tieuchuanthep', 'Tiêu chuẩn thép');
 @define('_thietbikiemdinh', 'Thiết bị kiểm định chất lượng');
 @define('_chitiet', 'Chi tiết');
+@define('_more', 'Xem Thêm');
 
 // News
 @define('_luotxem', 'Lượt xem');
@@ -295,5 +297,26 @@
 @define('_daily', 'đại lý phân phối');
 @define('_dc', 'sản phẩn cho động cơ');
 @define('_dcm', 'sản phẩn cho máy xịt');
+
+//------Add on-------
+@define('_bannerdes','CÔNG TY TNHH KỸ THUẬT QUỐC TẾ VIỆT NHẬT được biết đến là đơn vị chuyên nghiệp trong tư vấn, thi công, lắp đặt các hệ thống đường ống hơi nóng, khí nén, hệ thống máy nén khí, máy sấy khí, hệ thống lạnh,… Chế tạo, sửa chữa, bảo trì hệ thống hơi và lò hơi. Với đội ngũ giàu kinh nghiệm, chuyên môn và tâm huyết trong ngành, chúng tôi cam kết mang lại cho Quý khách hàng các giải pháp tốt nhất về việc sử dụng năng lượng hiệu quả và tiết kiệm.');
+@define('_fbrand','Nhãn hàng');
+@define('_fbrand2','tiêu biểu');
+@define('_new','mới');
+@define('_aboutus','Về Việt Nhật');
+@define('_faq','Thắc mắc thường gặp');
+@define('_buynowat','Mua ngay tại');
+@define('_goto','Đi đến');
+@define('_close','Đóng');
+@define('_contactp','Hãy liên hệ với chúng tôi khi bạn có nhu cầu/cần hỗ trợ nhé');
+@define('_policy','Chính Sách Đổi Trả Hàng Hóa, Sản Phẩm');
+@define('_policydes','Nhằm hỗ trợ Quý khách hàng và nâng cao dịch vụ chăm sóc khách hàng, chúng tôi áp dụng chính sách đổi trả hàng hóa một cách linh động và nhanh chóng');
+@define('_deli','Giao và nhận kho');
+@define('_delides','Chúng tôi luôn tồn kho với số lượng hàng hóa lớn, nhằm phân phối nhanh chóng cho khách hàng. Việt Nhật hỗ trợ giao hàng tất cả các tỉnh trên cả nước');
+@define('_aftersale','Dịch vụ hậu mãi');
+@define('_aftersaledes1','Khảo sát, đánh giá thực trạng và hiệu quả sử dụng năng lượng: Công ty Việt Nhật cung cấp dịch vụ khảo sát và kiểm tra đánh giá năng lượng định kỳ 3 tháng/ 1 lần cho Quý nhà máy. Dịch vụ được thực hiện bởi đội ngũ kỹ thuật có chuyên môn và đào tạo bài bản, thiết bị hiện đại');
+@define('_aftersaledes2','Báo cáo kiểm tra năng lượng hệ thống: Sau mỗi buổi khảo sát, chúng tôi báo cáo và đánh giá tình trạng rò rỉ, hiệu quả sử dụng năng lượng tại Quý nhà máy');
+@define('_aftersaledes3','Bên cạnh đó, chúng tôi sẽ tư vấn, đưa ra các phương án khắc phục rò rỉ và nâng cao hiệu quả sử dụng năng lượng. Bảo trì, bảo dưỡng chuyên nghiệp');
+
 
 ?>

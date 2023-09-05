@@ -66,7 +66,7 @@ $curPage = (isset($_REQUEST['curPage'])) ? $_REQUEST['curPage'] : "default_value
             <b>Nội dung(VI)</b><br />
             <div>
                 <textarea name="noidung_vi"
-                    id="noidung_vi"><?php echo isset($item['noidung_vi']) ? str_replace(stripcslashes($item['noidung_vi'])) : ''; ?></textarea>
+                    id="noidung_vi"><?php echo isset($item['noidung_vi']) ? str_replace('\\', '', stripcslashes($item['noidung_vi'])) : ''; ?></textarea>
             </div>
             <br />
 
@@ -75,16 +75,15 @@ $curPage = (isset($_REQUEST['curPage'])) ? $_REQUEST['curPage'] : "default_value
         <div id="tab2" class="content_tab">
             <b>Tên(EN):</b> <input type="text" name="ten_en" value="<?php echo @$item['ten_en']?>"
                 class="input" /><br /><br>
-            <b>Mô tả(EN)</b>
-            <textarea name="mota_en" id="mota_en" cols="45" rows="5"><?php echo @$item['mota_en']?></textarea>
-            <br><br />
             <b>Title(EN)</b> <input type="text" name="title_en" value="<?php echo @$item['title_en']?>"
                 class="input" /><br /><br>
             <b>Keywords(EN)</b>
             <textarea name="keywords_en" id="keywords_en" cols="45"
                 rows="5"><?php echo @$item['keywords_en']?></textarea>
             <br><br />
-
+            <b>Mô tả(EN)</b>
+            <textarea name="mota_en" id="mota_en" cols="45" rows="5"><?php echo @$item['mota_en']?></textarea>
+            <br><br />
             <b>Description(EN)</b>
             <textarea name="description_en" id="description_en" cols="45"
                 rows="5"><?php echo @$item['description_en']?></textarea>
@@ -92,7 +91,7 @@ $curPage = (isset($_REQUEST['curPage'])) ? $_REQUEST['curPage'] : "default_value
             <b>Nội dung(EN)</b><br />
             <div>
                 <textarea name="noidung_en"
-                    id="noidung_en"><?php echo isset($item['noidung_en']) ? str_replace(stripcslashes($item['noidung_en'])) : ''; ?></textarea>
+                    id="noidung_en"><?php echo isset($item['noidung_en']) ? str_replace('\\', '', stripcslashes($item['noidung_en'])) : ''; ?></textarea>
             </div>
             <br />
 

@@ -82,7 +82,7 @@ if($id!='') {
     $row_hinhanhsp11 = $d->result_array();
                                 
     $d->reset();                    
-    $sql_sanphamkhac = "select file,id,thumb,photo,ten_$lang as ten,photo,tenkhongdau,ngaytao,mota_$lang as mota from #_".$table_select." where hienthi=1 and id <>'".$id."' and id_list='".$row_detail[0]['id_list']."' order by stt,ngaytao desc limit 0,8";
+    $sql_sanphamkhac = "select file,id,thumb,photo,ten_$lang as ten,photo,tenkhongdau,ngaytao,mota_$lang as mota from #_".$table_select." where hienthi=1 and id <>'".$id."' and id_list='".$row_detail[0]['id_list']."' order by stt,ngaytao desc limit 0,4";
     $d->query($sql_sanphamkhac);
     $sanpham_khac = $d->result_array();                
 }else{

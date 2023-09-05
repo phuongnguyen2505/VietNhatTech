@@ -14,6 +14,12 @@ $d->reset();
 $sql_dmsp = "select ten_$lang as ten,tenkhongdau,id,thumb,photo from #_product_other_list where hienthi =1  order by stt,id desc";
 $d->query($sql_dmsp);
 $dmsp_other = $d->result_array();
+
+$d->reset();
+$sql_dmsp = "select ten_$lang as ten,tenkhongdau,id from #_" . $table_select . "_list where hienthi =1 order by stt asc";
+$d->query($sql_dmsp);
+$dmsp_cate = $d->result_array();
+
 ?>
 
 <?php
@@ -57,7 +63,15 @@ $row_banner_giua = $d->fetch_array();
                         } else {
                         }
                     }
-                
+                    
+                    foreach ($dmsp_cate as $item) {
+                        if ($title_tcat == $item['ten']) {
+                            $menu_active = true;
+                            break;
+                        } else {
+                        }
+                    }
+
                     if ($menu_active) {
                         echo "menu_active";
                     } else {
@@ -72,14 +86,14 @@ $row_banner_giua = $d->fetch_array();
                         <li>
                             <a href="san-pham.html" class="<?php 
                             if($com == ("san-pham")) {echo ""; 
-                            } ?>">
+                            } ?>" title="<?php echo _product ?>">
                                 <?php echo _product ?>
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo changeTitle(_product1) ?>.html" class="<?php 
                             if($com == ("ingersoll-rand")) {echo ""; 
-                            } ?>"><?php echo _product1 ?>
+                            } ?>" title="<?php echo _product1 ?>"><?php echo _product1 ?>
                             </a>
                         </li>
                         <?php 
@@ -129,7 +143,7 @@ $row_banner_giua = $d->fetch_array();
             </li>
 
             <li class="vach_menu"> <a href="dich-vu.html" class="<?php if ($com == "dich-vu") {echo "menu_active";
-} ?>"><?php echo _service ?></a>
+} ?>"><?php echo _dichvu ?></a>
                 <?php if (!empty($dmta)) {
                     echo "<ul>";
                     foreach ($dmta as $dmsp_item) { ?>
@@ -196,10 +210,7 @@ $row_banner_giua = $d->fetch_array();
                 <?php require _template . "layout/search.php"; ?>
             </div>
         </div>
-
-
     </div>
-
 </div>
 <section class="call-button" title="1900 63 35 64">
     <a class="calling" href="tel:1900633564">
@@ -275,7 +286,7 @@ $row_banner_giua = $d->fetch_array();
 }
 
 .nav {
-    width: 100vw;
+    width: 100%;
     height: 70px;
 }
 

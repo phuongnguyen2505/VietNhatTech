@@ -110,9 +110,10 @@
 @define ('_thietbikiemdinh','Equipment for quality control');
 @define ('_chitiet','Detail');
 @define ('_chitietsp', 'Product Detail');
+@define('_more', 'Read More');
 
 #News
-@define ('_luotxem','views');
+@define ('_luotxem','Views');
 @define ('_tinnoibat','Highlights News');
 
 #Lien he
@@ -191,6 +192,7 @@
 
 
 @define ('_tatca_sanpham','All Products');
+@define ('_sanpham','Products');
 @define ('_spbanchay','Best Sales Products');
 @define ('_buy','Buy');
 @define ('_giohang','Cart');
@@ -223,7 +225,7 @@
 @define ('_hinhanhsanpham','Product Images');
 @define ('_productdetails','Product Details');
 @define ('_projectdetails','Project Details');
-@define ('_readmore','Readmore...');
+@define ('_readmore','Read more');
 @define ('_newsdetail','News Details');
 @define ('_othernews','Other news');
 @define ('_projects','Projects');
@@ -313,3 +315,25 @@
 @define ('_daily','agent distribution partners');
 @define ('_dc','the product for the engine');
 @define ('_dcm','the product for the sprayers');
+
+@define('_bannerdes','VIET NHAT INTERNATIONAL TECHNICAL CO.,LTD is known as a professional entity specializing in consulting, construction, and installation of hot steam pipeline systems, compressed air systems, air compressor systems, air dryer systems, refrigeration systems, as well as manufacturing, repairing, and maintaining steam and boiler systems. With an experienced, specialized, and dedicated team in the industry, we commit to providing our valued customers with the best solutions for efficient and cost-effective energy utilization.');
+@define('_fbrand','Famous');
+@define('_fbrand2','brand');
+@define('_new','');
+@define('_aboutus','About us');
+@define('_faq','FAQ');
+@define('_buynowat','Buy now at');
+@define('_goto','Go to');
+@define('_close','Close');
+@define('_contactp','Please feel free to contact us whenever you have any needs or require assistance');
+@define('_policy','Product Return and Exchange Policy');
+@define('_policydes','In order to support our valued customers and enhance customer care services, we apply a flexible and swift product return and exchange policy');
+@define('_deli','Warehouse Delivery and Receipt');
+@define('_delides','We always maintain a large inventory of goods in stock for rapid distribution to customers. Viet Nhat is dedicated to providing delivery services to all provinces throughout the country.');
+@define('_aftersale','After-sales service');
+@define('_aftersaledes1','Energy Usage Assessment and Evaluation: "Viet Nhat offers a service of conducting regular 3-month/1-time energy assessment and evaluation surveys for your factories. This service is carried out by a skilled and well-trained technical team, equipped with modern tools and equipment');
+@define('_aftersaledes2','System Energy Inspection Report: Following each assessment session, we provide a report and assess the status of leaks and energy utilization efficiency at your facility');
+@define('_aftersaledes3','Furthermore, we will advise and propose solutions to address leaks and enhance energy utilization efficiency. Professional maintenance and servicing are also part of our offerings');
+
+
+

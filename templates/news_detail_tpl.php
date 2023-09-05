@@ -7,13 +7,8 @@
 <div class="row m-100 newsDetail">
     <div class="box_main news-details">
         <div class="content">
-            <p class="small"><?php echo _ngaydang?> <span
-                    style="font-size:12px;">:<?php echo date('d-m-Y h:i:s A', $tintuc_detail[0]['ngaytao'])?>
-                </span>-
-                <?php echo _daxem?> <span style="font-size:12px;">:<?php echo $tintuc_detail[0]['luotxem']?></span></p>
-            <!-- <span class='st_facebook_hcount' displayText='Facebook'></span>
-            <span class='st_twitter_hcount' displayText='Tweet'></span>
-            <span class='st_googleplus_hcount' displayText='Google +'></span> -->
+            <p class="small"><?php echo _ngaydang?>: <span><?php echo date('d-m-Y h:i:s A', $tintuc_detail[0]['ngaytao'])?></span>-
+                <?php echo _daxem?>: <span><?php echo $tintuc_detail[0]['luotxem']?></span></p>
             <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
             <script type="text/javascript">
             stLight.options({
@@ -26,29 +21,29 @@
             <br />
             <?php echo stripcslashes($tintuc_detail[0]['noidung'])?>
             <div class="news-contact">
-                <h2>Hãy liên hệ với chúng tôi khi bạn có nhu cầu/cần hỗ trợ nhé.</h2>
+                <h2><?php echo _contactp?></h2>
                 <div class="news-email news-row">
                     <img src="images/email.svg" alt="">
-                    <p>: v@vietnhat-tech.com</p>
+                    <p>: <?=$row_setting['email']?></p>
                 </div>
                 <div class="news-call news-row">
                     <img src="images/call.svg" alt="">
-                    <p>: 1900 63 35 64</p>
+                    <p>: <?=$row_setting['hotline']?></p>
                 </div>
                 <div class="news-website news-row">
                     <img src="images/website.svg" alt="">
-                    <p>: vietnhat-tech.com</p>
+                    <p>: <a href="./">vietnhat-tech.com</a></p>
                 </div>
                 <div class="news-website news-row">
                     <img src="images/website.svg" alt="">
-                    <p>: 724.vn</p>
+                    <p>: <a href="https://724.vn/">724.vn</a></p>
                 </div>
             </div>
             <div class="clr" style="height:0px; border-bottom:1px solid #dfdfdf; margin-top:20px;"></div>
             <div class="othernews">
                 <div class="orther-gr">
-                    <h2><span class="v-line"></span>tin tức khác</h2>
-                    <a href="tin-tuc.html">Xem tất cả</a>
+                    <h2><span class="v-line"></span><?php echo _othernews?></h2>
+                    <a href="tin-tuc.html"><?php echo _viewall?></a>
                 </div>
                 <ul>
                     <?php foreach($tintuc_khac as $tinkhac){
@@ -70,8 +65,8 @@
     <!-- end box_main -->
     <div class="newest-news">
         <div class="newest-gr">
-            <h2><span class="v-line"></span>tin tức mới</h2>
-            <a href="tin-tuc.html">Xem tất cả</a>
+            <h2><span class="v-line"></span><?php echo _news?> <?php echo _new?></h2>
+            <a href="tin-tuc.html"><?php echo _viewall?></a>
         </div>
         <?php
             $d->reset();

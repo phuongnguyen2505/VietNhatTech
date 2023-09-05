@@ -48,7 +48,7 @@
                         ?>
                     </p>
                     <a href="<?php echo generate_link($tintuc[$i]["tenkhongdau"], $tintuc[$i]["id"]); ?>"
-                        class="effect effect-1">Xem thêm</a>
+                        class="effect effect-1"><?php echo _readmore?></a>
                 </div>
             </div>
         </div>

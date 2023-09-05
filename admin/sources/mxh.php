@@ -114,13 +114,14 @@ function save_item()
         
         if($photo = upload_image("file", 'jpg|png|gif', _upload_hinhanh, $file_name)) {
             $data['image'] = $photo;
-            
             $d->setTable('mxh');
             $d->setWhere('id', $id);
             $d->select();
             if($d->num_rows()>0) {
                 $row = $d->fetch_array();
-                delete_file(_upload_sanpham.$row['photo']);
+                if (isset($row['photo'])) {
+                    delete_file(_upload_sanpham . $row['photo']);
+                }
             }
         }
         

@@ -17,7 +17,7 @@ $row_banner_giua = $d->fetch_array();
                     <section class="welcome">Welcome to Viet Nhat</section>
                     <section class="gr-banner w700">
                         <h1 class="hide-title">about us</h1>
-                        <h1 class="hero-title">Về việt nhật</h1>
+                        <h1 class="hero-title" <?php echo $title_bar?>><?php echo _aboutus?></h1>
                     </section>
                 </article>
             </div>

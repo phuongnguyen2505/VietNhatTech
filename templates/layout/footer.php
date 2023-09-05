@@ -25,9 +25,9 @@ $mxh1 = $d->result_array();
                     foreach ($mxh1 as $key => $value) { ?>
                 <a href="<?php echo $value[
                    "url"
-                 ] ?>" target="_blank"><img class="transi_1s" src="<?php echo _upload_hinhanh_l .
+                 ] ?>" target="_blank"><img class="transi_1s" width="60" height="60" src="<?php echo _upload_hinhanh_l .
   $value["image"] ?>" alt="<?php echo $value["ten"] ?>" title="<?php echo $value["ten"] ?>" /></a>
-                    <?php }
+                <?php }
                 } ?>
                 <div class="clr"></div>
             </div>
