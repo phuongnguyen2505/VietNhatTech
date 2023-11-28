@@ -17,11 +17,11 @@
     <?php echo $row_setting['title_' . $lang] ?>
 </h6>
 <script language="javascript">
-function select_onchange() {
-    var a = document.getElementById("idc");
-    window.location = "<?php echo $com_select ?>/" + a.value + "/";
-    return true;
-}
+    function select_onchange() {
+        var a = document.getElementById("idc");
+        window.location = "<?php echo $com_select ?>/" + a.value + "/";
+        return true;
+    }
 </script>
 <?php
 function get_main_list()
@@ -30,11 +30,11 @@ function get_main_list()
     $sql = "select ten_$lang as ten,id,tenkhongdau from table_" . $table_select . "_list  order by stt asc";
     $stmt = mysql_query($sql);
     $str = '
-      <select id="idc" name="idc" onchange="select_onchange()" class="main_font">
-      <option value="">--' . _chonloaisp . '--</option>      
-      ';
+        <select id="idc" name="idc" onchange="select_onchange()" class="main_font">
+        <option value="">--' . _chonloaisp . '--</option>      
+    ';
     while ($row = @mysql_fetch_array($stmt)) {
-        if ($row["tenkhongdau"] == isset($_REQUEST['idc']) ? $_REQUEST['idc']:'') {
+        if ($row["tenkhongdau"] == isset($_REQUEST['idc']) ? $_REQUEST['idc'] : '') {
             $selected = "selected";
         } else {
             $selected = "";
@@ -47,78 +47,72 @@ function get_main_list()
 
 ?>
 <script type="text/javascript">
-$(function() {
-    $('#saerch').click(function(evt) {
-        onSearch1(evt);
+    $(function () {
+        $('#saerch').click(function (evt) {
+            onSearch1(evt);
+        });
     });
-});
 
-function onSearch1(evt) {
-    var keyword1 = document.search.keyword1;
-    var type_search = document.search.type_search.value;
-    if (keyword1.value == '' || keyword1.value === '<?php echo _nhaptukhoa?>') {
-        displayCustomAlert('<?php echo _chuanhaptk?>', 5000);
-        keyword1.focus();
-        return false;
+    function onSearch1(evt) {
+        var keyword1 = document.search.keyword1;
+        var type_search = document.search.type_search.value;
+        if (keyword1.value == '' || keyword1.value === '<?php echo _nhaptukhoa ?>') {
+            displayCustomAlert('<?php echo _chuanhaptk ?>', 5000);
+            keyword1.focus();
+            return false;
+        }
+        location.href = 'http://<?php echo $config_url ?>/tim-kiem.html/keyword=' + keyword1.value +
+            "&type=" + type_search;
     }
-    location.href = 'http://<?php echo $config_url?>/vietnhat-tech.com/tim-kiem.html/keyword=' + keyword1.value +
-        "&type=" + type_search;
-}
 
-function doEnter1(evt) {
-    // IE         // Netscape/Firefox/Opera
-    var key;
-    if (evt.keyCode == 13 || evt.which == 13) {
-        onSearch1(evt);
-    } else {
-        return false;
+    function doEnter1(evt) {
+        // IE         // Netscape/Firefox/Opera
+        var key;
+        if (evt.keyCode == 13 || evt.which == 13) {
+            onSearch1(evt);
+        } else {
+            return false;
+        }
     }
-}
 
-function displayCustomAlert(message, duration) {
-    const customAlert = document.getElementById('customAlert');
-    const customAlertMessage = document.getElementById('customAlertMessage');
+    function displayCustomAlert(message, duration) {
+        const customAlert = document.getElementById('customAlert');
+        const customAlertMessage = document.getElementById('customAlertMessage');
 
-    customAlertMessage.textContent = message;
+        customAlertMessage.textContent = message;
 
-    customAlert.style.display = 'block';
+        customAlert.style.display = 'block';
 
-    setTimeout(function() {
-        hideCustomAlert();
-    }, duration);
-}
+        setTimeout(function () {
+            hideCustomAlert();
+        }, duration);
+    }
 
-function hideCustomAlert() {
-    const customAlert = document.getElementById('customAlert');
-    customAlert.style.display = 'none';
-}
+    function hideCustomAlert() {
+        const customAlert = document.getElementById('customAlert');
+        customAlert.style.display = 'none';
+    }
 </script>
-<div class="banner">
+<div class="banner banner-s">
     <div class="hero-banner">
         <div class="layer">
-            <div class="right m-100">
+            <div class="right">
                 <article style="width: 100%">
-                    <section class="welcome">Welcome to Viet Nhat</section>
+                    <!-- <section class="welcome">Welcome to Viet Nhat</section> -->
                     <section class="gr-banner w700">
-                        <h1 class="hide-title">
-                            <?php if($title_tcat == "Kết quả tìm kiếm") {echo "search";
-                            }
-                            else{
-                                echo "product";
-                            }
-                            ?></h1>
-                        <h1 class="hero-title <?php echo $title_tcat ?>">
+                        <h1 class="hero-title hero-product <?php echo $title_tcat ?>">
                             <?php echo $title_tcat ?>
                         </h1>
                     </section>
                 </article>
             </div>
         </div>
-        <div class="clr"></div>
     </div>
 </div>
 <div class="row gr-product m-100">
-    <div id="left"><?php require "layout/left.php";?></div><!-- end #left -->
+    <div id="left">
+        <?php require "layout/left.php"; ?>
+    </div>
     <div id="right1" style="overflow:hidden">
         <div class="box_main">
             <div class="row">
@@ -128,13 +122,20 @@ function hideCustomAlert() {
                     </div>
                     <form name="search" action="tim-kiem.html" method="get" onsubmit="return false;">
                         <input type="text" class="search-product" name="keyword1" style="padding:2px 15px;"
-                            placeholder="<?php echo _nhaptukhoa?>">
+                            placeholder="<?php echo _nhaptukhoa ?>">
                         <input type="hidden" name="type_search" value="<?php echo $type ?>">
                         <input type="submit" name="saerch" id="saerch" value="Search" style="padding:2px 5px;">
                     </form>
                 </div>
                 <div class="grid-list-switch">
-                    <div class="grid-view active-s">
+                    <div class="list-view active-s">
+                        <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M23.3332 11.6667H49.9998M23.3332 38.3333H49.9998M4.99984 5H11.6665C13.5075 5 14.9998 6.49238 14.9998 8.33333V15C14.9998 16.8409 13.5075 18.3333 11.6665 18.3333H4.99984C3.15889 18.3333 1.6665 16.8409 1.6665 15V8.33333C1.6665 6.49238 3.15889 5 4.99984 5ZM4.99984 31.6667H11.6665C13.5075 31.6667 14.9998 33.1591 14.9998 35V41.6667C14.9998 43.5076 13.5075 45 11.6665 45H4.99984C3.15889 45 1.6665 43.5076 1.6665 41.6667V35C1.6665 33.1591 3.15889 31.6667 4.99984 31.6667Z"
+                                stroke="black" stroke-width="3" />
+                        </svg>
+                    </div>
+                    <div class="grid-view">
                         <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M18.3332 1.66666H4.99984C3.15889 1.66666 1.6665 3.15904 1.6665 4.99999V18.3333C1.6665 20.1743 3.15889 21.6667 4.99984 21.6667H18.3332C20.1741 21.6667 21.6665 20.1743 21.6665 18.3333V4.99999C21.6665 3.15904 20.1741 1.66666 18.3332 1.66666Z"
@@ -150,88 +151,91 @@ function hideCustomAlert() {
                                 stroke="black" stroke-width="3" />
                         </svg>
                     </div>
-                    <div class="list-view">
-                        <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M23.3332 11.6667H49.9998M23.3332 38.3333H49.9998M4.99984 5H11.6665C13.5075 5 14.9998 6.49238 14.9998 8.33333V15C14.9998 16.8409 13.5075 18.3333 11.6665 18.3333H4.99984C3.15889 18.3333 1.6665 16.8409 1.6665 15V8.33333C1.6665 6.49238 3.15889 5 4.99984 5ZM4.99984 31.6667H11.6665C13.5075 31.6667 14.9998 33.1591 14.9998 35V41.6667C14.9998 43.5076 13.5075 45 11.6665 45H4.99984C3.15889 45 1.6665 43.5076 1.6665 41.6667V35C1.6665 33.1591 3.15889 31.6667 4.99984 31.6667Z"
-                                stroke="black" stroke-width="3" />
-                        </svg>
-                    </div>
                 </div>
             </div>
 
             <br />
-            <section class="product-list wrapper" id="wrapper">
+            <section class="product-list wrapper list" id="wrapper">
                 <?php
                 if (!empty($product)) {
 
                     foreach ($product as $k => $product_item) {
 
                         ?>
-                <div class="product-item grid-view-s col">
-                    <div class="card">
-                        <div class="img-cont">
-                            <a class="product-img"
-                                href="<?php echo $com_select ?>/<?php echo $product_item['tenkhongdau'] ?>-<?php echo $product_item['id'] ?>.html">
-                                <img src="<?php echo _upload_product_l . $product_item['thumb'] ?>"
-                                    alt="<?php echo $product_item['ten'] ?>" />
-                            </a>
-                        </div>
-                        <div class="product-r-item">
-                            <a class="title-product"
-                                href="<?php echo $com_select ?>/<?php echo $product_item['tenkhongdau'] ?>-<?php echo $product_item['id'] ?>.html">
-                                <?php echo $product_item['ten'] ?>
-                            </a>
-                            <p class="cate">
-                                <?php
-                                $sql_danhmuc = "select ten_$lang as ten from table_" . $table_select . "_list where id='" . $product_item['id_list'] . "'";
-                                $result = mysql_query($sql_danhmuc);
-                                $item_danhmuc = mysql_fetch_array($result);
-                                echo @$item_danhmuc['ten']
-                                ?>
-                                <span class="v-line"></span>
-                                <?php if ($product_item['file'] != '') { ?>
-                                <a target="_blank"
-                                    href="<?php echo _upload_product_l . $product_item['file'] ?>">Download</a>
-                                <?php } else { ?>
-
-                                <?php } ?>
-                            </p>
-                            <div class="reverse">
-                                <div class="des-product">
-                                    <?php
-                                    $content = strip_tags($product_item['mota']); 
-                                    $words = explode(' ', $content); 
-
-                                    if (count($words) > 20) {
-                                        $limitedContent = implode(' ', array_slice($words, 0, 20)) . '...';
-                                    } else {
-                                        $limitedContent = implode(' ', $words);
-                                    }
-
-                                    echo $limitedContent;
-                                    ?>
-
+                        <div class="product-item list-view-s col">
+                            <div class="card">
+                                <div class="img-cont">
+                                    <a class="product-img"
+                                        href="<?php echo $com_select ?>/<?php echo $product_item['tenkhongdau'] ?>-<?php echo $product_item['id'] ?>.html">
+                                        <img src="<?php echo _upload_product_l . $product_item['thumb'] ?>"
+                                            alt="<?php echo $product_item['ten'] ?>" />
+                                    </a>
                                 </div>
-                                <div class="gr-cate-download">
-                                    <?php if ($product_item['file'] != '') { ?>
-                                    <a target="_blank"
-                                        href="<?php echo _upload_product_l . $product_item['file'] ?>">Download</a>
-                                    <?php } else { ?>
+                                <div class="product-r-item">
+                                    <a class="title-product"
+                                        href="<?php echo $com_select ?>/<?php echo $product_item['tenkhongdau'] ?>-<?php echo $product_item['id'] ?>.html">
+                                        <?php
+                                        $content = $product_item["ten"];
+                                        $words = explode(' ', $content);
 
-                                    <?php } ?>
-                                    <div class="more-product">
-                                        <a
-                                            href="<?php echo $com_select ?>/<?php echo $product_item['tenkhongdau'] ?>-<?php echo $product_item['id'] ?>.html">
-                                            <?php echo _readmore?>
-                                        </a>
+                                        if (count($words) > 8) {
+                                            $limitedContent = implode(' ', array_slice($words, 0, 6)) . '...';
+                                            echo "{$limitedContent}";
+                                        } else {
+                                            echo "{$content}";
+                                        }
+                                        ?>
+                                    </a>
+                                    <p class="cate">
+                                        <?php
+                                        $sql_danhmuc = "select ten_$lang as ten from table_" . $table_select . "_list where id='" . $product_item['id_list'] . "'";
+                                        $result = mysql_query($sql_danhmuc);
+                                        $item_danhmuc = mysql_fetch_array($result);
+                                        echo @$item_danhmuc['ten']
+                                            ?>
+                                        <span class="v-line"></span>
+                                        <?php if ($product_item['file'] != '') { ?>
+                                            <a target="_blank"
+                                                href="<?php echo _upload_product_l . $product_item['file'] ?>">Download</a>
+                                        <?php } else { ?>
+
+                                        <?php } ?>
+                                    </p>
+                                    <div class="reverse">
+                                        <div class="des-product">
+                                            <?php
+                                            $content = strip_tags($product_item['mota']);
+                                            $words = explode(' ', $content);
+
+                                            if (count($words) > 20) {
+                                                $limitedContent = implode(' ', array_slice($words, 0, 20)) . '...';
+                                            } else {
+                                                $limitedContent = implode(' ', $words);
+                                            }
+
+                                            echo $limitedContent;
+                                            ?>
+
+                                        </div>
+                                        <div class="gr-cate-download">
+                                            <?php if ($product_item['file'] != '') { ?>
+                                                <a target="_blank"
+                                                    href="<?php echo _upload_product_l . $product_item['file'] ?>">Download</a>
+                                            <?php } else { ?>
+
+                                            <?php } ?>
+                                            <div class="more-product">
+                                                <a
+                                                    href="<?php echo $com_select ?>/<?php echo $product_item['tenkhongdau'] ?>-<?php echo $product_item['id'] ?>.html">
+                                                    <?php echo _readmore ?>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <?php
+                        <?php
                     }
                 }
                 ?>
@@ -241,105 +245,191 @@ function hideCustomAlert() {
 
         <div class="clr"></div>
         <div class="phantrang">
+            <?php
+            $paging_html = str_replace("First", "<<", $paging['paging']);
+            $paging_html = str_replace("Prev", "<", $paging_html);
+            $paging_html = str_replace("Next", ">", $paging_html);
+            $paging_html = str_replace("Last", ">>", $paging_html);
+            ?>
             <?php if (isset($paging['paging'])) {
-                echo $paging['paging'];
+                echo $paging_html;
             } else {
-                echo 'Không có dữ liệu.';
+                echo _nodata;
             } ?>
         </div>
     </div>
 </div>
 
 <style>
-.hero-title {
-    letter-spacing: 0.3em !important;
-}
+    .hero-title {
+        letter-spacing: 0.3em !important;
+    }
 
-.gr-banner .Yoshitake {
-    background: linear-gradient(180deg, #2982e6 0%, rgba(41, 130, 230, 0.1) 100%) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    text-fill-color: transparent !important;
-}
+    .gr-banner .Yoshitake-Japan {
+        /* font-size: 90px !important; */
+        background: linear-gradient(180deg, #2982e6 0%, rgba(41, 130, 230, 0.1) 100%) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        text-fill-color: transparent !important;
+    }
 
-.gr-banner .OMRON-JAPAN {
-    background: linear-gradient(180deg, #166fc0 0%, rgba(41, 130, 230, 0.1) 100%) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    text-fill-color: transparent !important;
-}
+    .gr-banner .Ingersoll {
+        letter-spacing: 0.2em !important;
+    }
 
-.gr-banner .EBRO-GERMANY {
-    background: linear-gradient(180deg, #fe5800 0%, rgba(254, 88, 0, 0.1) 100%) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    text-fill-color: transparent !important;
-}
+    .gr-banner .OMRON-JAPAN {
+        background: linear-gradient(180deg, #166fc0 0%, rgba(41, 130, 230, 0.1) 100%) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        text-fill-color: transparent !important;
+    }
 
-.gr-banner .PISCO-JAPAN {
-    background: linear-gradient(180deg, #0057a8 0%, rgba(0, 87, 168, 0.1) 100%) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    text-fill-color: transparent !important;
-}
+    .gr-banner .EBRO-GERMANY {
+        background: linear-gradient(180deg, #fe5800 0%, rgba(254, 88, 0, 0.1) 100%) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        text-fill-color: transparent !important;
+    }
+
+    .gr-banner .PISCO-JAPAN {
+        background: linear-gradient(180deg, #0057a8 0%, rgba(0, 87, 168, 0.1) 100%) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        text-fill-color: transparent !important;
+    }
+
+    @media screen and (max-width: 767px) {
+        .gr-banner .Yoshitake-Japan {
+            /* font-size: 90px !important; */
+            background: linear-gradient(180deg, #2982e6 50%, rgba(41, 130, 230, 0.1) 100%) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            text-fill-color: transparent !important;
+        }
+
+        .gr-banner .OMRON-JAPAN {
+            background: linear-gradient(180deg, #166fc0 50%, rgba(41, 130, 230, 0.1) 100%) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            text-fill-color: transparent !important;
+        }
+
+        .gr-banner .EBRO-GERMANY {
+            background: linear-gradient(180deg, #fe5800 50%, rgba(254, 88, 0, 0.1) 100%) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            text-fill-color: transparent !important;
+        }
+
+        .gr-banner .PISCO-JAPAN {
+            background: linear-gradient(180deg, #0057a8 50%, rgba(0, 87, 168, 0.1) 100%) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            text-fill-color: transparent !important;
+        }
+    }
 </style>
 
 <script>
-var wrapper = document.getElementById("wrapper");
+    function updatePagination() {
+        var screenWidth = window.innerWidth;
+        var paginationContainer = document.querySelector('.phantrang');
+        var paginationLinks = paginationContainer.querySelectorAll('a');
+        var maxP = screenWidth < 768 ? 3 : 6; // Số trang tối đa hiển thị là 3 khi màn hình dưới 768px, ngược lại là 6
 
-document.addEventListener("click", function(event) {
-    if (!event.target.matches(".list-view")) return;
-    $(".product-item").addClass("list-view-s");
-    $(".list-view").addClass("active-s");
+        for (var i = 0; i < paginationLinks.length; i++) {
+            if (i < 2 || i >= (paginationLinks.length - 2)) {
+                // Hiển thị "<<", "<", ">>", ">>"
+                paginationLinks[i].style.display = 'flex';
+            } else if (i >= 2 && i < (maxP + 2)) {
+                // Hiển thị các trang trong khoảng từ 1 đến maxP
+                paginationLinks[i].style.display = 'flex';
+            } else {
+                // Ẩn các trang còn lại
+                paginationLinks[i].style.display = 'none';
+            }
+        }
+    }
 
-    $(".grid-view").removeClass("active-s");
-    $(".product-item").removeClass("grid-view-s");
+    // Gọi hàm cập nhật phân trang khi trang web được tải và khi cửa sổ thay đổi kích thước
+    updatePagination();
+    window.addEventListener('resize', updatePagination);
+</script>
 
-    event.preventDefault();
-    wrapper.classList.add("list");
-});
 
-document.addEventListener("click", function(event) {
-    if (!event.target.matches(".grid-view")) return;
-    $(".product-item").addClass("grid-view-s");
-    $(".grid-view").addClass("active-s");
+<script>
+    var wrapper = document.getElementById("wrapper");
 
-    $(".list-view").removeClass("active-s");
-    $(".product-item").removeClass("list-view-s");
+    document.addEventListener("click", function (event) {
+        if (!event.target.matches(".grid-view")) return;
+        $(".product-item").addClass("grid-view-s");
+        $(".grid-view").addClass("active-s");
 
-    event.preventDefault();
-    wrapper.classList.remove("list");
-});
+        $(".list-view").removeClass("active-s");
+        $(".product-item").removeClass("list-view-s");
 
-function adjustFontSize() {
-    const title = document.querySelector('.hero-title');
-    const container = document.querySelector('.gr-banner');
+        event.preventDefault();
+        wrapper.classList.remove("list");
+    });
 
-    const titleWidth = title.offsetWidth;
-    const containerWidth = container.offsetWidth;
+    document.addEventListener("click", function (event) {
+        if (!event.target.matches(".list-view")) return;
+        $(".product-item").addClass("list-view-s");
+        $(".list-view").addClass("active-s");
 
-    const titleHeight = title.offsetHeight;
-    const maxHeight = 340;
-    const widthScaleFactor = containerWidth / titleWidth;
-    const heightScaleFactor = maxHeight / titleHeight;
+        $(".grid-view").removeClass("active-s");
+        $(".product-item").removeClass("grid-view-s");
 
-    const scaleFactors = [widthScaleFactor, heightScaleFactor];
-    const scaleFactor = Math.min(...scaleFactors);
+        event.preventDefault();
+        wrapper.classList.add("list");
+    });
 
-    const maxFontSize = 130;
-    const minFontSize = 50;
+    // function adjustFontSize() {
+    //     const title = document.querySelector('.hero-title');
+    //     const container = document.querySelector('.gr-banner');
 
-    let fontSize = Math.min(maxFontSize, scaleFactor * 100);
-    fontSize = Math.max(minFontSize, fontSize);
+    //     if (!title || !container) {
+    //         return; // Handle missing elements gracefully
+    //     }
 
-    title.style.fontSize = fontSize + 'px';
-}
+    //     const containerStyle = getComputedStyle(container);
+    //     const containerWidth = parseFloat(containerStyle.width);
 
-// Call the function when the page loads and on window resize
-window.addEventListener('load', adjustFontSize);
-window.addEventListener('resize', adjustFontSize);
+    //     let maxFontSize;
+    //     let minFontSize;
+
+    //     if (containerWidth >= 768) {
+    //         maxFontSize = 90;
+    //         minFontSize = 50;
+    //     } else {
+    //         maxFontSize = 30;
+    //         minFontSize = 22;
+    //     }
+
+    //     const baseFontSize = 90;
+
+    //     const scaleFactor = containerWidth / title.offsetWidth;
+    //     let fontSize = baseFontSize * scaleFactor;
+
+    //     fontSize = Math.min(maxFontSize, Math.max(minFontSize, fontSize));
+
+    //     title.style.fontSize = fontSize + 'px';
+    // }
+
+    // // Call adjustFontSize on page load and when window is resized
+    // window.addEventListener('load', adjustFontSize);
+
+    // let resizeTimeout;
+    // window.addEventListener('resize', function () {
+    //     clearTimeout(resizeTimeout);
+    //     resizeTimeout = setTimeout(adjustFontSize, 100);
+    // });
 </script>

@@ -190,7 +190,7 @@ if ($source != "") {
 }
 
 if ($com_select == "san-pham-kitz") {
-    $com_select = "ingersoll-rand";
+    $com_select = "ingersoll-randusa";
 }
 
 if (isset($_REQUEST["com"]) == "logout") {

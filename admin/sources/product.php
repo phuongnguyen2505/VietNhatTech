@@ -294,7 +294,7 @@ function save_item()
         $id =  themdau($_POST['id']);
         if($photo = upload_image("file", 'jpg|png|gif|JPG|jpeg|JPEG', _upload_product, $file_name)) {
             $data['photo'] = $photo;    
-            $data['thumb'] = create_thumb($data['photo'], 210, 230, _upload_product, $file_name, 2);        
+            $data['thumb'] = create_thumb($data['photo'], 600, 600, _upload_product, $file_name, 2);        
             $d->setTable('product');
             $d->setWhere('id', $id);
             $d->select();
@@ -463,7 +463,7 @@ function save_item()
     }else{
         if($photo = upload_image("file", 'jpg|png|gif|JPG|jpeg|JPEG', _upload_product, $file_name)) {
             $data['photo'] = $photo;        
-            $data['thumb'] = create_thumb($data['photo'], 210, 230, _upload_product, $file_name, 2);        
+            $data['thumb'] = create_thumb($data['photo'], 600, 600, _upload_product, $file_name, 2);        
         }        
         $ext = end((explode('.', $_FILES['file1']['name'])));
         $name = basename($_FILES['file1']['name'], '.'.$ext);
@@ -1204,7 +1204,7 @@ function save_photo()
         
         if($photo = upload_image("file", 'jpg|png|gif|JPG|jpeg|Jpg|JPEG', _upload_product, $file_name)) {
             $data['photo'] = $photo;
-            $data['thumb'] = create_thumb($data['photo'], 300, 300, _upload_product, $file_name.$i, 1);
+            $data['thumb'] = create_thumb($data['photo'], 600, 600, _upload_product, $file_name.$i, 1);
             $d->setTable('product_hinhanh');
             $d->setWhere('id', $id);
             $d->select();
@@ -1231,7 +1231,7 @@ function save_photo()
     for($i=0; $i<5; $i++){
         if($photo = upload_image("file".$i, 'jpg|png|gif|JPG|jpeg|Jpg|JPEG', _upload_product, $file_name.$i)) {
             $data['photo'] = $photo;
-            $data['thumb'] = create_thumb($data['photo'], 300, 300, _upload_product, $file_name.$i, 1);
+            $data['thumb'] = create_thumb($data['photo'], 600, 600, _upload_product, $file_name.$i, 1);
                         
             $data['mota'] = "mota :".$i;
                         

@@ -9,15 +9,16 @@ $d->query($sql_banner_giua);
 $row_banner_giua = $d->fetch_array();
 ?>
 
-<div class="banner">
+<div class="banner banner-s">
     <div class="hero-banner">
         <div class="layer">
             <div class="right m-100">
                 <article>
                     <section class="welcome">Welcome to Viet Nhat</section>
                     <section class="gr-banner w700">
-                        <h1 class="hide-title">about us</h1>
-                        <h1 class="hero-title" <?php echo $title_bar?>><?php echo _aboutus?></h1>
+                        <h1 class="hero-title hero-about" <?php echo $title_bar ?>>
+                            <?php echo _aboutus ?>
+                        </h1>
                     </section>
                 </article>
             </div>
@@ -49,15 +50,3 @@ $row_banner_giua = $d->fetch_array();
         </div>
     </div>
 </div>
-<style type="text/css">
-/* .banner {
-    display: none;
-} */
-
-.hero-banner {
-    background: url(<?php echo _upload_hinhanh_l.$row_banner_giua["photo"] ?>) no-repeat;
-    flex: 1;
-    aspect-ratio: 16/9;
-    background-size: 100% 100%;
-}
-</style>

@@ -77,9 +77,9 @@
 @define('_home', 'Trang Chủ');
 @define('_khuyenmai', 'Khuyến mãi');
 @define('_about', 'Giới thiệu');
-@define('_product', 'Yoshitake');
+@define('_product', 'Yoshitake-Japan');
 @define('_productt', 'Sản Phẩm');
-@define('_product1', 'Ingersoll Rand');
+@define('_product1', 'Ingersoll Rand-USA');
 @define('_news', 'Tin tức');
 @define('_tuyendung', 'Tuyển dụng');
 @define('_contact', 'Liên Hệ');
@@ -303,6 +303,7 @@
 @define('_fbrand','Nhãn hàng');
 @define('_fbrand2','tiêu biểu');
 @define('_new','mới');
+@define('_nodata','Không có dữ liệu');
 @define('_aboutus','Về Việt Nhật');
 @define('_faq','Thắc mắc thường gặp');
 @define('_buynowat','Mua ngay tại');

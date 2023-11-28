@@ -1,12 +1,13 @@
-<div class="banner">
+<div class="banner banner-s">
     <div class="hero-banner">
         <div class="layer">
             <div class="right m-100">
                 <article>
                     <section class="welcome">Welcome to Viet Nhat</section>
                     <section class="gr-banner w700 esa-us">
-                        <h1 class="hide-title">ENERGY <br> SAVING ACADEMY</h1>
-                        <h1 class="hero-title"><?php echo $tintuc_detail[0]['ten']?></h1>
+                        <h1 class="hero-title">
+                            <?php echo $tintuc_detail[0]['ten'] ?>
+                        </h1>
                     </section>
                 </article>
             </div>
@@ -18,12 +19,12 @@
     <div class="box_main">
         <div class="content">
             <div class="esaus">
-                <?php echo stripcslashes($tintuc_detail[0]['noidung'])?>
+                <?php echo stripcslashes($tintuc_detail[0]['noidung']) ?>
             </div>
             <!-- <div class="clr" style="height:0px; border-bottom:1px solid #cdcdcd;"></div> -->
-            <!-- <p class="small"><?php echo _ngaydang?> <span
-                    style="font-size:12px;">:<?php echo date('d-m-Y h:i:s A', $tintuc_detail[0]['ngaytao'])?> </span>-
-                <?php echo _daxem?> <span style="font-size:12px;">:<?php echo $tintuc_detail[0]['luotxem']?></span></p>
+            <!-- <p class="small"><?php echo _ngaydang ?> <span
+                    style="font-size:12px;">:<?php echo date('d-m-Y h:i:s A', $tintuc_detail[0]['ngaytao']) ?> </span>-
+                <?php echo _daxem ?> <span style="font-size:12px;">:<?php echo $tintuc_detail[0]['luotxem'] ?></span></p>
             <br /> -->
 
 
@@ -42,24 +43,29 @@
             </script> -->
 
             <!-- <div class="clr" style="height:0px; border-bottom:1px solid #cdcdcd; margin-top:20px;"></div> -->
-            <?php if(!empty($tintuc_khac)) { ?>
-            <div class="othernews">
-                <h2><?php echo _baivietkhac?></h2>
-                <ul>
+            <?php if (!empty($tintuc_khac)) { ?>
+                <div class="othernews">
+                    <h2>
+                        <?php echo _baivietkhac ?>
+                    </h2>
+                    <ul>
 
-                    <?php foreach($tintuc_khac as $tinkhac){
-                      
+                        <?php foreach ($tintuc_khac as $tinkhac) {
+
+                            ?>
+                            <li><a href="thu-vien-tai-lieu/<?php echo $tinkhac['tenkhongdau'] ?>-<?php echo $tinkhac['id'] ?>.html"
+                                    style="text-decoration:none;">
+                                    <?php echo $tinkhac['ten'] ?>
+                                </a>
+                                (
+                                <?php echo make_date($tinkhac['ngaytao']) ?>)
+                            </li>
+                        <?php }
                         ?>
-                    <li><a href="thu-vien-tai-lieu/<?php echo $tinkhac['tenkhongdau']?>-<?php echo $tinkhac['id']?>.html"
-                            style="text-decoration:none;"><?php echo $tinkhac['ten']?></a>
-                        (<?php echo make_date($tinkhac['ngaytao'])?>)
-                    </li>
-                    <?php } 
-                    ?>
-                </ul>
+                    </ul>
 
-            </div><br />
-            <?php }?>
+                </div><br />
+            <?php } ?>
         </div>
     </div>
     <!-- end box_main -->
@@ -69,7 +75,7 @@
 <!-- end right -->
 
 <style>
-.esa-us .hide-title {
-    font-size: 135px;
-}
+    .esa-us .hide-title {
+        font-size: 135px;
+    }
 </style>

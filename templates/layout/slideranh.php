@@ -10,7 +10,7 @@
 <script src="sliderengine/amazingslider.js"></script>
 <link rel="stylesheet" type="text/css" href="sliderengine/amazingslider-1.css">
 <script src="sliderengine/initslider-1.js"></script>
-<div class="maxwidth">
+<div class="maxwidth"></div>
 <!-- Insert to your webpage where you want to display the slider -->
 <div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:100%;margin:0 auto;">
     <div id="amazingslider-1" style="display:block;position:relative;margin:0 auto;">
@@ -19,15 +19,17 @@
                 if(!empty($result_slider)){
                     foreach($result_slider as $slider_item){
             ?>
-                 <li>
-                    <a href="<?=$slider_item['link']?>" target="_blank" title="<?=$slider_item['ten']?>"><img src="<?=_upload_hinhanh_l.$slider_item['photo']?>"  alt="<?=$slider_item['ten']?>"  title="<?=$slider_item['ten']?>"/></a>
-                    
-                </li>
+            <li>
+                <a href="<?=$slider_item['link']?>" target="_blank" title="<?=$slider_item['ten']?>">
+                    <img src="<?=_upload_hinhanh_l.$slider_item['photo']?>" alt="<?=$slider_item['ten']?>"
+                        title="<?=$slider_item['ten']?>" />
+                </a>
+            </li>
             <?php   
                     }
                 }
             
-            ?>   
+            ?>
         </ul>
     </div>
 </div>

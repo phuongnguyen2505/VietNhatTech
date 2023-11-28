@@ -21,71 +21,79 @@ $video = $d->result_array();
     <h2>
         <?php echo _dmsp ?>
     </h2>
+    <div class="cate-mb">
+        <?php
+        if (!empty($dmsp)) {
+            foreach ($dmsp as $dmsp_item) {
+                if (isset($_GET['idc']) && $_GET['idc'] == $dmsp_item['tenkhongdau']) {
+                    echo '<div class="cate-item active-mb"><a href="' . $com_select . '/' . $dmsp_item['tenkhongdau'] . '/" title="' . $dmsp_item['ten'] . '">' . $dmsp_item['ten'] . '</a></div>';
+                } else {
+                    echo '<div class="cate-item"><a href="' . $com_select . '/' . $dmsp_item['tenkhongdau'] . '/" title="' . $dmsp_item['ten'] . '">' . $dmsp_item['ten'] . '</a></div>';
+                }
+            }
+        }
+        ?>
+    </div>
+
     <div id="smoothmenu" class="ddsmoothmenu-v danhmuc">
         <ul class="cateUl accordion accordion-2 transitionAll">
             <?php
             if (!empty($dmsp)) {
-
                 foreach ($dmsp as $dmsp_item) {
                     ?>
-
-
-            <li>
-                <?php
-                    if (isset($_GET['idc']) && $_GET['idc'] == $dmsp_item['tenkhongdau']) {
-                        echo '<a class="active1" href="' . $com_select . '/' . $dmsp_item['tenkhongdau'] . '/" title="' . $dmsp_item['ten'] . '">' . $dmsp_item['ten'] . '</a>';
-                    } else {
-                        echo '<a href="' . $com_select . '/' . $dmsp_item['tenkhongdau'] . '/" title="' . $dmsp_item['ten'] . '">' . $dmsp_item['ten'] . '</a>';
-                    }
-                    ?>
-                <?php
+                    <li>
+                        <?php
+                        if (isset($_GET['idc']) && $_GET['idc'] == $dmsp_item['tenkhongdau']) {
+                            echo '<a class="active1" href="' . $com_select . '/' . $dmsp_item['tenkhongdau'] . '/" title="' . $dmsp_item['ten'] . '">' . $dmsp_item['ten'] . '</a>';
+                        } else {
+                            echo '<a href="' . $com_select . '/' . $dmsp_item['tenkhongdau'] . '/" title="' . $dmsp_item['ten'] . '">' . $dmsp_item['ten'] . '</a>';
+                        }
+                        ?>
+                        <?php
                         // $d->reset();
                         // $sql_dmsp="select ten_$lang as ten,tenkhongdau,id from #_".$table_select."_cat where hienthi=1 and id_list=$dmsp_item[id] order by stt asc,id desc";
                         // $d->query($sql_dmsp);
                         // $dmsp1=$d->result_array();
-                    if (!empty($dmsp1)) {
-                        echo '<ul>';
-                        foreach ($dmsp1 as $dmsp1_item) {
-                            ?>
-            <li><a href="<?php echo $com_select ?>/<?php echo $dmsp_item['tenkhongdau'] ?>/<?php echo $dmsp1_item['tenkhongdau'] ?>/"
-                    title="<?php echo $dmsp1_item['ten'] ?>"><?php echo $dmsp1_item['ten'] ?></a>
-                <?php
-                            // $d->reset();
-                            // $sql_dmsp="select ten_$lang as ten,tenkhongdau,id from #_".$table_select."_item where hienthi=1 and id_cat=$dmsp1_item[id] order by stt asc,id desc";
-                            // $d->query($sql_dmsp);
-                            // $dmsp2=$d->result_array();
-                            if (!empty($dmsp2)) {
-                                echo '<ul>';
-                                foreach ($dmsp2 as $dmsp2_item) {
-                                    ?>
-            <li><a href="<?php echo $com_select ?>/<?php echo $dmsp_item['tenkhongdau'] ?>/<?php echo $dmsp1_item['tenkhongdau'] ?>/<?php echo $dmsp2_item['tenkhongdau'] ?>/"
-                    title="<?php echo $dmsp2_item['ten'] ?>"><?php echo $dmsp2_item['ten'] ?></a></li>
-
-            <?php
+                        if (!empty($dmsp1)) {
+                            echo '<ul>';
+                            foreach ($dmsp1 as $dmsp1_item) {
+                                ?>
+                            <li><a href="<?php echo $com_select ?>/<?php echo $dmsp_item['tenkhongdau'] ?>/<?php echo $dmsp1_item['tenkhongdau'] ?>/"
+                                    title="<?php echo $dmsp1_item['ten'] ?>">
+                                    <?php echo $dmsp1_item['ten'] ?>
+                                </a>
+                                <?php
+                                // $d->reset();
+                                // $sql_dmsp="select ten_$lang as ten,tenkhongdau,id from #_".$table_select."_item where hienthi=1 and id_cat=$dmsp1_item[id] order by stt asc,id desc";
+                                // $d->query($sql_dmsp);
+                                // $dmsp2=$d->result_array();
+                                if (!empty($dmsp2)) {
+                                    echo '<ul>';
+                                    foreach ($dmsp2 as $dmsp2_item) {
+                                        ?>
+                                    <li><a href="<?php echo $com_select ?>/<?php echo $dmsp_item['tenkhongdau'] ?>/<?php echo $dmsp1_item['tenkhongdau'] ?>/<?php echo $dmsp2_item['tenkhongdau'] ?>/"
+                                            title="<?php echo $dmsp2_item['ten'] ?>">
+                                            <?php echo $dmsp2_item['ten'] ?>
+                                        </a></li>
+                                    <?php
+                                    }
+                                    echo '</ul>';
                                 }
-                                echo '</ul>';
+                                ?>
+                            </li>
+                            <?php
                             }
-                            ?>
-            </li>
-
-            <?php
+                            echo '</ul>';
                         }
-                        echo '</ul>';
-                    }
-                    ?>
-            </li>
-
-            <?php
-
+                        ?>
+                    </li>
+                    <?php
                 }
             }
             ?>
-
         </ul>
     </div>
 </div>
-
-
 
 <!-- <div class="left_box">
     <h2>

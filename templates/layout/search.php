@@ -56,7 +56,7 @@
             searchInput.focus();
             return false;
         }
-        location.href = 'http://<?php echo $config_url ?>/vietnhat-tech.com/tim-kiem.html/keyword=' +
+        location.href = 'http://<?php echo $config_url ?>/tim-kiem.html/keyword=' +
             encodeURIComponent(keyword);
     }
 

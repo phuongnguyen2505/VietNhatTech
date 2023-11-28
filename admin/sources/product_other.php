@@ -317,24 +317,6 @@ function save_item()
         $data['tags_en'] = isset($_POST['tags_en']) ? $_POST['tags_en'] : '';
         $data['mota_en'] = isset($_POST['mota_en']) ? $_POST['mota_en'] : '';
 
-        // TW-------------------
-        $data['title_ta'] = isset($_POST['title_ta']) ? $_POST['title_ta'] : '';
-        $data['keywords_ta'] = isset($_POST['keywords_ta']) ? $_POST['keywords_ta'] : '';
-        $data['description_ta'] = isset($_POST['description_ta']) ? $_POST['description_ta'] : '';
-        $data['ten_ta'] = isset($_POST['ten_ta']) ? $_POST['ten_ta'] : '';
-        $data['noidung_ta'] = isset($_POST['noidung_ta']) ? addslashes($_POST['noidung_ta']) : '';
-        $data['tags_ta'] = isset($_POST['tags_ta']) ? $_POST['tags_ta'] : '';
-        $data['mota_ta'] = isset($_POST['mota_ta']) ? $_POST['mota_ta'] : '';
-
-        // JP-------------------
-        $data['title_ja'] = isset($_POST['title_ja']) ? $_POST['title_ja'] : '';
-        $data['keywords_ja'] = isset($_POST['keywords_ja']) ? $_POST['keywords_ja'] : '';
-        $data['description_ja'] = isset($_POST['description_ja']) ? $_POST['description_ja'] : '';
-        $data['ten_ja'] = isset($_POST['ten_ja']) ? $_POST['ten_ja'] : '';
-        $data['noidung_ja'] = isset($_POST['noidung_ja']) ? addslashes($_POST['noidung_ja']) : '';
-        $data['tags_ja'] = isset($_POST['tags_ja']) ? $_POST['tags_ja'] : '';
-        $data['mota_ja'] = isset($_POST['mota_ja']) ? $_POST['mota_ja'] : '';
-
         // Chung--------------------------
         $data['id_list'] = isset($_POST['id_list']) ? (int)$_POST['id_list'] : 0;
         $data['id_cat'] = isset($_POST['id_cat']) ? (int)$_POST['id_cat'] : 0;

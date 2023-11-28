@@ -78,8 +78,8 @@
 @define ('_home','Home');
 @define ('_khuyenmai','Promotions');
 @define ('_about','About');
-@define ('_product','Yoshitake');
-@define ('_product1','Ingersoll Rand');
+@define ('_product','Yoshitake-Japan');
+@define ('_product1','Ingersoll Rand-USA');
 @define ('_news','News');
 @define ('_tuyendung','Recruitment');
 @define ('_contact','Contact');
@@ -320,6 +320,7 @@
 @define('_fbrand','Famous');
 @define('_fbrand2','brand');
 @define('_new','');
+@define('_nodata','No data');
 @define('_aboutus','About us');
 @define('_faq','FAQ');
 @define('_buynowat','Buy now at');

@@ -79,14 +79,14 @@ function save_photo(){
 				}
 			}
 						
-			$data['stt'] = $_POST['stt'];
-			$data['mota_vi'] = magic_quote($_POST['mota_vi']);	
-			$data['mota_en'] = $_POST['mota_en'];	
-			$data['mota_ta'] = $_POST['mota_ta'];	
-			$data['ten_vi'] = $_POST['ten_vi'];	
-			$data['ten_en'] = $_POST['ten_en'];	
-			$data['ten_ta'] = $_POST['ten_ta'];	
-			$data['link'] = $_POST['link'];	
+			$data['stt'] = isset($_POST['stt']) ? $_POST['stt'] : 0;
+			$data['mota_vi'] = isset($_POST['mota_vi']) ? magic_quote($_POST['mota_vi']) : '';	
+			$data['mota_en'] = isset($_POST['mota_en']) ? $_POST['mota_en'] : '';	
+			$data['mota_ta'] = isset($_POST['mota_ta']) ? $_POST['mota_ta'] : '';	
+			$data['ten_vi'] = isset($_POST['ten_vi']) ? $_POST['ten_vi'] : '';	
+			$data['ten_en'] = isset($_POST['ten_en']) ? $_POST['ten_en'] : '';	
+			$data['ten_ta'] = isset($_POST['ten_ta']) ? $_POST['ten_ta'] : '';	
+			$data['link'] = isset($_POST['link']) ? $_POST['link'] : '';
 			$data['hienthi'] = isset($_POST['hienthi']) ? 1 : 0;
 			$d->reset();
 			$d->setTable('slider');
@@ -95,23 +95,22 @@ function save_photo(){
 			redirect("index.php?com=slider&act=man_photo");
 			
 	}{ 			for($i=0; $i<5; $i++){
-				if($data['photo'] = upload_image("file".$i, 'PNG|jpg|png|gif|JPG|jpeg|JPEG', _upload_hinhanh,$file_name.$i))
-					{						
-						
-						$data['stt'] = $_POST['stt'.$i];
-						$data['ten_vi'] = $_POST['ten_vi'.$i];	
-						$data['ten_en'] = $_POST['ten_en'.$i];	
-						$data['ten_ta'] = $_POST['ten_ta'];	
-						$data['mota_vi'] = magic_quote($_POST['mota_vi'.$i]);	
-						$data['mota_en'] = $_POST['mota_en'.$i];	
-						$data['mota_ta'] = $_POST['mota_ta'.$i];
-						$data['link'] = $_POST['link'];											
+				if(isset($_FILES['file'.$i]['name']) && !empty($_FILES['file'.$i]['name'])){
+					if($data['photo'] = upload_image("file".$i, 'PNG|jpg|png|gif|JPG|jpeg|JPEG', _upload_hinhanh,$file_name.$i)){
+						$data['stt'] = isset($_POST['stt'.$i]) ? $_POST['stt'.$i] : 0;
+						$data['ten_vi'] = isset($_POST['ten_vi'.$i]) ? $_POST['ten_vi'.$i] : '';	
+						$data['ten_en'] = isset($_POST['ten_en'.$i]) ? $_POST['ten_en'.$i] : '';	
+						$data['ten_ta'] = isset($_POST['ten_ta']) ? $_POST['ten_ta'] : '';	
+						$data['mota_vi'] = isset($_POST['mota_vi'.$i]) ? magic_quote($_POST['mota_vi'.$i]) : '';	
+						$data['mota_en'] = isset($_POST['mota_en'.$i]) ? $_POST['mota_en'.$i] : '';	
+						$data['mota_ta'] = isset($_POST['mota_ta'.$i]) ? $_POST['mota_ta'.$i] : '';
+						$data['link'] = isset($_POST['link']) ? $_POST['link'] : '';											
 						$data['hienthi'] = isset($_POST['hienthi'.$i]) ? 1 : 0;																	
 						$d->setTable('slider');
 						if(!$d->insert($data)) transfer("Lưu dữ liệu bị lỗi", "index.php?com=slider&act=man_photo");
-					}
+				}
 			}
-
+	}
 			redirect("index.php?com=slider&act=man_photo");
 	}
 }
@@ -159,5 +158,3 @@ function get_list_cat($id=0){
 
 
 ?>
-
-	
